@@ -1,0 +1,13 @@
+﻿{
+  "AssemblyName": "CompanionAscension.dll",
+  "Author": "WraithJT",
+  "DisplayName": "Companion Ascension",
+  "EntryMethod": "CompanionAscension.Main.Load",
+  "GameVersion": "1.3.0",
+  "HomePage": "https://github.com/WraithJT/CompanionAscension",
+  "Id": "CompanionAscension",
+  "ManagerVersion": "0.23.0",
+  "Repository": "https://github.com/WraithJT/CompanionAscension",
+  "Requirements": [],
+  "Version": "0.0.01"
+}

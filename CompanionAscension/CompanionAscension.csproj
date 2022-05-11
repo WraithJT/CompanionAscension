@@ -74,6 +74,12 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NewContent\" />
+    <Folder Include="Patches\" />
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+
   <Target Name="ILRepack" AfterTargets="Build">
     <ItemGroup>
       <InputAssemblies Include="BlueprintCore.dll" />
@@ -81,11 +87,6 @@
       <OutputAssembly Include="CompanionAscension.dll" />
     </ItemGroup>
     <Message Text="Merging: @(InputAssemblies) into @(OutputAssembly)" Importance="High" />
-    <ILRepack
-      OutputType="Dll"
-      MainAssembly="CompanionAscension.dll"
-      OutputAssembly="@(OutputAssembly)"
-      InputAssemblies="@(InputAssemblies)"
-      WorkingDirectory="$(OutputPath)" />
+    <ILRepack OutputType="Dll" MainAssembly="CompanionAscension.dll" OutputAssembly="@(OutputAssembly)" InputAssemblies="@(InputAssemblies)" WorkingDirectory="$(OutputPath)" />
   </Target>
 </Project>
