@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace CompanionAscension.NewContent.Components
 {
 	[TypeId("ec6d735c011b47748bb10b133d3b5ac6")]
-	class AddMaxAbilityScoreBonus : UnitFactComponentDelegate
+	class HighestAbilityScoreBonus : UnitFactComponentDelegate
 	{
 		public override void OnTurnOn()
 		{

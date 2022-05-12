@@ -288,19 +288,19 @@ namespace CompanionAscension.NewContent.Mythics
                 //csm.m_MythicSpellList = lichbookselect.m_MythicSpellList;
                 //Tools.LogMessage("Built CSM: " + csm.AssetGuidThreadSafe);
 
-                ContextValue _mythicAbilityScoreIncreaseContextValue = new();
-                _mythicAbilityScoreIncreaseContextValue.ValueType = ContextValueType.Rank;
-                _mythicAbilityScoreIncreaseContextValue.Value = 1;
-                _mythicAbilityScoreIncreaseContextValue.ValueShared = AbilitySharedValue.StatBonus;
-                _mythicAbilityScoreIncreaseContextValue.Property = UnitProperty.None;
-                _mythicAbilityScoreIncreaseContextValue.ValueRank = AbilityRankType.Default;
+                ContextValue _mythicAbilityScoreBonusContextValue = new();
+                _mythicAbilityScoreBonusContextValue.ValueType = ContextValueType.Rank;
+                _mythicAbilityScoreBonusContextValue.Value = 1;
+                _mythicAbilityScoreBonusContextValue.ValueShared = AbilitySharedValue.StatBonus;
+                _mythicAbilityScoreBonusContextValue.Property = UnitProperty.None;
+                _mythicAbilityScoreBonusContextValue.ValueRank = AbilityRankType.Default;
                 Tools.LogMessage("Built: Context Value (Mythic Ability Score Bonus)");
 
-                AddMaxAbilityScoreBonus _mythicAbilityScoreIncreaseMaxAbilityScoreBonus = new();
-                _mythicAbilityScoreIncreaseMaxAbilityScoreBonus.name = "$AddMaxAbilityScoreBonus$35678b97eaba4aae94f4d965b2492ac7";
-                _mythicAbilityScoreIncreaseMaxAbilityScoreBonus.HighestStatBonus = _mythicAbilityScoreIncreaseContextValue;
-                _mythicAbilityScoreIncreaseMaxAbilityScoreBonus.Descriptor = ModifierDescriptor.Mythic;
-                Tools.LogMessage("Built: Add Max Ability Score Bonus (Mythic Ability Score Bonus)");
+                HighestAbilityScoreBonus _mythicAbilityScoreBonusHighestAbilityScoreBonus = new();
+                _mythicAbilityScoreBonusHighestAbilityScoreBonus.name = "$AddMaxAbilityScoreBonus$35678b97eaba4aae94f4d965b2492ac7";
+                _mythicAbilityScoreBonusHighestAbilityScoreBonus.HighestStatBonus = _mythicAbilityScoreBonusContextValue;
+                _mythicAbilityScoreBonusHighestAbilityScoreBonus.Descriptor = ModifierDescriptor.Mythic;
+                Tools.LogMessage("Built: Add Highest Ability Score Bonus (Mythic Ability Score Bonus)");
 
                 ContextRankConfig _mythicAbilityScoreBonusContextRankConfig = new();
                 _mythicAbilityScoreBonusContextRankConfig.name = "$ContextRankConfig$31b5cbc3daf2488387600fdc14a3365f";
@@ -323,8 +323,8 @@ namespace CompanionAscension.NewContent.Mythics
                     .AddRecalculateOnStatChange(stat: StatType.Charisma)
                     .SetReapplyOnLevelUp(true)
                     .Configure();
-                _mythicAbilityScoreBonus.AddComponents(new BlueprintComponent[] { 
-                    _mythicAbilityScoreIncreaseMaxAbilityScoreBonus,
+                _mythicAbilityScoreBonus.AddComponents(new BlueprintComponent[] {
+                    _mythicAbilityScoreBonusHighestAbilityScoreBonus,
                     _mythicAbilityScoreBonusContextRankConfig });
                 Tools.LogMessage("Built: Mythic Ability Score Bonus -> " + _mythicAbilityScoreBonus.AssetGuidThreadSafe);
 
