@@ -13,6 +13,7 @@
 			* Does not allow taking levels of alignment-restricted classes
 			* Currently only has an effect on one companion
 	* Mythic Rank 8
+		* Choice of a bonus feat, mythic ability, or mythic feat
 		* Choice of one of a few options, depending on Main Character's Mythic Path
 			* Default Choices
 				* Mythic Ability Score Bonus: Adds a bonus to the character's highest ability score equal to 1 + half their mythic levels (maximum of 6)
