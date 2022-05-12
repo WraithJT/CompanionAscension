@@ -86,8 +86,9 @@ namespace CompanionAscension.NewContent.Mythics
         private static readonly string CompanionAscensionMythicFeatDescription = "Select one new mythic feat.";
         private static readonly string CompanionAscensionMythicFeatDescriptionKey = "CompanionAscensionMythicFeatDescription";
 
+        private static readonly string MythicSavingThrowBonus = "b49f559f4daa4a87b080eccf1a0dc9a9";
         private static readonly string MythicAbilityScoreIncreaseName = "MythicAbilityScoreIncrease";
-        private static readonly string MythicAbilityScoreIncreaseGUID = "3adf757c5ba741438e9727550ab126d7";
+        private static readonly string MythicAbilityScoreBonus = "3adf757c5ba741438e9727550ab126d7";
         private static readonly string MythicAbilityScoreIncreaseDisplayName = "Mythic Ability Score Increase";
         private static readonly string MythicAbilityScoreIncreaseDisplayNameKey = "MythicAbilityScoreIncreaseName";
         private static readonly string MythicAbilityScoreIncreaseDescription = "Increases your highest ability score by an amount equal to 1 plus half your mythic level.";
@@ -134,7 +135,7 @@ namespace CompanionAscension.NewContent.Mythics
         private static readonly string LichCompanionChoiceDescription = "";
         private static readonly string LichCompanionChoiceDescriptionKey = "LichCompanionChoiceDescription";
 
-        //private static readonly BlueprintFeatureSelection AzataSuperpowersSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("8a30e92cd04ff5b459ba7cb03584fda0");
+        private static readonly BlueprintFeatureSelection TricksterRank1Selection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("4fbc563529717de4d92052048143e0f1");
         private static readonly string TricksterCompanionChoiceName = "TricksterCompanionChoice";
         private static readonly string TricksterCompanionChoiceGUID = "095edab4d08f4b7dab6eb7450e93cfca";
         private static readonly string TricksterCompanionChoiceDisplayName = "Second Companion Ascension";
@@ -231,8 +232,8 @@ namespace CompanionAscension.NewContent.Mythics
                 Tools.LogMessage("Built: Companion Ascension Mythic Feat -> " + _companionAscensionMythicFeat.AssetGuidThreadSafe);
 
                 // TESTING
-                string lichbook = "3f16e9caf7c683c40884c7c455ed26af";
-                BlueprintFeatureSelectMythicSpellbook lichbookselect = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelectMythicSpellbook>(lichbook);
+                //string lichbook = "3f16e9caf7c683c40884c7c455ed26af";
+                //BlueprintFeatureSelectMythicSpellbook lichbookselect = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelectMythicSpellbook>(lichbook);
                 //FeatureSelectMythicSpellbookConfigurator.New("selectLichBook", "42AC672E-65A6-4845-BF1A-06F06077D6D6")
                 //    .SetDisplayName(LocalizationTool.CreateString("lichbookkey", "LichBookStuff", false))
                 //    .SetDescription(LocalizationTool.CreateString("descKey", "Some descirption here"))
@@ -278,7 +279,7 @@ namespace CompanionAscension.NewContent.Mythics
                 //anb.HighestStatBonus.Property = Kingmaker.UnitLogic.Mechanics.Properties.UnitProperty.None;
                 //anb.HighestStatBonus.ValueShared = Kingmaker.UnitLogic.Abilities.AbilitySharedValue.StatBonus;
                 //anb.Descriptor = ModifierDescriptor.Mythic;
-                BlueprintGuid bguid = BlueprintGuid.NewGuid();
+                //BlueprintGuid bguid = BlueprintGuid.NewGuid();
                 
 
                 //CompanionSpellbookMerge csm = new();
@@ -288,45 +289,45 @@ namespace CompanionAscension.NewContent.Mythics
                 //csm.m_MythicSpellList = lichbookselect.m_MythicSpellList;
                 //Tools.LogMessage("Built CSM: " + csm.AssetGuidThreadSafe);
 
-                ContextValue _mythicAbilityScoreBonusContextValue = new();
-                _mythicAbilityScoreBonusContextValue.ValueType = ContextValueType.Rank;
-                _mythicAbilityScoreBonusContextValue.Value = 1;
-                _mythicAbilityScoreBonusContextValue.ValueShared = AbilitySharedValue.StatBonus;
-                _mythicAbilityScoreBonusContextValue.Property = UnitProperty.None;
-                _mythicAbilityScoreBonusContextValue.ValueRank = AbilityRankType.Default;
-                Tools.LogMessage("Built: Context Value (Mythic Ability Score Bonus)");
+                //ContextValue _mythicAbilityScoreBonusContextValue = new();
+                //_mythicAbilityScoreBonusContextValue.ValueType = ContextValueType.Rank;
+                //_mythicAbilityScoreBonusContextValue.Value = 1;
+                //_mythicAbilityScoreBonusContextValue.ValueShared = AbilitySharedValue.StatBonus;
+                //_mythicAbilityScoreBonusContextValue.Property = UnitProperty.None;
+                //_mythicAbilityScoreBonusContextValue.ValueRank = AbilityRankType.Default;
+                //Tools.LogMessage("Built: Context Value (Mythic Ability Score Bonus)");
 
-                HighestAbilityScoreBonus _mythicAbilityScoreBonusHighestAbilityScoreBonus = new();
-                _mythicAbilityScoreBonusHighestAbilityScoreBonus.name = "$AddMaxAbilityScoreBonus$35678b97eaba4aae94f4d965b2492ac7";
-                _mythicAbilityScoreBonusHighestAbilityScoreBonus.HighestStatBonus = _mythicAbilityScoreBonusContextValue;
-                _mythicAbilityScoreBonusHighestAbilityScoreBonus.Descriptor = ModifierDescriptor.Mythic;
-                Tools.LogMessage("Built: Add Highest Ability Score Bonus (Mythic Ability Score Bonus)");
+                //HighestAbilityScoreBonus _mythicAbilityScoreBonusHighestAbilityScoreBonus = new();
+                //_mythicAbilityScoreBonusHighestAbilityScoreBonus.name = "$AddMaxAbilityScoreBonus$35678b97eaba4aae94f4d965b2492ac7";
+                //_mythicAbilityScoreBonusHighestAbilityScoreBonus.HighestStatBonus = _mythicAbilityScoreBonusContextValue;
+                //_mythicAbilityScoreBonusHighestAbilityScoreBonus.Descriptor = ModifierDescriptor.Mythic;
+                //Tools.LogMessage("Built: Add Highest Ability Score Bonus (Mythic Ability Score Bonus)");
 
-                ContextRankConfig _mythicAbilityScoreBonusContextRankConfig = new();
-                _mythicAbilityScoreBonusContextRankConfig.name = "$ContextRankConfig$31b5cbc3daf2488387600fdc14a3365f";
-                _mythicAbilityScoreBonusContextRankConfig.m_BaseValueType = ContextRankBaseValueType.MythicLevel;
-                _mythicAbilityScoreBonusContextRankConfig.m_Type = AbilityRankType.Default;
-                _mythicAbilityScoreBonusContextRankConfig.m_Progression = ContextRankProgression.OnePlusDivStep;
-                _mythicAbilityScoreBonusContextRankConfig.m_StepLevel = 2;
-                _mythicAbilityScoreBonusContextRankConfig.m_Max = 10;
-                _mythicAbilityScoreBonusContextRankConfig.m_Stat = StatType.Unknown;
-                Tools.LogMessage("Built: Context Rank Config (Mythic Ability Score Bonus)");
+                //ContextRankConfig _mythicAbilityScoreBonusContextRankConfig = new();
+                //_mythicAbilityScoreBonusContextRankConfig.name = "$ContextRankConfig$31b5cbc3daf2488387600fdc14a3365f";
+                //_mythicAbilityScoreBonusContextRankConfig.m_BaseValueType = ContextRankBaseValueType.MythicLevel;
+                //_mythicAbilityScoreBonusContextRankConfig.m_Type = AbilityRankType.Default;
+                //_mythicAbilityScoreBonusContextRankConfig.m_Progression = ContextRankProgression.OnePlusDivStep;
+                //_mythicAbilityScoreBonusContextRankConfig.m_StepLevel = 2;
+                //_mythicAbilityScoreBonusContextRankConfig.m_Max = 10;
+                //_mythicAbilityScoreBonusContextRankConfig.m_Stat = StatType.Unknown;
+                //Tools.LogMessage("Built: Context Rank Config (Mythic Ability Score Bonus)");
 
-                var _mythicAbilityScoreBonus = FeatureConfigurator.New(MythicAbilityScoreIncreaseName, MythicAbilityScoreIncreaseGUID)
-                    .SetDisplayName(LocalizationTool.CreateString(MythicAbilityScoreIncreaseDisplayNameKey, MythicAbilityScoreIncreaseDisplayName, false))
-                    .SetDescription(LocalizationTool.CreateString(MythicAbilityScoreIncreaseDescriptionKey, MythicAbilityScoreIncreaseDescription))
-                    .AddRecalculateOnStatChange(stat: StatType.Strength)
-                    .AddRecalculateOnStatChange(stat: StatType.Dexterity)
-                    .AddRecalculateOnStatChange(stat: StatType.Constitution)
-                    .AddRecalculateOnStatChange(stat: StatType.Wisdom)
-                    .AddRecalculateOnStatChange(stat: StatType.Intelligence)
-                    .AddRecalculateOnStatChange(stat: StatType.Charisma)
-                    .SetReapplyOnLevelUp(true)
-                    .Configure();
-                _mythicAbilityScoreBonus.AddComponents(new BlueprintComponent[] {
-                    _mythicAbilityScoreBonusHighestAbilityScoreBonus,
-                    _mythicAbilityScoreBonusContextRankConfig });
-                Tools.LogMessage("Built: Mythic Ability Score Bonus -> " + _mythicAbilityScoreBonus.AssetGuidThreadSafe);
+                //var _mythicAbilityScoreBonus = FeatureConfigurator.New(MythicAbilityScoreIncreaseName, MythicAbilityScoreIncreaseGUID)
+                //    .SetDisplayName(LocalizationTool.CreateString(MythicAbilityScoreIncreaseDisplayNameKey, MythicAbilityScoreIncreaseDisplayName, false))
+                //    .SetDescription(LocalizationTool.CreateString(MythicAbilityScoreIncreaseDescriptionKey, MythicAbilityScoreIncreaseDescription))
+                //    .AddRecalculateOnStatChange(stat: StatType.Strength)
+                //    .AddRecalculateOnStatChange(stat: StatType.Dexterity)
+                //    .AddRecalculateOnStatChange(stat: StatType.Constitution)
+                //    .AddRecalculateOnStatChange(stat: StatType.Wisdom)
+                //    .AddRecalculateOnStatChange(stat: StatType.Intelligence)
+                //    .AddRecalculateOnStatChange(stat: StatType.Charisma)
+                //    .SetReapplyOnLevelUp(true)
+                //    .Configure();
+                //_mythicAbilityScoreBonus.AddComponents(new BlueprintComponent[] {
+                //    _mythicAbilityScoreBonusHighestAbilityScoreBonus,
+                //    _mythicAbilityScoreBonusContextRankConfig });
+                //Tools.LogMessage("Built: Mythic Ability Score Bonus -> " + _mythicAbilityScoreBonus.AssetGuidThreadSafe);
 
                 var _companionAscensionChoice4 = FeatureSelectionConfigurator.New(CompanionAscensionChoice4Name, CompanionAscensionChoice4GUID)
                     .SetDisplayName(LocalizationTool.CreateString(CompanionAscensionChoice4DisplayNameKey, CompanionAscensionChoice4DisplayName, false))
@@ -336,7 +337,8 @@ namespace CompanionAscension.NewContent.Mythics
                     .AddToFeatures(CompanionAscensionMythicFeatGUID)
                     .AddToFeatures(CompanionAscensionMythicAbilityGUID)
                     .AddToFeatures(BasicFeatSelectionGUID)
-                    .AddToFeatures(MythicAbilityScoreIncreaseGUID)
+                    .AddToFeatures(MythicSavingThrowBonus)
+                    .AddToFeatures(MythicAbilityScoreBonus)
                     .Configure();
                 Tools.LogMessage("Built: Companion First Ascension bonus choice -> " + _companionAscensionChoice4.AssetGuidThreadSafe);
 
@@ -389,10 +391,10 @@ namespace CompanionAscension.NewContent.Mythics
                 var _tricksterCompanionChoice = FeatureSelectionConfigurator.New(TricksterCompanionChoiceName, TricksterCompanionChoiceGUID)
                     .SetDisplayName(LocalizationTool.CreateString(TricksterCompanionChoiceDisplayNameKey, TricksterCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(TricksterCompanionChoiceDescriptionKey, TricksterCompanionChoiceDescription))
-                    .PrerequisitePlayerHasFeature(TricksterProgression)
+                    //.PrerequisitePlayerHasFeature(TricksterProgression)
                     //.SetHideInUi(true)
                     .Configure();
-                //AzataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
+                _tricksterCompanionChoice.m_AllFeatures = TricksterRank1Selection.m_AllFeatures;
                 Tools.LogMessage("Built: Trickster Companion Choices -> " + _tricksterCompanionChoice.AssetGuidThreadSafe);
 
                 // Build choices for each mythic path
@@ -444,7 +446,7 @@ namespace CompanionAscension.NewContent.Mythics
                             e.m_Features.Add(_companionAscensionChoice4.ToReference<BlueprintFeatureBaseReference>());
                             e.m_Features.Add(MythicFeatSelection.ToReference<BlueprintFeatureBaseReference>());
                             e.m_Features.Add(MythicIgnoreAlignmentRestrictions.ToReference<BlueprintFeatureBaseReference>());
-                            e.m_Features.Add(_lichCompanionChoice.ToReference<BlueprintFeatureBaseReference>());
+                            e.m_Features.Add(_tricksterCompanionChoice.ToReference<BlueprintFeatureBaseReference>());
 
                         });
                     le.Where(e => e.Level == 8)
@@ -515,6 +517,15 @@ namespace CompanionAscension.NewContent.Mythics
 
             static void CorrectPrerequisites()
             {
+                var _mythicCompanionClassReference = MythicCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                BlueprintProgression.ClassWithLevel _classWithLevel = new();
+                _classWithLevel.m_Class = _mythicCompanionClassReference;
+                _classWithLevel.AdditionalLevel = 0;
+                //DeathOfElementsConsumingElementsResource
+                //7a558d186755620439e35817f174f749
+                //MaxAmount :: Class
+                var DeathOfElementsConsumingElementsResource = ResourcesLibrary.TryGetBlueprint<BlueprintAbilityResource>("7a558d186755620439e35817f174f749");
+                DeathOfElementsConsumingElementsResource.m_MaxAmount.m_Class = DeathOfElementsConsumingElementsResource.m_MaxAmount.m_Class.AppendToArray(_mythicCompanionClassReference);
 
             }
 
@@ -533,3 +544,16 @@ namespace CompanionAscension.NewContent.Mythics
         }
     }
 }
+
+
+/*/
+ * Azata: Choice of Song
+ * Trickster: T1 Trick
+ * Demon: Minor Aspect Passive bonus
+ * Lich: Lich Power
+ * Angel: Sword of Heaven unupgraded
+ * Gold Dragon: Damage Type Conversion
+ * Devil: Choice of Decree?
+ * Aeon: Aeon Bane (base only non upgraded)
+ * Legend: I'd ignore entierly
+/*/

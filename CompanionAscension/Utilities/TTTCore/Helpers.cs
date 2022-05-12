@@ -1,5 +1,7 @@
 ﻿// Copyright (c) 2019 Jennifer Messerly
 // This code is licensed under MIT license (see LICENSE for details)
+//
+// WraithJT: Copied from Vek17's TabletopTweaks-Core: https://github.com/Vek17/TabletopTweaks-Core
 
 using JetBrains.Annotations;
 using Kingmaker.Blueprints;
