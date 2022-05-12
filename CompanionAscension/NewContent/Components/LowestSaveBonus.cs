@@ -1,4 +1,6 @@
-﻿using Kingmaker.Blueprints.JsonSystem;
+﻿// Credit to Vek17 for pieces of this: https://github.com/Vek17/TabletopTweaks-Core
+
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics;
@@ -8,7 +10,8 @@ using System.Collections.Generic;
 
 namespace CompanionAscension.NewContent.Components
 {
-    class LowestSaveBonus : UnitFactComponentDelegate
+	[TypeId("39dc6e2da8694882945d20584698b090")]
+	class LowestSaveBonus : UnitFactComponentDelegate
 	{
 		public override void OnTurnOn()
 		{
