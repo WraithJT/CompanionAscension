@@ -47,11 +47,11 @@ namespace CompanionAscension.NewContent.Features
         private static readonly string MythicAbilityScoreBonusDescriptionKey = "MythicAbilityScoreBonusDescription";
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
-        [HarmonyPriority(Priority.First)]
         static class BlueprintsCache_Init_patch
         {
             static bool Initialized;
 
+            [HarmonyPriority(Priority.First)]
             static void Postfix()
             {
                 if (Initialized) return;

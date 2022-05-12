@@ -57,11 +57,11 @@ namespace CompanionAscension.NewContent.Features
         private static readonly string SwarmThatWalksProgression = "bf5f103ccdf69254abbad84fd371d5c9";
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
-        [HarmonyPriority(Priority.First)]
         static class BlueprintsCache_Init_patch
         {
             static bool Initialized;
 
+            [HarmonyPriority(Priority.First)]
             static void Postfix()
             {
                 if (Initialized) return;

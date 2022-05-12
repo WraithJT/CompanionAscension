@@ -15,6 +15,7 @@ namespace CompanionAscension
         static bool Load(UnityModManager.ModEntry modEntry)
         {
             var harmony = new Harmony(modEntry.Info.Id);
+            //Harmony.DEBUG = true;
             logger = modEntry.Logger;
             Settings = Settings.Load<Settings>(modEntry);
             modEntry.OnToggle = OnToggle;

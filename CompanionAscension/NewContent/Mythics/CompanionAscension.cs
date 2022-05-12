@@ -187,11 +187,12 @@ namespace CompanionAscension.NewContent.Mythics
                     "11ba180ac736c894e937602e54f7320c"};    //Trickster
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
-        [HarmonyPriority(Priority.Last)]
+
         static class BlueprintsCache_Init_patch
         {
             static bool Initialized;
 
+            [HarmonyPriority(Priority.Last)]
             static void Postfix()
             {
                 if (Initialized) return;
@@ -437,7 +438,7 @@ namespace CompanionAscension.NewContent.Mythics
 
                 var _aeonCompanionChoice = ResourcesLibrary.TryGetBlueprint < BlueprintFeatureSelection>("c1dd81e75695467cb3bac2381d3cec91");
                 //76a5af87f6594d5e90568b706f0809ed
-                var _aeonCompanionNinthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("76a5af87f6594d5e90568b706f0809ed");
+                var _aeonCompanionNinthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("76a5af87f6594d5e90568b706f0809ed");
 
                 if (Main.Settings.useCompanionAscension == false) { return; }
                 AddCompanionsToFirstAscensions();

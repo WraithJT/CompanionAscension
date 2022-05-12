@@ -93,6 +93,7 @@ namespace CompanionAscension.NewContent.Features
         {
             static bool Initialized;
 
+            [HarmonyPriority(Priority.First)]
             static void Postfix()
             {
                 if (Initialized) return;
