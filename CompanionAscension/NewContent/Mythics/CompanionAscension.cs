@@ -435,6 +435,9 @@ namespace CompanionAscension.NewContent.Mythics
                     .Configure();
                 Tools.LogMessage("Built: Companion Second Ascension bonus choice -> " + _companionAscensionChoice8.AssetGuidThreadSafe);
 
+                var _aeonCompanionChoice = ResourcesLibrary.TryGetBlueprint < BlueprintFeatureSelection>("c1dd81e75695467cb3bac2381d3cec91");
+                //76a5af87f6594d5e90568b706f0809ed
+                var _aeonCompanionNinthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("76a5af87f6594d5e90568b706f0809ed");
 
                 if (Main.Settings.useCompanionAscension == false) { return; }
                 AddCompanionsToFirstAscensions();
@@ -449,8 +452,13 @@ namespace CompanionAscension.NewContent.Mythics
                             e.m_Features.Add(_companionAscensionChoice4.ToReference<BlueprintFeatureBaseReference>());
                             e.m_Features.Add(MythicFeatSelection.ToReference<BlueprintFeatureBaseReference>());
                             e.m_Features.Add(MythicIgnoreAlignmentRestrictions.ToReference<BlueprintFeatureBaseReference>());
-                            //e.m_Features.Add(_tricksterCompanionChoice.ToReference<BlueprintFeatureBaseReference>());
+                            e.m_Features.Add(_aeonCompanionChoice.ToReference<BlueprintFeatureBaseReference>());
 
+                        });
+                    le.Where(e => e.Level == 5)
+                        .ForEach(e =>
+                        {
+                            e.m_Features.Add(_aeonCompanionNinthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
                         });
                     le.Where(e => e.Level == 8)
                         .ForEach(e =>

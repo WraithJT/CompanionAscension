@@ -38,24 +38,54 @@ namespace CompanionAscension.NewContent.Features
 {
     class AeonCompanionChoice
     {
+        private static readonly string AeonCompanionEighthLevelImmunitiesName = "AeonCompanionImmunities";
+        private static readonly string AeonCompanionEighthLevelImmunitiesGUID = "e54bd0e9361c407fb8e26f64de8e4e4a";
+        private static readonly string AeonCompanionEighthLevelImmunitiesDisplayName = "Aeon Companion Immunities";
+        private static readonly string AeonCompanionEighthLevelImmunitiesDisplayNameKey = "AeonCompanionImmunitiesNameKey";
+        private static readonly string AeonCompanionEighthLevelImmunitiesDescription = 
+            "Aeon's companion gains immunity to bleed, mind-affecting effects, and ability damage. " +
+            "At the next mythic level, they also gain immunity to curse and death effects, as well as energy drain.";
+        private static readonly string AeonCompanionEighthLevelImmunitiesDescriptionKey = "AeonCompanionImmunitiesDescriptionKey";
+        private static readonly string[] AeonFifthLevelImmunitiesList = {
+                "52f8ef060a751a247964adae7fcb7e64",         // ImmunityToBleed
+                "3eb606c0564d0814ea01a824dbe42fb0",         // ImmunityToMindAffecting
+                "fda40b9ba7644754f97cb51f04759a3e"          // ImmunityToAbilityDamage
+        };
+
+        private static readonly string AeonCompanionNinthLevelImmunitiesName = "AeonCompanionNinthLevelImmunities";
+        private static readonly string AeonCompanionNinthLevelImmunitiesGUID = "76a5af87f6594d5e90568b706f0809ed";
+        private static readonly string AeonCompanionNinthLevelImmunitiesDisplayName = "Aeon Companion Immunities Ninth Level";
+        private static readonly string AeonCompanionNinthLevelImmunitiesDisplayNameKey = "AeonCompanionNinthLevelImmunitiesNameKey";
+        private static readonly string AeonCompanionNinthLevelImmunitiesDescription =
+            "Aeon's companion gains immunity to bleed, mind-affecting effects, and ability damage. " +
+            "At the next mythic level, they also gain immunity to curse and death effects, as well as energy drain.";
+        private static readonly string AeonCompanionNinthLevelImmunitiesDescriptionKey = "AeonCompanionNinthLevelImmunitiesDescriptionKey";
+        private static readonly string[] AeonSeventhLevelImmunitiesList = {
+                "d64da5fbf9783b946ac7a0e94c9bccc1",         // ImmunityToCurseEffects
+                "41d5e076fcea3fa4a9158ffded9185f7",         // ImmunityToDeathEffects
+                "efe0344bca1290244a277ed5c45d9ff2"          // ImmunityToEnergyDrain
+        };
+
         //private static readonly BlueprintFeatureSelection AzataSuperpowersSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("8a30e92cd04ff5b459ba7cb03584fda0");
         private static readonly string AeonCompanionChoiceName = "AeonCompanionChoice";
         private static readonly string AeonCompanionChoiceGUID = "c1dd81e75695467cb3bac2381d3cec91";
-        private static readonly string AeonCompanionChoiceDisplayName = "Second Companion Ascension";
+        private static readonly string AeonCompanionChoiceDisplayName = "Aeon Companion Ascension";
         private static readonly string AeonCompanionChoiceDisplayNameKey = "AeonCompanionChoiceName";
-        private static readonly string AeonCompanionChoiceDescription = "";
+        private static readonly string AeonCompanionChoiceDescription = 
+            "At 8th mythic rank, Aeon's companions can gain further power.";
         private static readonly string AeonCompanionChoiceDescriptionKey = "AeonCompanionChoiceDescription";
 
+        private static readonly string AeonBaneFeatureGUID = "0b25e8d8b0488c84c9b5714e9ca0a204";
+        private static readonly BlueprintFeature AeonBaneFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonBaneFeatureGUID);
+        private static readonly string AeonFifthLevelImmunitiesGUID = "c52b48a922161fe45a258f0214d6501a";
+        private static readonly BlueprintFeature AeonFifthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonFifthLevelImmunitiesGUID);
+        private static readonly string AeonSeventhLevelImmunitiesGUID = "c52b48a922161fe45a258f0214d6501a";
+        private static readonly BlueprintFeature AeonSeventhLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonSeventhLevelImmunitiesGUID);
+
         private static readonly string AeonProgression = "34b9484b0d5ce9340ae51d2bf9518bbe";
-        private static readonly string AngelProgression = "2f6fe889e91b6a645b055696c01e2f74";
-        private static readonly string AzataProgression = "9db53de4bf21b564ca1a90ff5bd16586";
-        private static readonly string DemonProgression = "285fe49f7df8587468f676aa49362213";
-        private static readonly string LichProgression = "ccec4e01b85bf5d46a3c3717471ba639";
-        private static readonly string TricksterProgression = "cc64789b0cc5df14b90da1ffee7bbeea";
-        private static readonly string DevilProgression = "87bc9abf00b240a44bb344fea50ec9bc";
-        private static readonly string GoldDragonProgression = "a6fbca43902c6194c947546e89af64bd";
-        private static readonly string LegendProgression = "905383229aaf79e4b8d7e2d316b68715";
-        private static readonly string SwarmThatWalksProgression = "bf5f103ccdf69254abbad84fd371d5c9";
+
+        private static readonly BlueprintAbility AngelWardFromWeakness = ResourcesLibrary.TryGetBlueprint<BlueprintAbility>("b66eee357e8404d49b7d8ad58cbb7f15");
+        private static readonly BlueprintFeature AeonAttackGazeFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("e0cc4134510b074468b3d1185970c697");
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         [HarmonyPriority(Priority.First)]
@@ -77,9 +107,27 @@ namespace CompanionAscension.NewContent.Features
             {
                 Tools.LogMessage("New Content: Building Aeon Companion Choices");
 
+                var _aeonCompanionEighthLevelImmunities = FeatureConfigurator.New(AeonCompanionEighthLevelImmunitiesName, AeonCompanionEighthLevelImmunitiesGUID)
+                    .SetDisplayName(LocalizationTool.CreateString(AeonCompanionEighthLevelImmunitiesDisplayNameKey, AeonCompanionEighthLevelImmunitiesDisplayName, false))
+                    .SetDescription(LocalizationTool.CreateString(AeonCompanionEighthLevelImmunitiesDescriptionKey, AeonCompanionEighthLevelImmunitiesDescription))
+                    .AddFacts(AeonFifthLevelImmunitiesList)
+                    .SetIcon(AngelWardFromWeakness.Icon)
+                    .Configure();
+
+                var _aeonCompanionNinthLevelImmunities = FeatureConfigurator.New(AeonCompanionNinthLevelImmunitiesName, AeonCompanionNinthLevelImmunitiesGUID)
+                    .SetDisplayName(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDisplayNameKey, AeonCompanionNinthLevelImmunitiesDisplayName, false))
+                    .SetDescription(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDescriptionKey, AeonCompanionNinthLevelImmunitiesDescription))
+                    .AddFacts(AeonSeventhLevelImmunitiesList)
+                    .PrerequisiteFeature(AeonCompanionEighthLevelImmunitiesGUID)
+                    .SetHideInUi(true)
+                    .Configure();
+
                 var _aeonCompanionChoice = FeatureSelectionConfigurator.New(AeonCompanionChoiceName, AeonCompanionChoiceGUID)
                     .SetDisplayName(LocalizationTool.CreateString(AeonCompanionChoiceDisplayNameKey, AeonCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(AeonCompanionChoiceDescriptionKey, AeonCompanionChoiceDescription))
+                    .AddToFeatures(AeonBaneFeatureGUID)
+                    .AddToFeatures(AeonFifthLevelImmunitiesGUID)
+                    .SetIcon(AeonAttackGazeFeature.Icon)
                     //.PrerequisitePlayerHasFeature(AeonProgression)
                     //.SetHideInUi(true)
                     .Configure();

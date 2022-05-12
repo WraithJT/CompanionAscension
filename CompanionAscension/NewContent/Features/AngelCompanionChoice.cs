@@ -67,7 +67,7 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                PatchAngelCompanionChoice();
+                //PatchAngelCompanionChoice();
                 //try { PatchAngelCompanionChoice(); }
                 //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }

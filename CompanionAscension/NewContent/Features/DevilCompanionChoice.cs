@@ -68,7 +68,7 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                PatchDevilCompanionChoice();
+                //PatchDevilCompanionChoice();
                 //try { PatchDevilCompanionChoice(); }
                 //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }

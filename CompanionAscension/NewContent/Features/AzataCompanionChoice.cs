@@ -69,7 +69,7 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                PatchAzataCompanionChoice();
+                //PatchAzataCompanionChoice();
                 //try { PatchAzataCompanionChoice(); }
                 //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }

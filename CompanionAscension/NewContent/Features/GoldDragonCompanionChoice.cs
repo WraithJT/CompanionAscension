@@ -68,7 +68,7 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                PatchGoldDragonCompanionChoice();
+                //PatchGoldDragonCompanionChoice();
                 //try { PatchGoldDragonCompanionChoice(); }
                 //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
