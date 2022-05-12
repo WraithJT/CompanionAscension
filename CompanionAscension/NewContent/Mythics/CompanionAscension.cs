@@ -33,6 +33,7 @@ using System.Text.RegularExpressions;
 using CompanionAscension.NewContent.Components;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Abilities;
+using CompanionAscension.NewContent.Features;
 
 namespace CompanionAscension.NewContent.Mythics
 {
@@ -86,9 +87,9 @@ namespace CompanionAscension.NewContent.Mythics
         private static readonly string CompanionAscensionMythicFeatDescription = "Select one new mythic feat.";
         private static readonly string CompanionAscensionMythicFeatDescriptionKey = "CompanionAscensionMythicFeatDescription";
 
-        private static readonly string MythicSavingThrowBonus = "b49f559f4daa4a87b080eccf1a0dc9a9";
+        private static readonly string MythicSavingThrowBonusGUID = "b49f559f4daa4a87b080eccf1a0dc9a9";
         private static readonly string MythicAbilityScoreIncreaseName = "MythicAbilityScoreIncrease";
-        private static readonly string MythicAbilityScoreBonus = "3adf757c5ba741438e9727550ab126d7";
+        private static readonly string MythicAbilityScoreBonusGUID = "3adf757c5ba741438e9727550ab126d7";
         private static readonly string MythicAbilityScoreIncreaseDisplayName = "Mythic Ability Score Increase";
         private static readonly string MythicAbilityScoreIncreaseDisplayNameKey = "MythicAbilityScoreIncreaseName";
         private static readonly string MythicAbilityScoreIncreaseDescription = "Increases your highest ability score by an amount equal to 1 plus half your mythic level.";
@@ -155,6 +156,8 @@ namespace CompanionAscension.NewContent.Mythics
         private static readonly string GoldDragonProgression = "a6fbca43902c6194c947546e89af64bd";
         private static readonly string LegendProgression = "905383229aaf79e4b8d7e2d316b68715";
         private static readonly string SwarmThatWalksProgression = "bf5f103ccdf69254abbad84fd371d5c9";
+
+        
 
         //private static readonly string ExtraMythicAbilityMythicFeatSelectionGUID = "8a6a511c55e67d04db328cc49aaad2b8";
         //private static readonly string ExtraMythicFeatSelectionGUID = "e10c4f18a6c8b4342afe6954bde0587b";
@@ -337,65 +340,65 @@ namespace CompanionAscension.NewContent.Mythics
                     .AddToFeatures(CompanionAscensionMythicFeatGUID)
                     .AddToFeatures(CompanionAscensionMythicAbilityGUID)
                     .AddToFeatures(BasicFeatSelectionGUID)
-                    .AddToFeatures(MythicSavingThrowBonus)
-                    .AddToFeatures(MythicAbilityScoreBonus)
+                    .AddToFeatures(MythicSavingThrowBonusGUID)
+                    .AddToFeatures(MythicAbilityScoreBonusGUID)
                     .Configure();
                 Tools.LogMessage("Built: Companion First Ascension bonus choice -> " + _companionAscensionChoice4.AssetGuidThreadSafe);
 
-                var _aeonCompanionChoice = FeatureSelectionConfigurator.New(AeonCompanionChoiceName, AeonCompanionChoiceGUID)
-                    .SetDisplayName(LocalizationTool.CreateString(AeonCompanionChoiceDisplayNameKey, AeonCompanionChoiceDisplayName, false))
-                    .SetDescription(LocalizationTool.CreateString(AeonCompanionChoiceDescriptionKey, AeonCompanionChoiceDescription))
-                    .PrerequisitePlayerHasFeature(AeonProgression)
-                    //.SetHideInUi(true)
-                    .Configure();
-                //AzataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
-                Tools.LogMessage("Built: Aeon Companion Choices -> " + _aeonCompanionChoice.AssetGuidThreadSafe);
+                //var _aeonCompanionChoice = FeatureSelectionConfigurator.New(AeonCompanionChoiceName, AeonCompanionChoiceGUID)
+                //    .SetDisplayName(LocalizationTool.CreateString(AeonCompanionChoiceDisplayNameKey, AeonCompanionChoiceDisplayName, false))
+                //    .SetDescription(LocalizationTool.CreateString(AeonCompanionChoiceDescriptionKey, AeonCompanionChoiceDescription))
+                //    .PrerequisitePlayerHasFeature(AeonProgression)
+                //    //.SetHideInUi(true)
+                //    .Configure();
+                ////AzataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
+                //Tools.LogMessage("Built: Aeon Companion Choices -> " + _aeonCompanionChoice.AssetGuidThreadSafe);
 
-                var _angelCompanionChoice = FeatureSelectionConfigurator.New(AngelCompanionChoiceName, AngelCompanionChoiceGUID)
-                    .SetDisplayName(LocalizationTool.CreateString(AngelCompanionChoiceDisplayNameKey, AngelCompanionChoiceDisplayName, false))
-                    .SetDescription(LocalizationTool.CreateString(AngelCompanionChoiceDescriptionKey, AngelCompanionChoiceDescription))
-                    .PrerequisitePlayerHasFeature(AngelProgression)
-                    //.SetHideInUi(true)
-                    .Configure();
-                //AzataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
-                Tools.LogMessage("Built: Angel Companion Choices -> " + _angelCompanionChoice.AssetGuidThreadSafe);
+                //var _angelCompanionChoice = FeatureSelectionConfigurator.New(AngelCompanionChoiceName, AngelCompanionChoiceGUID)
+                //    .SetDisplayName(LocalizationTool.CreateString(AngelCompanionChoiceDisplayNameKey, AngelCompanionChoiceDisplayName, false))
+                //    .SetDescription(LocalizationTool.CreateString(AngelCompanionChoiceDescriptionKey, AngelCompanionChoiceDescription))
+                //    .PrerequisitePlayerHasFeature(AngelProgression)
+                //    //.SetHideInUi(true)
+                //    .Configure();
+                ////AzataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
+                //Tools.LogMessage("Built: Angel Companion Choices -> " + _angelCompanionChoice.AssetGuidThreadSafe);
 
-                var _azataCompanionChoice = FeatureSelectionConfigurator.New(AzataCompanionChoiceName, AzataCompanionChoiceGUID)
-                    .SetDisplayName(LocalizationTool.CreateString(AzataCompanionChoiceDisplayNameKey, AzataCompanionChoiceDisplayName, false))
-                    .SetDescription(LocalizationTool.CreateString(AzataCompanionChoiceDescriptionKey, AzataCompanionChoiceDescription))
-                    //.PrerequisitePlayerHasFeature(AzataProgression)
-                    .SetIcon(AzataSuperpowersSelection.Icon)
-                    //.SetHideInUi(true)
-                    .Configure();
-                _azataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
-                Tools.LogMessage("Built: Azata Companion Choices -> " + _azataCompanionChoice.AssetGuidThreadSafe);
+                //var _azataCompanionChoice = FeatureSelectionConfigurator.New(AzataCompanionChoiceName, AzataCompanionChoiceGUID)
+                //    .SetDisplayName(LocalizationTool.CreateString(AzataCompanionChoiceDisplayNameKey, AzataCompanionChoiceDisplayName, false))
+                //    .SetDescription(LocalizationTool.CreateString(AzataCompanionChoiceDescriptionKey, AzataCompanionChoiceDescription))
+                //    //.PrerequisitePlayerHasFeature(AzataProgression)
+                //    .SetIcon(AzataSuperpowersSelection.Icon)
+                //    //.SetHideInUi(true)
+                //    .Configure();
+                //_azataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
+                //Tools.LogMessage("Built: Azata Companion Choices -> " + _azataCompanionChoice.AssetGuidThreadSafe);
 
-                var _demonCompanionChoice = FeatureSelectionConfigurator.New(DemonCompanionChoiceName, DemonCompanionChoiceGUID)
-                    .SetDisplayName(LocalizationTool.CreateString(DemonCompanionChoiceDisplayNameKey, DemonCompanionChoiceDisplayName, false))
-                    .SetDescription(LocalizationTool.CreateString(DemonCompanionChoiceDescriptionKey, DemonCompanionChoiceDescription))
-                    .PrerequisitePlayerHasFeature(DemonProgression)
-                    //.SetHideInUi(true)
-                    .Configure();
-                //AzataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
-                Tools.LogMessage("Built: Demon Companion Choices -> " + _demonCompanionChoice.AssetGuidThreadSafe);
+                //var _demonCompanionChoice = FeatureSelectionConfigurator.New(DemonCompanionChoiceName, DemonCompanionChoiceGUID)
+                //    .SetDisplayName(LocalizationTool.CreateString(DemonCompanionChoiceDisplayNameKey, DemonCompanionChoiceDisplayName, false))
+                //    .SetDescription(LocalizationTool.CreateString(DemonCompanionChoiceDescriptionKey, DemonCompanionChoiceDescription))
+                //    .PrerequisitePlayerHasFeature(DemonProgression)
+                //    //.SetHideInUi(true)
+                //    .Configure();
+                ////AzataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
+                //Tools.LogMessage("Built: Demon Companion Choices -> " + _demonCompanionChoice.AssetGuidThreadSafe);
 
-                var _lichCompanionChoice = FeatureSelectionConfigurator.New(LichCompanionChoiceName, LichCompanionChoiceGUID)
-                    .SetDisplayName(LocalizationTool.CreateString(LichCompanionChoiceDisplayNameKey, LichCompanionChoiceDisplayName, false))
-                    .SetDescription(LocalizationTool.CreateString(LichCompanionChoiceDescriptionKey, LichCompanionChoiceDescription))
-                    //.PrerequisitePlayerHasFeature(LichProgression)
-                    //.SetHideInUi(true)
-                    .Configure();
-                _lichCompanionChoice.m_AllFeatures = LichUniqueAbilitiesSelection.m_AllFeatures;
-                Tools.LogMessage("Built: Lich Companion Choices -> " + _lichCompanionChoice.AssetGuidThreadSafe);
+                //var _lichCompanionChoice = FeatureSelectionConfigurator.New(LichCompanionChoiceName, LichCompanionChoiceGUID)
+                //    .SetDisplayName(LocalizationTool.CreateString(LichCompanionChoiceDisplayNameKey, LichCompanionChoiceDisplayName, false))
+                //    .SetDescription(LocalizationTool.CreateString(LichCompanionChoiceDescriptionKey, LichCompanionChoiceDescription))
+                //    //.PrerequisitePlayerHasFeature(LichProgression)
+                //    //.SetHideInUi(true)
+                //    .Configure();
+                //_lichCompanionChoice.m_AllFeatures = LichUniqueAbilitiesSelection.m_AllFeatures;
+                //Tools.LogMessage("Built: Lich Companion Choices -> " + _lichCompanionChoice.AssetGuidThreadSafe);
 
-                var _tricksterCompanionChoice = FeatureSelectionConfigurator.New(TricksterCompanionChoiceName, TricksterCompanionChoiceGUID)
-                    .SetDisplayName(LocalizationTool.CreateString(TricksterCompanionChoiceDisplayNameKey, TricksterCompanionChoiceDisplayName, false))
-                    .SetDescription(LocalizationTool.CreateString(TricksterCompanionChoiceDescriptionKey, TricksterCompanionChoiceDescription))
-                    //.PrerequisitePlayerHasFeature(TricksterProgression)
-                    //.SetHideInUi(true)
-                    .Configure();
-                _tricksterCompanionChoice.m_AllFeatures = TricksterRank1Selection.m_AllFeatures;
-                Tools.LogMessage("Built: Trickster Companion Choices -> " + _tricksterCompanionChoice.AssetGuidThreadSafe);
+                //var _tricksterCompanionChoice = FeatureSelectionConfigurator.New(TricksterCompanionChoiceName, TricksterCompanionChoiceGUID)
+                //    .SetDisplayName(LocalizationTool.CreateString(TricksterCompanionChoiceDisplayNameKey, TricksterCompanionChoiceDisplayName, false))
+                //    .SetDescription(LocalizationTool.CreateString(TricksterCompanionChoiceDescriptionKey, TricksterCompanionChoiceDescription))
+                //    //.PrerequisitePlayerHasFeature(TricksterProgression)
+                //    //.SetHideInUi(true)
+                //    .Configure();
+                //_tricksterCompanionChoice.m_AllFeatures = TricksterRank1Selection.m_AllFeatures;
+                //Tools.LogMessage("Built: Trickster Companion Choices -> " + _tricksterCompanionChoice.AssetGuidThreadSafe);
 
                 // Build choices for each mythic path
                 // Some generic choices for all paths
@@ -446,7 +449,7 @@ namespace CompanionAscension.NewContent.Mythics
                             e.m_Features.Add(_companionAscensionChoice4.ToReference<BlueprintFeatureBaseReference>());
                             e.m_Features.Add(MythicFeatSelection.ToReference<BlueprintFeatureBaseReference>());
                             e.m_Features.Add(MythicIgnoreAlignmentRestrictions.ToReference<BlueprintFeatureBaseReference>());
-                            e.m_Features.Add(_tricksterCompanionChoice.ToReference<BlueprintFeatureBaseReference>());
+                            //e.m_Features.Add(_tricksterCompanionChoice.ToReference<BlueprintFeatureBaseReference>());
 
                         });
                     le.Where(e => e.Level == 8)
@@ -548,9 +551,9 @@ namespace CompanionAscension.NewContent.Mythics
 
 /*/
  * Azata: Choice of Song
- * Trickster: T1 Trick
+ * Trickster: T1 Trick ---
  * Demon: Minor Aspect Passive bonus
- * Lich: Lich Power
+ * Lich: Lich Power ---
  * Angel: Sword of Heaven unupgraded
  * Gold Dragon: Damage Type Conversion
  * Devil: Choice of Decree?
