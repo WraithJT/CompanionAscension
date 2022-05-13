@@ -271,7 +271,6 @@ namespace CompanionAscension.NewContent.Mythics
                     .AddToFeatures(CompanionAscensionMythicFeatGUID)
                     .AddToFeatures(CompanionAscensionMythicAbilityGUID)
                     .AddToFeatures(BasicFeatSelectionGUID)
-                    .AddToFeatures(MythicMindAndBody.MythicMindAndBodyGUID)
                     .Configure();
                 Tools.LogMessage("Built: Companion First Ascension bonus choice -> " + _companionAscensionChoice4.AssetGuidThreadSafe);
 
@@ -281,10 +280,11 @@ namespace CompanionAscension.NewContent.Mythics
                     .SetIcon(Guidance.Icon)
                     .AddToFeatures(AeonCompanionChoice.Guid)
                     .AddToFeatures(AngelCompanionChoice.Guid)
-                    .AddToFeatures(AzataCompanionChoiceGUID)
+                    .AddToFeatures(AzataCompanionChoice.Guid)
                     .AddToFeatures(DemonCompanionChoiceGUID)
                     .AddToFeatures(LichCompanionChoiceGUID)
                     .AddToFeatures(TricksterCompanionChoiceGUID)
+                    .AddToFeatures(MythicMindAndBody.MythicMindAndBodyGUID)
                     .Configure();
                 Tools.LogMessage("Built: Companion Second Ascension -> " + _companionSecondAscension.AssetGuidThreadSafe);
 
@@ -305,9 +305,6 @@ namespace CompanionAscension.NewContent.Mythics
                 // END TESTING AREA
 
                 if (Main.Settings.useCompanionAscension == false) { return; }
-                AddCompanionsToFirstAscensions();
-                CorrectPrerequisites();
-
                 if (Main.Settings.useBasicAscensionsOnly == false)
                 {
                     MythicCompanionProgression.LevelEntries.TemporaryContext(le =>
@@ -329,6 +326,8 @@ namespace CompanionAscension.NewContent.Mythics
                                 e.m_Features.Add(_aeonCompanionNinthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
                             });
                     });
+                    AddCompanionsToFirstAscensions();
+                    CorrectPrerequisites();
                     Tools.LogMessage("Built: Added Mythic Path companion ascensions");
                 }
 
@@ -469,6 +468,9 @@ namespace CompanionAscension.NewContent.Mythics
     }
 }
 
+
+// book merge notes: 
+// FeatureSelection.Group ?
 
 // Build choices for each mythic path
 // Some generic choices for all paths

@@ -38,25 +38,16 @@ namespace CompanionAscension.NewContent.Features
 {
     class AzataCompanionChoice
     {
-        public static readonly string AzataCompanionChoiceGUID = "f7191b869724482b8f1d14b9b195c764";
+        public static readonly string Guid = "f7191b869724482b8f1d14b9b195c764";
         //private static readonly string AzataSuperpowersGUID = "8a30e92cd04ff5b459ba7cb03584fda0";
+        private static readonly string Name = "AzataCompanionChoice";
+        private static readonly string DisplayName = "Azata Companion Ascension";
+        private static readonly string DisplayNameKey = "AzataCompanionChoiceName";
+        private static readonly string Description = "Select one Azata Superpower.";
+        private static readonly string DescriptionKey = "AzataCompanionChoiceDescription";
         private static readonly BlueprintFeatureSelection AzataSuperpowersSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("8a30e92cd04ff5b459ba7cb03584fda0");
-        private static readonly string AzataCompanionChoiceName = "AzataCompanionChoice";
-        private static readonly string AzataCompanionChoiceDisplayName = "Second Companion Ascension";
-        private static readonly string AzataCompanionChoiceDisplayNameKey = "AzataCompanionChoiceName";
-        private static readonly string AzataCompanionChoiceDescription = "Select one Azata Superpower.";
-        private static readonly string AzataCompanionChoiceDescriptionKey = "AzataCompanionChoiceDescription";
 
-        private static readonly string AeonProgression = "34b9484b0d5ce9340ae51d2bf9518bbe";
-        private static readonly string AngelProgression = "2f6fe889e91b6a645b055696c01e2f74";
         private static readonly string AzataProgression = "9db53de4bf21b564ca1a90ff5bd16586";
-        private static readonly string DemonProgression = "285fe49f7df8587468f676aa49362213";
-        private static readonly string LichProgression = "ccec4e01b85bf5d46a3c3717471ba639";
-        private static readonly string TricksterProgression = "cc64789b0cc5df14b90da1ffee7bbeea";
-        private static readonly string DevilProgression = "87bc9abf00b240a44bb344fea50ec9bc";
-        private static readonly string GoldDragonProgression = "a6fbca43902c6194c947546e89af64bd";
-        private static readonly string LegendProgression = "905383229aaf79e4b8d7e2d316b68715";
-        private static readonly string SwarmThatWalksProgression = "bf5f103ccdf69254abbad84fd371d5c9";
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_patch
@@ -69,7 +60,7 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                //PatchAzataCompanionChoice();
+                PatchAzataCompanionChoice();
                 //try { PatchAzataCompanionChoice(); }
                 //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
@@ -78,9 +69,10 @@ namespace CompanionAscension.NewContent.Features
             {
                 Tools.LogMessage("New Content: Building Azata Companion Choices");
 
-                var _azataCompanionChoice = FeatureSelectionConfigurator.New(AzataCompanionChoiceName, AzataCompanionChoiceGUID)
-                    .SetDisplayName(LocalizationTool.CreateString(AzataCompanionChoiceDisplayNameKey, AzataCompanionChoiceDisplayName, false))
-                    .SetDescription(LocalizationTool.CreateString(AzataCompanionChoiceDescriptionKey, AzataCompanionChoiceDescription))
+                var _azataCompanionChoice = FeatureSelectionConfigurator.New(Name, Guid)
+                    .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
+                    .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
+                    .SetIcon(AzataSuperpowersSelection.Icon)
                     //.PrerequisitePlayerHasFeature(AzataProgression)
                     //.SetHideInUi(true)
                     .Configure();

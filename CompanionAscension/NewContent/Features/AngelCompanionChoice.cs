@@ -40,7 +40,7 @@ namespace CompanionAscension.NewContent.Features
     {
         public static readonly string Guid = "29ca6c2414f84577a8ad8c9c7e0742fd";
         private static readonly string ShortName = "AngelCompanionChoice";
-        private static readonly string DisplayName = "Second Companion Ascension";
+        private static readonly string DisplayName = "Angel Companion Ascension";
         private static readonly string DisplayNameKey = "AngelCompanionChoiceName";
         private static readonly string Description = "";
         private static readonly string DescriptionKey = "AngelCompanionChoiceDescription";

@@ -151,6 +151,7 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDisplayNameKey, AeonCompanionNinthLevelImmunitiesDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDescriptionKey, AeonCompanionNinthLevelImmunitiesDescription))
                     .AddFacts(_aeonSeventhLevelImmunities)
+                    .PrerequisitePlayerHasFeature(AeonProgression)
                     .SetHideInUi(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetIcon(AngelWardFromWeakness.Icon)
