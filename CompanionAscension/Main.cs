@@ -38,8 +38,20 @@ namespace CompanionAscension
             GUILayout.EndHorizontal();
 
             Tools.AddGUIOption("Companion Ascension",
-                "Enables the Ascension of Companions",
+                "Enables the Ascension of Companions. Disabling this setting will disable all Companion Ascension features",
                 ref Settings.useCompanionAscension);
+
+            Tools.AddGUIOption("Companion Second Ascension",
+                "Enables the Second Ascension of Companions at Mythic Rank 8",
+                ref Settings.useCompanionSecondAscension);
+
+            Tools.AddGUIOption("Basic Ascensions Only",
+                "Disables all but the basic Ascension options. This will also disable the Mythic Path Ascensions",
+                ref Settings.useBasicAscensionsOnly);
+
+            Tools.AddGUIOption("No Mythic Patch Ascensions",
+                "Disables Path-specific Ascensions",
+                ref Settings.useNoPathAscensions);
         }
 
         static void OnSaveGUI(UnityModManager.ModEntry modEntry)

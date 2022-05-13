@@ -28,7 +28,7 @@ namespace CompanionAscension.NewContent.Components
                 };
 
             this.m_HighestPhysicalStat = getHighestStat(base.Owner, _physicalStats);
-            this.m_HighestMentalStat = getHighestStat(base.Owner, _physicalStats);
+            this.m_HighestMentalStat = getHighestStat(base.Owner, _mentalStats);
 
             int value = this.HighestStatBonus.Calculate(base.Context);
             base.Owner.Stats.GetStat(this.m_HighestPhysicalStat).AddModifier(value, base.Runtime, this.Descriptor);

@@ -38,9 +38,9 @@ namespace CompanionAscension.NewContent.Features
 {
     class DemonCompanionChoice
     {
+        public static readonly string DemonCompanionChoiceGUID = "57e6f40e11ec421c9b2e3edb34e2beb2";
         //private static readonly BlueprintFeatureSelection AzataSuperpowersSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("8a30e92cd04ff5b459ba7cb03584fda0");
         private static readonly string DemonCompanionChoiceName = "DemonCompanionChoice";
-        private static readonly string DemonCompanionChoiceGUID = "57e6f40e11ec421c9b2e3edb34e2beb2";
         private static readonly string DemonCompanionChoiceDisplayName = "Second Companion Ascension";
         private static readonly string DemonCompanionChoiceDisplayNameKey = "DemonCompanionChoiceName";
         private static readonly string DemonCompanionChoiceDescription = "";

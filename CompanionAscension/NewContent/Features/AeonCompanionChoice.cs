@@ -38,13 +38,13 @@ namespace CompanionAscension.NewContent.Features
 {
     class AeonCompanionChoice
     {
-        public static readonly string AeonCompanionChoiceGUID = "c1dd81e75695467cb3bac2381d3cec91";
-        private static readonly string AeonCompanionChoiceName = "AeonCompanionChoice";
-        private static readonly string AeonCompanionChoiceDisplayName = "Aeon Companion Ascension";
-        private static readonly string AeonCompanionChoiceDisplayNameKey = "AeonCompanionChoiceName";
-        private static readonly string AeonCompanionChoiceDescription =
+        public static readonly string Guid = "c1dd81e75695467cb3bac2381d3cec91";
+        private static readonly string ShortName = "AeonCompanionChoice";
+        private static readonly string DisplayName = "Aeon Companion Ascension";
+        private static readonly string DisplayNameKey = "AeonCompanionChoiceName";
+        private static readonly string Description =
             "At 8th mythic rank, Aeon's companions can gain further power.";
-        private static readonly string AeonCompanionChoiceDescriptionKey = "AeonCompanionChoiceDescription";
+        private static readonly string DescriptionKey = "AeonCompanionChoiceDescription";
 
         private static readonly string AeonCompanionEighthLevelImmunitiesName = "AeonCompanionImmunities";
         private static readonly string AeonCompanionEighthLevelImmunitiesGUID = "e54bd0e9361c407fb8e26f64de8e4e4a";
@@ -108,16 +108,12 @@ namespace CompanionAscension.NewContent.Features
             {
                 Tools.LogMessage("New Content: Building Aeon Companion Choices");
 
-
-
                 string _immunityToCurseEffectsName = "ImmunityToCurseEffects";
                 string _immunityToCurseEffectsGUID = "6491a3c3a5444f73bd4e93b734223634";
                 string _immunityToCurseEffectsDisplayName = "Immunity to Curse Effects";
                 var _immunityToCurseEffects = FeatureConfigurator.New(_immunityToCurseEffectsName, _immunityToCurseEffectsGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_immunityToCurseEffectsName + "Key", _immunityToCurseEffectsDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString("immunityToCurseEffectsDescKey", ""))
-                    //.PrerequisiteFeature(AeonCompanionEighthLevelImmunitiesGUID)
-                    //.PrerequisiteNoFeature(AeonBaneFeatureGUID)
                     .Configure();
                 _immunityToCurseEffects.AddComponents(ImmunityToCurseEffects.Components);
 
@@ -127,8 +123,6 @@ namespace CompanionAscension.NewContent.Features
                 var _immunityToDeathEffects = FeatureConfigurator.New(_immunityToDeathEffectsName, _immunityToDeathEffectsGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_immunityToDeathEffectsName + "Key", _immunityToDeathEffectsDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString("_immunityToDeathEffectsDescKey", ""))
-                    //.PrerequisiteFeature(AeonCompanionEighthLevelImmunitiesGUID)
-                    //.PrerequisiteNoFeature(AeonBaneFeatureGUID)
                     .Configure();
                 _immunityToDeathEffects.AddComponents(ImmunityToDeathEffects.Components);
 
@@ -138,13 +132,9 @@ namespace CompanionAscension.NewContent.Features
                 var _immunityToEnergyDrain = FeatureConfigurator.New(_immunityToEnergyDrainName, _immunityToEnergyDrainGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_immunityToEnergyDrainName + "Key", _immunityToEnergyDrainDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString("_immunityToEnergyDrainDescKey", ""))
-                    //.PrerequisiteFeature(AeonCompanionEighthLevelImmunitiesGUID)
-                    //.PrerequisiteNoFeature(AeonBaneFeatureGUID)
                     .Configure();
                 _immunityToEnergyDrain.AddComponents(ImmunityToEnergyDrain.Components);
-
-
-
+                
                 var _aeonCompanionEighthLevelImmunities = FeatureConfigurator.New(AeonCompanionEighthLevelImmunitiesName, AeonCompanionEighthLevelImmunitiesGUID)
                     .SetDisplayName(LocalizationTool.CreateString(AeonCompanionEighthLevelImmunitiesDisplayNameKey, AeonCompanionEighthLevelImmunitiesDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(AeonCompanionEighthLevelImmunitiesDescriptionKey, AeonCompanionEighthLevelImmunitiesDescription))
@@ -161,32 +151,21 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDisplayNameKey, AeonCompanionNinthLevelImmunitiesDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDescriptionKey, AeonCompanionNinthLevelImmunitiesDescription))
                     .AddFacts(_aeonSeventhLevelImmunities)
-                    //.SetHideInUi(true)
-                    //.SetHideInCharacterSheetAndLevelUp(true)
-                    //.PrerequisiteFeature(AeonCompanionEighthLevelImmunitiesGUID)
-                    //.PrerequisiteNoFeature(AeonBaneFeatureGUID)
+                    .SetHideInUi(true)
+                    .SetHideInCharacterSheetAndLevelUp(true)
                     .SetIcon(AngelWardFromWeakness.Icon)
                     .Configure();
                 _aeonCompanionNinthLevelImmunities.AddComponents(_aeonCompanionNinthLevelImmunitiesPrereq);
 
-                // can't make second set of immunities stop showing up
-
-                var _aeonCompanionNinthLevelImmunitiesSelection = FeatureSelectionConfigurator.New("testselection", "A52C072A-41EF-47D4-AA83-A948BD639EE6")
-                    .AddToFeatures(AeonCompanionNinthLevelImmunitiesGUID)
-                    .PrerequisiteFeature(AeonCompanionEighthLevelImmunitiesGUID)
-                    .PrerequisiteNoFeature(AeonBaneFeatureGUID)
-                    .Configure();
-                
-
-                var _aeonCompanionChoice = FeatureSelectionConfigurator.New(AeonCompanionChoiceName, AeonCompanionChoiceGUID)
-                    .SetDisplayName(LocalizationTool.CreateString(AeonCompanionChoiceDisplayNameKey, AeonCompanionChoiceDisplayName, false))
-                    .SetDescription(LocalizationTool.CreateString(AeonCompanionChoiceDescriptionKey, AeonCompanionChoiceDescription))
+                var _aeonCompanionChoice = FeatureSelectionConfigurator.New(ShortName, Guid)
+                    .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
+                    .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
                     .AddToFeatureGroups(FeatureGroup.MythicAdditionalProgressions)
                     .AddToFeatures(AeonBaneFeatureGUID)
                     .AddToFeatures(AeonCompanionEighthLevelImmunitiesGUID)
                     .SetIcon(OathOfPeace.Icon)
-                    //.PrerequisitePlayerHasFeature(AeonProgression)
-                    //.SetHideInUi(true)
+                    .PrerequisitePlayerHasFeature(AeonProgression)
+                    .SetHideInUi(true)
                     .Configure();
                 Tools.LogMessage("Built: Aeon Companion Choices -> " + _aeonCompanionChoice.AssetGuidThreadSafe);
             }

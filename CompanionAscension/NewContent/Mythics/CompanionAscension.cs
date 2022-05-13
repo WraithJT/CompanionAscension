@@ -87,30 +87,6 @@ namespace CompanionAscension.NewContent.Mythics
         private static readonly string CompanionAscensionMythicFeatDescription = "Select one new mythic feat.";
         private static readonly string CompanionAscensionMythicFeatDescriptionKey = "CompanionAscensionMythicFeatDescription";
 
-        private static readonly string MythicSavingThrowBonusGUID = "b49f559f4daa4a87b080eccf1a0dc9a9";
-        private static readonly string MythicAbilityScoreIncreaseName = "MythicAbilityScoreIncrease";
-        private static readonly string MythicAbilityScoreBonusGUID = "3adf757c5ba741438e9727550ab126d7";
-        private static readonly string MythicAbilityScoreIncreaseDisplayName = "Mythic Ability Score Increase";
-        private static readonly string MythicAbilityScoreIncreaseDisplayNameKey = "MythicAbilityScoreIncreaseName";
-        private static readonly string MythicAbilityScoreIncreaseDescription = "Increases your highest ability score by an amount equal to 1 plus half your mythic level.";
-        private static readonly string MythicAbilityScoreIncreaseDescriptionKey = "MythicAbilityScoreIncreaseDescription";
-
-        //private static readonly BlueprintFeatureSelection AzataSuperpowersSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("8a30e92cd04ff5b459ba7cb03584fda0");
-        private static readonly string AeonCompanionChoiceName = "AeonCompanionChoice";
-        private static readonly string AeonCompanionChoiceGUID = "c1dd81e75695467cb3bac2381d3cec91";
-        private static readonly string AeonCompanionChoiceDisplayName = "Second Companion Ascension";
-        private static readonly string AeonCompanionChoiceDisplayNameKey = "AeonCompanionChoiceName";
-        private static readonly string AeonCompanionChoiceDescription = "";
-        private static readonly string AeonCompanionChoiceDescriptionKey = "AeonCompanionChoiceDescription";
-
-        //private static readonly BlueprintFeatureSelection AzataSuperpowersSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("8a30e92cd04ff5b459ba7cb03584fda0");
-        private static readonly string AngelCompanionChoiceName = "AngelCompanionChoice";
-        private static readonly string AngelCompanionChoiceGUID = "29ca6c2414f84577a8ad8c9c7e0742fd";
-        private static readonly string AngelCompanionChoiceDisplayName = "Second Companion Ascension";
-        private static readonly string AngelCompanionChoiceDisplayNameKey = "AngelCompanionChoiceName";
-        private static readonly string AngelCompanionChoiceDescription = "";
-        private static readonly string AngelCompanionChoiceDescriptionKey = "AngelCompanionChoiceDescription";
-
         //private static readonly string AzataSuperpowersGUID = "8a30e92cd04ff5b459ba7cb03584fda0";
         private static readonly BlueprintFeatureSelection AzataSuperpowersSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("8a30e92cd04ff5b459ba7cb03584fda0");
         private static readonly string AzataCompanionChoiceName = "AzataCompanionChoice";
@@ -157,7 +133,7 @@ namespace CompanionAscension.NewContent.Mythics
         private static readonly string LegendProgression = "905383229aaf79e4b8d7e2d316b68715";
         private static readonly string SwarmThatWalksProgression = "bf5f103ccdf69254abbad84fd371d5c9";
 
-        
+
 
         //private static readonly string ExtraMythicAbilityMythicFeatSelectionGUID = "8a6a511c55e67d04db328cc49aaad2b8";
         //private static readonly string ExtraMythicFeatSelectionGUID = "e10c4f18a6c8b4342afe6954bde0587b";
@@ -169,7 +145,7 @@ namespace CompanionAscension.NewContent.Mythics
         //private static readonly string MythicFeatSelectionGUID = "9ee0f6745f555484299b0a1563b99d81";
         //private static readonly BlueprintFeature MythicFeatSelectionSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(MythicFeatSelectionGUID);
 
-        private static readonly BlueprintCharacterClass MythicCompanionClass = ResourcesLibrary.TryGetBlueprint<BlueprintCharacterClass>("530b6a79cb691c24ba99e1577b4beb6d");
+        public static readonly BlueprintCharacterClass MythicCompanionClass = ResourcesLibrary.TryGetBlueprint<BlueprintCharacterClass>("530b6a79cb691c24ba99e1577b4beb6d");
         private static readonly BlueprintProgression MythicCompanionProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("21e74c19da02acb478e32da25abd9d28");
         private static readonly BlueprintFeature ExtraMythicAbilityMythicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("8a6a511c55e67d04db328cc49aaad2b8");
         private static readonly BlueprintFeature ExtraMythicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("e10c4f18a6c8b4342afe6954bde0587b");
@@ -198,7 +174,9 @@ namespace CompanionAscension.NewContent.Mythics
                 if (Initialized) return;
                 Initialized = true;
 
+                RemoveDefaultProgressions();
                 PatchCompanionAscension();
+                ReaddDefaultProgressions();
                 //try { PatchCompanionAscension(); }
                 //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
@@ -277,14 +255,6 @@ namespace CompanionAscension.NewContent.Mythics
                 //             e.m_Features.Add(lichbookselect.ToReference<BlueprintFeatureBaseReference>());
                 //         });
                 // });
-                //AddNocticulaBonus anb = new();
-                //anb.HighestStatBonus.ValueType = Kingmaker.UnitLogic.Mechanics.ContextValueType.Rank;
-                //anb.HighestStatBonus.ValueRank = AbilityRankType.StatBonus;
-                //anb.HighestStatBonus.Property = Kingmaker.UnitLogic.Mechanics.Properties.UnitProperty.None;
-                //anb.HighestStatBonus.ValueShared = Kingmaker.UnitLogic.Abilities.AbilitySharedValue.StatBonus;
-                //anb.Descriptor = ModifierDescriptor.Mythic;
-                //BlueprintGuid bguid = BlueprintGuid.NewGuid();
-                
 
                 //CompanionSpellbookMerge csm = new();
                 //csm.AssetGuid = BlueprintGuid.NewGuid();
@@ -292,46 +262,6 @@ namespace CompanionAscension.NewContent.Mythics
                 //csm.m_AllowedSpellbooks = lichbookselect.m_AllowedSpellbooks;
                 //csm.m_MythicSpellList = lichbookselect.m_MythicSpellList;
                 //Tools.LogMessage("Built CSM: " + csm.AssetGuidThreadSafe);
-
-                //ContextValue _mythicAbilityScoreBonusContextValue = new();
-                //_mythicAbilityScoreBonusContextValue.ValueType = ContextValueType.Rank;
-                //_mythicAbilityScoreBonusContextValue.Value = 1;
-                //_mythicAbilityScoreBonusContextValue.ValueShared = AbilitySharedValue.StatBonus;
-                //_mythicAbilityScoreBonusContextValue.Property = UnitProperty.None;
-                //_mythicAbilityScoreBonusContextValue.ValueRank = AbilityRankType.Default;
-                //Tools.LogMessage("Built: Context Value (Mythic Ability Score Bonus)");
-
-                //HighestAbilityScoreBonus _mythicAbilityScoreBonusHighestAbilityScoreBonus = new();
-                //_mythicAbilityScoreBonusHighestAbilityScoreBonus.name = "$AddMaxAbilityScoreBonus$35678b97eaba4aae94f4d965b2492ac7";
-                //_mythicAbilityScoreBonusHighestAbilityScoreBonus.HighestStatBonus = _mythicAbilityScoreBonusContextValue;
-                //_mythicAbilityScoreBonusHighestAbilityScoreBonus.Descriptor = ModifierDescriptor.Mythic;
-                //Tools.LogMessage("Built: Add Highest Ability Score Bonus (Mythic Ability Score Bonus)");
-
-                //ContextRankConfig _mythicAbilityScoreBonusContextRankConfig = new();
-                //_mythicAbilityScoreBonusContextRankConfig.name = "$ContextRankConfig$31b5cbc3daf2488387600fdc14a3365f";
-                //_mythicAbilityScoreBonusContextRankConfig.m_BaseValueType = ContextRankBaseValueType.MythicLevel;
-                //_mythicAbilityScoreBonusContextRankConfig.m_Type = AbilityRankType.Default;
-                //_mythicAbilityScoreBonusContextRankConfig.m_Progression = ContextRankProgression.OnePlusDivStep;
-                //_mythicAbilityScoreBonusContextRankConfig.m_StepLevel = 2;
-                //_mythicAbilityScoreBonusContextRankConfig.m_Max = 10;
-                //_mythicAbilityScoreBonusContextRankConfig.m_Stat = StatType.Unknown;
-                //Tools.LogMessage("Built: Context Rank Config (Mythic Ability Score Bonus)");
-
-                //var _mythicAbilityScoreBonus = FeatureConfigurator.New(MythicAbilityScoreIncreaseName, MythicAbilityScoreIncreaseGUID)
-                //    .SetDisplayName(LocalizationTool.CreateString(MythicAbilityScoreIncreaseDisplayNameKey, MythicAbilityScoreIncreaseDisplayName, false))
-                //    .SetDescription(LocalizationTool.CreateString(MythicAbilityScoreIncreaseDescriptionKey, MythicAbilityScoreIncreaseDescription))
-                //    .AddRecalculateOnStatChange(stat: StatType.Strength)
-                //    .AddRecalculateOnStatChange(stat: StatType.Dexterity)
-                //    .AddRecalculateOnStatChange(stat: StatType.Constitution)
-                //    .AddRecalculateOnStatChange(stat: StatType.Wisdom)
-                //    .AddRecalculateOnStatChange(stat: StatType.Intelligence)
-                //    .AddRecalculateOnStatChange(stat: StatType.Charisma)
-                //    .SetReapplyOnLevelUp(true)
-                //    .Configure();
-                //_mythicAbilityScoreBonus.AddComponents(new BlueprintComponent[] {
-                //    _mythicAbilityScoreBonusHighestAbilityScoreBonus,
-                //    _mythicAbilityScoreBonusContextRankConfig });
-                //Tools.LogMessage("Built: Mythic Ability Score Bonus -> " + _mythicAbilityScoreBonus.AssetGuidThreadSafe);
 
                 var _companionAscensionChoice4 = FeatureSelectionConfigurator.New(CompanionAscensionChoice4Name, CompanionAscensionChoice4GUID)
                     .SetDisplayName(LocalizationTool.CreateString(CompanionAscensionChoice4DisplayNameKey, CompanionAscensionChoice4DisplayName, false))
@@ -341,83 +271,16 @@ namespace CompanionAscension.NewContent.Mythics
                     .AddToFeatures(CompanionAscensionMythicFeatGUID)
                     .AddToFeatures(CompanionAscensionMythicAbilityGUID)
                     .AddToFeatures(BasicFeatSelectionGUID)
-                    .AddToFeatures(MythicSavingThrowBonusGUID)
-                    .AddToFeatures(MythicAbilityScoreBonusGUID)
+                    .AddToFeatures(MythicMindAndBody.MythicMindAndBodyGUID)
                     .Configure();
                 Tools.LogMessage("Built: Companion First Ascension bonus choice -> " + _companionAscensionChoice4.AssetGuidThreadSafe);
 
-                //var _aeonCompanionChoice = FeatureSelectionConfigurator.New(AeonCompanionChoiceName, AeonCompanionChoiceGUID)
-                //    .SetDisplayName(LocalizationTool.CreateString(AeonCompanionChoiceDisplayNameKey, AeonCompanionChoiceDisplayName, false))
-                //    .SetDescription(LocalizationTool.CreateString(AeonCompanionChoiceDescriptionKey, AeonCompanionChoiceDescription))
-                //    .PrerequisitePlayerHasFeature(AeonProgression)
-                //    //.SetHideInUi(true)
-                //    .Configure();
-                ////AzataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
-                //Tools.LogMessage("Built: Aeon Companion Choices -> " + _aeonCompanionChoice.AssetGuidThreadSafe);
-
-                //var _angelCompanionChoice = FeatureSelectionConfigurator.New(AngelCompanionChoiceName, AngelCompanionChoiceGUID)
-                //    .SetDisplayName(LocalizationTool.CreateString(AngelCompanionChoiceDisplayNameKey, AngelCompanionChoiceDisplayName, false))
-                //    .SetDescription(LocalizationTool.CreateString(AngelCompanionChoiceDescriptionKey, AngelCompanionChoiceDescription))
-                //    .PrerequisitePlayerHasFeature(AngelProgression)
-                //    //.SetHideInUi(true)
-                //    .Configure();
-                ////AzataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
-                //Tools.LogMessage("Built: Angel Companion Choices -> " + _angelCompanionChoice.AssetGuidThreadSafe);
-
-                //var _azataCompanionChoice = FeatureSelectionConfigurator.New(AzataCompanionChoiceName, AzataCompanionChoiceGUID)
-                //    .SetDisplayName(LocalizationTool.CreateString(AzataCompanionChoiceDisplayNameKey, AzataCompanionChoiceDisplayName, false))
-                //    .SetDescription(LocalizationTool.CreateString(AzataCompanionChoiceDescriptionKey, AzataCompanionChoiceDescription))
-                //    //.PrerequisitePlayerHasFeature(AzataProgression)
-                //    .SetIcon(AzataSuperpowersSelection.Icon)
-                //    //.SetHideInUi(true)
-                //    .Configure();
-                //_azataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
-                //Tools.LogMessage("Built: Azata Companion Choices -> " + _azataCompanionChoice.AssetGuidThreadSafe);
-
-                //var _demonCompanionChoice = FeatureSelectionConfigurator.New(DemonCompanionChoiceName, DemonCompanionChoiceGUID)
-                //    .SetDisplayName(LocalizationTool.CreateString(DemonCompanionChoiceDisplayNameKey, DemonCompanionChoiceDisplayName, false))
-                //    .SetDescription(LocalizationTool.CreateString(DemonCompanionChoiceDescriptionKey, DemonCompanionChoiceDescription))
-                //    .PrerequisitePlayerHasFeature(DemonProgression)
-                //    //.SetHideInUi(true)
-                //    .Configure();
-                ////AzataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
-                //Tools.LogMessage("Built: Demon Companion Choices -> " + _demonCompanionChoice.AssetGuidThreadSafe);
-
-                //var _lichCompanionChoice = FeatureSelectionConfigurator.New(LichCompanionChoiceName, LichCompanionChoiceGUID)
-                //    .SetDisplayName(LocalizationTool.CreateString(LichCompanionChoiceDisplayNameKey, LichCompanionChoiceDisplayName, false))
-                //    .SetDescription(LocalizationTool.CreateString(LichCompanionChoiceDescriptionKey, LichCompanionChoiceDescription))
-                //    //.PrerequisitePlayerHasFeature(LichProgression)
-                //    //.SetHideInUi(true)
-                //    .Configure();
-                //_lichCompanionChoice.m_AllFeatures = LichUniqueAbilitiesSelection.m_AllFeatures;
-                //Tools.LogMessage("Built: Lich Companion Choices -> " + _lichCompanionChoice.AssetGuidThreadSafe);
-
-                //var _tricksterCompanionChoice = FeatureSelectionConfigurator.New(TricksterCompanionChoiceName, TricksterCompanionChoiceGUID)
-                //    .SetDisplayName(LocalizationTool.CreateString(TricksterCompanionChoiceDisplayNameKey, TricksterCompanionChoiceDisplayName, false))
-                //    .SetDescription(LocalizationTool.CreateString(TricksterCompanionChoiceDescriptionKey, TricksterCompanionChoiceDescription))
-                //    //.PrerequisitePlayerHasFeature(TricksterProgression)
-                //    //.SetHideInUi(true)
-                //    .Configure();
-                //_tricksterCompanionChoice.m_AllFeatures = TricksterRank1Selection.m_AllFeatures;
-                //Tools.LogMessage("Built: Trickster Companion Choices -> " + _tricksterCompanionChoice.AssetGuidThreadSafe);
-
-                // Build choices for each mythic path
-                // Some generic choices for all paths
-                //      Legend: boost max level somehow?
-                //
-                //      Lich: DeathOfElementsConsumingElementsResource
-                //      add companion class
-                //      book merge for arcanes?
-                //      
-                //      Gold Dragon: Choice of +4 to one ability? Choice of boosting saves?
-                //      
-                //      Angel: book merge for divines?
                 var _companionSecondAscension = FeatureSelectionConfigurator.New(CompanionSecondAscensionName, CompanionSecondAscensionGUID)
                     .SetDisplayName(LocalizationTool.CreateString(CompanionSecondAscensionDisplayNameKey, CompanionSecondAscensionDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(CompanionSecondAscensionDescriptionKey, CompanionSecondAscensionDescription))
                     .SetIcon(Guidance.Icon)
-                    .AddToFeatures(AeonCompanionChoiceGUID)
-                    .AddToFeatures(AngelCompanionChoiceGUID)
+                    .AddToFeatures(AeonCompanionChoice.Guid)
+                    .AddToFeatures(AngelCompanionChoice.Guid)
                     .AddToFeatures(AzataCompanionChoiceGUID)
                     .AddToFeatures(DemonCompanionChoiceGUID)
                     .AddToFeatures(LichCompanionChoiceGUID)
@@ -436,47 +299,106 @@ namespace CompanionAscension.NewContent.Mythics
                     .Configure();
                 Tools.LogMessage("Built: Companion Second Ascension bonus choice -> " + _companionAscensionChoice8.AssetGuidThreadSafe);
 
-                
-                var _aeonCompanionChoice = ResourcesLibrary.TryGetBlueprint < BlueprintFeatureSelection>(AeonCompanionChoice.AeonCompanionChoiceGUID);
+                // TESTING AREA
+                var _aeonCompanionChoice = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>(AeonCompanionChoice.Guid);
                 var _aeonCompanionNinthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonCompanionChoice.AeonCompanionNinthLevelImmunitiesGUID);
-                var _aeonTestChoice = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("A52C072A-41EF-47D4-AA83-A948BD639EE6");
+                // END TESTING AREA
 
                 if (Main.Settings.useCompanionAscension == false) { return; }
                 AddCompanionsToFirstAscensions();
                 CorrectPrerequisites();
+
+                if (Main.Settings.useBasicAscensionsOnly == false)
+                {
+                    MythicCompanionProgression.LevelEntries.TemporaryContext(le =>
+                    {
+                        le.Where(e => e.Level == 4)
+                            .ForEach(e =>
+                            {
+                                e.m_Features.Add(_companionFirstAscension.ToReference<BlueprintFeatureBaseReference>());
+                            });
+                        le.Where(e => e.Level == 8)
+                            .ForEach(e =>
+                            {
+                                e.m_Features.Add(_companionSecondAscension.ToReference<BlueprintFeatureBaseReference>());
+                                e.m_Features.Add(_companionAscensionChoice8.ToReference<BlueprintFeatureBaseReference>());
+                            });
+                        le.Where(e => e.Level == 9)
+                            .ForEach(e =>
+                            {
+                                e.m_Features.Add(_aeonCompanionNinthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
+                            });
+                    });
+                    Tools.LogMessage("Built: Added Mythic Path companion ascensions");
+                }
+
+                MythicCompanionProgression.LevelEntries.TemporaryContext(le =>
+                {
+                    le.Where(e => e.Level == 4)
+                        .ForEach(e =>
+                        {
+                            e.m_Features.Add(MythicIgnoreAlignmentRestrictions.ToReference<BlueprintFeatureBaseReference>());
+                            e.m_Features.Add(_companionAscensionChoice4.ToReference<BlueprintFeatureBaseReference>());
+                            e.m_Features.Add(_aeonCompanionChoice.ToReference<BlueprintFeatureBaseReference>());
+                        });
+                    le.Where(e => e.Level == 8)
+                        .ForEach(e =>
+                        {
+                            e.m_Features.Add(_companionAscensionChoice8.ToReference<BlueprintFeatureBaseReference>());
+                        });
+                });
+                Tools.LogMessage("Built: Added basic companion ascensions");
+
+                MythicCompanionProgression.UIGroups = MythicCompanionProgression.UIGroups.AppendToArray(
+                    Helpers.CreateUIGroup(
+                    _companionFirstAscension,
+                    _companionSecondAscension)
+                );
+                MythicCompanionProgression.UIGroups = MythicCompanionProgression.UIGroups.AppendToArray(
+                    Helpers.CreateUIGroup(
+                    MythicAbilitySelection,
+                    _companionAscensionChoice4,
+                    _companionAscensionChoice8)
+                );
+                Tools.LogMessage("New Content: Companion Ascension patching completed");
+            }
+
+            static void RemoveDefaultProgressions()
+            {
                 MythicCompanionProgression.LevelEntries.TemporaryContext(le =>
                 {
                     le.Where(e => e.Level == 4)
                         .ForEach(e =>
                         {
                             e.m_Features.Remove(MythicFeatSelection.ToReference<BlueprintFeatureBaseReference>());
-                            e.m_Features.Add(_companionFirstAscension.ToReference<BlueprintFeatureBaseReference>());
-                            e.m_Features.Add(_companionAscensionChoice4.ToReference<BlueprintFeatureBaseReference>());
-                            e.m_Features.Add(MythicFeatSelection.ToReference<BlueprintFeatureBaseReference>());
-                            e.m_Features.Add(MythicIgnoreAlignmentRestrictions.ToReference<BlueprintFeatureBaseReference>());
-                            e.m_Features.Add(_aeonCompanionChoice.ToReference<BlueprintFeatureBaseReference>());
 
-                        });
-                    le.Where(e => e.Level == 5)
-                        .ForEach(e =>
-                        {
-                            e.m_Features.Add(_aeonCompanionNinthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
                         });
                     le.Where(e => e.Level == 8)
                         .ForEach(e =>
                         {
                             e.m_Features.Remove(MythicFeatSelection.ToReference<BlueprintFeatureBaseReference>());
-                            //e.m_Features.Add(CompanionSecondAscension.ToReference<BlueprintFeatureBaseReference>());
-                            //e.m_Features.Add(CompanionAscensionChoice8.ToReference<BlueprintFeatureBaseReference>());
+                        });
+                });
+                Tools.LogMessage("Patched: Removed default Mythic Feat selections at Mythic Rank 4 and 8");
+            }
+
+            static void ReaddDefaultProgressions()
+            {
+                MythicCompanionProgression.LevelEntries.TemporaryContext(le =>
+                {
+                    le.Where(e => e.Level == 4)
+                        .ForEach(e =>
+                        {
+                            e.m_Features.Add(MythicFeatSelection.ToReference<BlueprintFeatureBaseReference>());
+
+                        });
+                    le.Where(e => e.Level == 8)
+                        .ForEach(e =>
+                        {
                             e.m_Features.Add(MythicFeatSelection.ToReference<BlueprintFeatureBaseReference>());
                         });
                 });
-                MythicCompanionProgression.UIGroups = MythicCompanionProgression.UIGroups.AppendToArray(
-                    Helpers.CreateUIGroup(
-                    MythicAbilitySelection,
-                    _companionAscensionChoice4)
-                );
-                Tools.LogMessage("New Content: Companion Ascension patching completed");
+                Tools.LogMessage("Patched: Readded default Mythic Feat selections at Mythic Rank 4 and 8");
             }
 
             static void AddCompanionsToFirstAscensions()
@@ -494,20 +416,13 @@ namespace CompanionAscension.NewContent.Mythics
                 }
                 Tools.LogMessage("Patched: Prerequisites for First Ascension Progressions");
 
-                var _ttricksterFirstAscensionAbility = ResourcesLibrary.TryGetBlueprint<BlueprintAbility>("918e6e7085d81094790e806a49922694");
-                BlueprintComponent[] contextRankConfig = _ttricksterFirstAscensionAbility.ComponentsArray.Where(c => (c is ContextRankConfig)).ToArray();
-                foreach (ContextRankConfig c in contextRankConfig)
-                {
-                    c.m_Class = c.m_Class.AppendToArray(_mythicCompanionClassReference);
-                }
-
                 var _aeonFirstAscentionResource = ResourcesLibrary.TryGetBlueprint<BlueprintAbilityResource>("4db463bcf37d6014eaa23d3219703a9b");
                 _aeonFirstAscentionResource.m_MaxAmount.m_Class = _aeonFirstAscentionResource.m_MaxAmount.m_Class.AppendToArray(_mythicCompanionClassReference);
 
                 var _angelFirstAscentionResource = ResourcesLibrary.TryGetBlueprint<BlueprintAbilityResource>("6da18ecb21a24814eb79ab075a0b6d5e");
                 _angelFirstAscentionResource.m_MaxAmount.m_ClassDiv = _angelFirstAscentionResource.m_MaxAmount.m_ClassDiv.AppendToArray(_mythicCompanionClassReference);
                 var _angelFirstAscentionAbility = ResourcesLibrary.TryGetBlueprint<BlueprintAbility>("f86857af1c584e248b9284654f31d39c");
-                contextRankConfig = _angelFirstAscentionAbility.ComponentsArray.Where(c => (c is ContextRankConfig)).ToArray();
+                BlueprintComponent[] contextRankConfig = _angelFirstAscentionAbility.ComponentsArray.Where(c => (c is ContextRankConfig)).ToArray();
                 foreach (ContextRankConfig c in contextRankConfig)
                 {
                     c.m_Class = c.m_Class.AppendToArray(_mythicCompanionClassReference);
@@ -525,6 +440,13 @@ namespace CompanionAscension.NewContent.Mythics
                 var _lichChannelNegativeResource = ResourcesLibrary.TryGetBlueprint<BlueprintAbilityResource>("e5ef1aae31818f041bccbc9fd37662bf");
                 _lichChannelNegativeResource.m_MaxAmount.m_Class = _lichChannelNegativeResource.m_MaxAmount.m_Class.AppendToArray(_mythicCompanionClassReference);
 
+                var _ttricksterFirstAscensionAbility = ResourcesLibrary.TryGetBlueprint<BlueprintAbility>("918e6e7085d81094790e806a49922694");
+                contextRankConfig = _ttricksterFirstAscensionAbility.ComponentsArray.Where(c => (c is ContextRankConfig)).ToArray();
+                foreach (ContextRankConfig c in contextRankConfig)
+                {
+                    c.m_Class = c.m_Class.AppendToArray(_mythicCompanionClassReference);
+                }
+
                 Tools.LogMessage("Patched: Added companion class to first ascension abilities and resources");
             }
 
@@ -534,30 +456,31 @@ namespace CompanionAscension.NewContent.Mythics
                 BlueprintProgression.ClassWithLevel _classWithLevel = new();
                 _classWithLevel.m_Class = _mythicCompanionClassReference;
                 _classWithLevel.AdditionalLevel = 0;
-                //DeathOfElementsConsumingElementsResource
-                //7a558d186755620439e35817f174f749
-                //MaxAmount :: Class
-                var DeathOfElementsConsumingElementsResource = ResourcesLibrary.TryGetBlueprint<BlueprintAbilityResource>("7a558d186755620439e35817f174f749");
-                DeathOfElementsConsumingElementsResource.m_MaxAmount.m_Class = DeathOfElementsConsumingElementsResource.m_MaxAmount.m_Class.AppendToArray(_mythicCompanionClassReference);
 
-            }
+                var _deathOfElementsConsumingElementsResource = ResourcesLibrary.TryGetBlueprint<BlueprintAbilityResource>("7a558d186755620439e35817f174f749");
+                _deathOfElementsConsumingElementsResource.m_MaxAmount.m_Class = _deathOfElementsConsumingElementsResource.m_MaxAmount.m_Class.AppendToArray(_mythicCompanionClassReference);
 
-            static BlueprintFeatureSelection BuildMythicSelection(string shortName, string featureGUID, string displayName, string description)
-            {
-                Guid nameGUID = Guid.NewGuid();
-                Guid descGUID = Guid.NewGuid();
+                var _angelSwordResource = ResourcesLibrary.TryGetBlueprint<BlueprintAbilityResource>("5578b13626344e6409c56bb024ec9529");
+                _angelSwordResource.m_MaxAmount.m_ClassDiv = _angelSwordResource.m_MaxAmount.m_ClassDiv.AppendToArray(_mythicCompanionClassReference);
 
-                BlueprintFeatureSelection featureSelection = FeatureSelectionConfigurator.New(shortName, featureGUID)
-                    .SetDisplayName(LocalizationTool.CreateString(nameGUID.ToString(), displayName, false))
-                    .SetDescription(LocalizationTool.CreateString(descGUID.ToString(), description))
-                    .Configure();
-
-                return featureSelection;
+                Tools.LogMessage("Patched: Added companion class to mythic path abilities and resources");
             }
         }
     }
 }
 
+
+// Build choices for each mythic path
+// Some generic choices for all paths
+//      Legend: boost max level somehow?
+//
+//      Lich: DeathOfElementsConsumingElementsResource
+//      add companion class
+//      book merge for arcanes?
+//      
+//      Gold Dragon: Choice of +4 to one ability? Choice of boosting saves?
+//      
+//      Angel: book merge for divines?
 
 /*/
  * Azata: Choice of Song

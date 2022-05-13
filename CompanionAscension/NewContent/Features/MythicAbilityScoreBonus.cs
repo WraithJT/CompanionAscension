@@ -38,12 +38,12 @@ namespace CompanionAscension.NewContent.Features
 {
     class MythicAbilityScoreBonus
     {
+        public static readonly string MythicAbilityScoreBonusGUID = "3adf757c5ba741438e9727550ab126d7";
         private static readonly string MythicAbilityScoreBonusName = "MythicAbilityScoreBonus";
-        private static readonly string MythicAbilityScoreBonusGUID = "3adf757c5ba741438e9727550ab126d7";
         private static readonly string MythicAbilityScoreBonusDisplayName = "Mythic Ability Score Increase";
         private static readonly string MythicAbilityScoreBonusDisplayNameKey = "MythicAbilityScoreBonusName";
-        private static readonly string MythicAbilityScoreBonusDescription = 
-            "Increases your highest ability score by an amount equal to 1 plus half your mythic level.";
+        private static readonly string MythicAbilityScoreBonusDescription =
+            "Grants a mythic bonus equal to half your mythic rank plus 1 to your highest mental and physical ability scores.";
         private static readonly string MythicAbilityScoreBonusDescriptionKey = "MythicAbilityScoreBonusDescription";
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
@@ -72,11 +72,11 @@ namespace CompanionAscension.NewContent.Features
                 _mythicAbilityScoreBonusContextValue.ValueRank = AbilityRankType.Default;
                 Tools.LogMessage("Built: Context Value (Mythic Ability Score Bonus)");
 
-                HighestAbilityScoreBonus _mythicAbilityScoreBonusHighestAbilityScoreBonus = new();
-                _mythicAbilityScoreBonusHighestAbilityScoreBonus.name = "$AddMaxAbilityScoreBonus$35678b97eaba4aae94f4d965b2492ac7";
-                _mythicAbilityScoreBonusHighestAbilityScoreBonus.HighestStatBonus = _mythicAbilityScoreBonusContextValue;
-                _mythicAbilityScoreBonusHighestAbilityScoreBonus.Descriptor = ModifierDescriptor.Mythic;
-                Tools.LogMessage("Built: Add Highest Ability Score Bonus (Mythic Ability Score Bonus)");
+                HighestPhysicalMentalScoreBonus _mythicPhysicalMentalScoreBonusHighestAbilityScoreBonus = new();
+                _mythicPhysicalMentalScoreBonusHighestAbilityScoreBonus.name = "$HighestPhysicalMentalScoreBonus$35678b97eaba4aae94f4d965b2492ac7";
+                _mythicPhysicalMentalScoreBonusHighestAbilityScoreBonus.HighestStatBonus = _mythicAbilityScoreBonusContextValue;
+                _mythicPhysicalMentalScoreBonusHighestAbilityScoreBonus.Descriptor = ModifierDescriptor.Mythic;
+                Tools.LogMessage("Built: Add Physical Mental Score Bonus (Mythic Ability Score Bonus)");
 
                 ContextRankConfig _mythicAbilityScoreBonusContextRankConfig = new();
                 _mythicAbilityScoreBonusContextRankConfig.name = "$ContextRankConfig$31b5cbc3daf2488387600fdc14a3365f";
@@ -88,23 +88,21 @@ namespace CompanionAscension.NewContent.Features
                 _mythicAbilityScoreBonusContextRankConfig.m_Stat = StatType.Unknown;
                 Tools.LogMessage("Built: Context Rank Config (Mythic Ability Score Bonus)");
 
-                RecalculateOnAnyStatChange _recalculateOnAnyStatChange = new();
-
                 var _mythicAbilityScoreBonus = FeatureConfigurator.New(MythicAbilityScoreBonusName, MythicAbilityScoreBonusGUID)
                     .SetDisplayName(LocalizationTool.CreateString(MythicAbilityScoreBonusDisplayNameKey, MythicAbilityScoreBonusDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(MythicAbilityScoreBonusDescriptionKey, MythicAbilityScoreBonusDescription))
-                    //.AddRecalculateOnStatChange(stat: StatType.Strength)
-                    //.AddRecalculateOnStatChange(stat: StatType.Dexterity)
-                    //.AddRecalculateOnStatChange(stat: StatType.Constitution)
-                    //.AddRecalculateOnStatChange(stat: StatType.Wisdom)
-                    //.AddRecalculateOnStatChange(stat: StatType.Intelligence)
-                    //.AddRecalculateOnStatChange(stat: StatType.Charisma)
+                    .AddRecalculateOnStatChange(stat: StatType.Strength)
+                    .AddRecalculateOnStatChange(stat: StatType.Dexterity)
+                    .AddRecalculateOnStatChange(stat: StatType.Constitution)
+                    .AddRecalculateOnStatChange(stat: StatType.Wisdom)
+                    .AddRecalculateOnStatChange(stat: StatType.Intelligence)
+                    .AddRecalculateOnStatChange(stat: StatType.Charisma)
                     .SetReapplyOnLevelUp(true)
                     .Configure();
                 _mythicAbilityScoreBonus.AddComponents(new BlueprintComponent[] {
-                    _mythicAbilityScoreBonusHighestAbilityScoreBonus,
-                    _mythicAbilityScoreBonusContextRankConfig,
-                    _recalculateOnAnyStatChange});
+                    _mythicPhysicalMentalScoreBonusHighestAbilityScoreBonus,
+                    _mythicAbilityScoreBonusContextRankConfig
+                    });
                 Tools.LogMessage("Built: Mythic Ability Score Bonus -> " + _mythicAbilityScoreBonus.AssetGuidThreadSafe);
             }
         }

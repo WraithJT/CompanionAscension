@@ -38,12 +38,12 @@ namespace CompanionAscension.NewContent.Features
 {
     class MythicSavingThrowBonus
     {
+        public static readonly string MythicSavingThrowBonusGUID = "b49f559f4daa4a87b080eccf1a0dc9a9";
         private static readonly string MythicSavingThrowBonusName = "MythicSavingThrowBonus";
-        private static readonly string MythicSavingThrowBonusGUID = "b49f559f4daa4a87b080eccf1a0dc9a9";
         private static readonly string MythicSavingThrowBonusDisplayName = "Mythic Saving Throw Bonus";
         private static readonly string MythicSavingThrowBonusDisplayNameKey = "MythicSavingThrowBonusDisplayNameKey";
         private static readonly string MythicSavingThrowBonusDescription =
-            "Increases your lowest saving throw by an amount equal to your mythic level.";
+            "Grants a mythic bonus equal to your mythic rank to your lowest save.";
         private static readonly string MythicSavingThrowBonusDescriptionKey = "MythicSavingThrowBonusDescriptionKey";
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
@@ -82,8 +82,7 @@ namespace CompanionAscension.NewContent.Features
                 _mythicSavingThrowBonusContextRankConfig.name = "$ContextRankConfig$31b5cbc3daf2488387600fdc14a3365f";
                 _mythicSavingThrowBonusContextRankConfig.m_BaseValueType = ContextRankBaseValueType.MythicLevel;
                 _mythicSavingThrowBonusContextRankConfig.m_Type = AbilityRankType.Default;
-                _mythicSavingThrowBonusContextRankConfig.m_Progression = ContextRankProgression.OnePlusDivStep;
-                _mythicSavingThrowBonusContextRankConfig.m_StepLevel = 2;
+                _mythicSavingThrowBonusContextRankConfig.m_Progression = ContextRankProgression.AsIs;
                 _mythicSavingThrowBonusContextRankConfig.m_Max = 10;
                 _mythicSavingThrowBonusContextRankConfig.m_Stat = StatType.Unknown;
                 Tools.LogMessage("Built: Context Rank Config (Mythic Saving Throw Bonus)");
