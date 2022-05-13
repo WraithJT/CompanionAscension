@@ -436,9 +436,10 @@ namespace CompanionAscension.NewContent.Mythics
                     .Configure();
                 Tools.LogMessage("Built: Companion Second Ascension bonus choice -> " + _companionAscensionChoice8.AssetGuidThreadSafe);
 
-                var _aeonCompanionChoice = ResourcesLibrary.TryGetBlueprint < BlueprintFeatureSelection>("c1dd81e75695467cb3bac2381d3cec91");
-                //76a5af87f6594d5e90568b706f0809ed
-                var _aeonCompanionNinthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("76a5af87f6594d5e90568b706f0809ed");
+                
+                var _aeonCompanionChoice = ResourcesLibrary.TryGetBlueprint < BlueprintFeatureSelection>(AeonCompanionChoice.AeonCompanionChoiceGUID);
+                var _aeonCompanionNinthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonCompanionChoice.AeonCompanionNinthLevelImmunitiesGUID);
+                var _aeonTestChoice = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("A52C072A-41EF-47D4-AA83-A948BD639EE6");
 
                 if (Main.Settings.useCompanionAscension == false) { return; }
                 AddCompanionsToFirstAscensions();

@@ -88,20 +88,23 @@ namespace CompanionAscension.NewContent.Features
                 _mythicAbilityScoreBonusContextRankConfig.m_Stat = StatType.Unknown;
                 Tools.LogMessage("Built: Context Rank Config (Mythic Ability Score Bonus)");
 
+                RecalculateOnAnyStatChange _recalculateOnAnyStatChange = new();
+
                 var _mythicAbilityScoreBonus = FeatureConfigurator.New(MythicAbilityScoreBonusName, MythicAbilityScoreBonusGUID)
                     .SetDisplayName(LocalizationTool.CreateString(MythicAbilityScoreBonusDisplayNameKey, MythicAbilityScoreBonusDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(MythicAbilityScoreBonusDescriptionKey, MythicAbilityScoreBonusDescription))
-                    .AddRecalculateOnStatChange(stat: StatType.Strength)
-                    .AddRecalculateOnStatChange(stat: StatType.Dexterity)
-                    .AddRecalculateOnStatChange(stat: StatType.Constitution)
-                    .AddRecalculateOnStatChange(stat: StatType.Wisdom)
-                    .AddRecalculateOnStatChange(stat: StatType.Intelligence)
-                    .AddRecalculateOnStatChange(stat: StatType.Charisma)
+                    //.AddRecalculateOnStatChange(stat: StatType.Strength)
+                    //.AddRecalculateOnStatChange(stat: StatType.Dexterity)
+                    //.AddRecalculateOnStatChange(stat: StatType.Constitution)
+                    //.AddRecalculateOnStatChange(stat: StatType.Wisdom)
+                    //.AddRecalculateOnStatChange(stat: StatType.Intelligence)
+                    //.AddRecalculateOnStatChange(stat: StatType.Charisma)
                     .SetReapplyOnLevelUp(true)
                     .Configure();
                 _mythicAbilityScoreBonus.AddComponents(new BlueprintComponent[] {
                     _mythicAbilityScoreBonusHighestAbilityScoreBonus,
-                    _mythicAbilityScoreBonusContextRankConfig });
+                    _mythicAbilityScoreBonusContextRankConfig,
+                    _recalculateOnAnyStatChange});
                 Tools.LogMessage("Built: Mythic Ability Score Bonus -> " + _mythicAbilityScoreBonus.AssetGuidThreadSafe);
             }
         }
