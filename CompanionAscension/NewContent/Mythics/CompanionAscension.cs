@@ -326,8 +326,8 @@ namespace CompanionAscension.NewContent.Mythics
                         le.Where(e => e.Level == 9)
                             .ForEach(e =>
                             {
-                                e.m_Features.Add(LifeBondingFriendshipSelection1.ToReference<BlueprintFeatureBaseReference>());
-                                e.m_Features.Add(_aeonCompanionNinthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
+                                //e.m_Features.Add(LifeBondingFriendshipSelection1.ToReference<BlueprintFeatureBaseReference>());
+                                //e.m_Features.Add(_aeonCompanionNinthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
                             });
                     });
                     AddCompanionsToFirstAscensions();
