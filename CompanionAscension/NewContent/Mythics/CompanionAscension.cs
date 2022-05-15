@@ -265,6 +265,7 @@ namespace CompanionAscension.NewContent.Mythics
                 //csm.m_AllowedSpellbooks = lichbookselect.m_AllowedSpellbooks;
                 //csm.m_MythicSpellList = lichbookselect.m_MythicSpellList;
                 //Tools.LogMessage("Built CSM: " + csm.AssetGuidThreadSafe);
+                // END TESTING
 
                 var _companionAscensionChoice4 = FeatureSelectionConfigurator.New(CompanionAscensionChoice4Name, CompanionAscensionChoice4GUID)
                     .SetDisplayName(LocalizationTool.CreateString(CompanionAscensionChoice4DisplayNameKey, CompanionAscensionChoice4DisplayName, false))
@@ -281,13 +282,20 @@ namespace CompanionAscension.NewContent.Mythics
                     .SetDisplayName(LocalizationTool.CreateString(CompanionSecondAscensionDisplayNameKey, CompanionSecondAscensionDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(CompanionSecondAscensionDescriptionKey, CompanionSecondAscensionDescription))
                     .SetIcon(Guidance.Icon)
-                    .AddToFeatures(AeonCompanionChoice.Guid)
-                    .AddToFeatures(AngelCompanionChoice.Guid)
-                    .AddToFeatures(AzataCompanionChoice.Guid)
-                    .AddToFeatures(DemonCompanionChoice.Guid)
-                    .AddToFeatures(LichCompanionChoiceGUID)
-                    .AddToFeatures(TricksterCompanionChoiceGUID)
-                    .AddToFeatures(MythicMindAndBody.MythicMindAndBodyGUID)
+                    .AddToFeatures(new string[] {
+                        AeonCompanionChoice.Guid,
+                        AngelCompanionChoice.Guid,
+                        AzataCompanionChoice.Guid,
+                        DemonCompanionChoice.Guid,
+                        LichCompanionChoiceGUID,
+                        TricksterCompanionChoiceGUID,
+                        MythicMindAndBody.MythicMindAndBodyGUID})
+                    //.AddToFeatures(AngelCompanionChoice.Guid)
+                    //.AddToFeatures(AzataCompanionChoice.Guid)
+                    //.AddToFeatures(DemonCompanionChoice.Guid)
+                    //.AddToFeatures(LichCompanionChoiceGUID)
+                    //.AddToFeatures(TricksterCompanionChoiceGUID)
+                    //.AddToFeatures(MythicMindAndBody.MythicMindAndBodyGUID)
                     .Configure();
                 Tools.LogMessage("Built: Companion Second Ascension -> " + _companionSecondAscension.AssetGuidThreadSafe);
 
@@ -410,9 +418,11 @@ namespace CompanionAscension.NewContent.Mythics
             static void AddCompanionsToFirstAscensions()
             {
                 var _mythicCompanionClassReference = MythicCompanionClass.ToReference<BlueprintCharacterClassReference>();
-                BlueprintProgression.ClassWithLevel _classWithLevel = new();
-                _classWithLevel.m_Class = _mythicCompanionClassReference;
-                _classWithLevel.AdditionalLevel = 0;
+                BlueprintProgression.ClassWithLevel _classWithLevel = new()
+                {
+                    m_Class = _mythicCompanionClassReference,
+                    AdditionalLevel = 0
+                };
 
                 foreach (string s in AscensionGUIDS)
                 {
@@ -459,9 +469,11 @@ namespace CompanionAscension.NewContent.Mythics
             static void CorrectPrerequisites()
             {
                 var _mythicCompanionClassReference = MythicCompanionClass.ToReference<BlueprintCharacterClassReference>();
-                BlueprintProgression.ClassWithLevel _classWithLevel = new();
-                _classWithLevel.m_Class = _mythicCompanionClassReference;
-                _classWithLevel.AdditionalLevel = 0;
+                BlueprintProgression.ClassWithLevel _classWithLevel = new()
+                {
+                    m_Class = _mythicCompanionClassReference,
+                    AdditionalLevel = 0
+                };
 
                 var _deathOfElementsConsumingElementsResource = ResourcesLibrary.TryGetBlueprint<BlueprintAbilityResource>("7a558d186755620439e35817f174f749");
                 _deathOfElementsConsumingElementsResource.m_MaxAmount.m_Class = _deathOfElementsConsumingElementsResource.m_MaxAmount.m_Class.AppendToArray(_mythicCompanionClassReference);

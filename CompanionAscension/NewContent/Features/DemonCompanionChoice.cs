@@ -71,22 +71,26 @@ namespace CompanionAscension.NewContent.Features
             {
                 Tools.LogMessage("New Content: Building Demon Companion Choices");
 
-                ContextRankConfig _demonCompanionSkillsContextRankConfig = new();
-                _demonCompanionSkillsContextRankConfig.name = "$ContextRankConfig$df14696f1e9e4e0d861b6d1d1e0f8f20";
-                _demonCompanionSkillsContextRankConfig.m_BaseValueType = ContextRankBaseValueType.MythicLevel;
-                _demonCompanionSkillsContextRankConfig.m_Type = AbilityRankType.Default;
-                _demonCompanionSkillsContextRankConfig.m_Progression = ContextRankProgression.OnePlusDivStep;
-                _demonCompanionSkillsContextRankConfig.m_StepLevel = 2;
-                _demonCompanionSkillsContextRankConfig.m_Max = 10;
-                _demonCompanionSkillsContextRankConfig.m_Stat = StatType.Unknown;
+                ContextRankConfig _demonCompanionSkillsContextRankConfig = new()
+                {
+                    name = "$ContextRankConfig$df14696f1e9e4e0d861b6d1d1e0f8f20",
+                    m_BaseValueType = ContextRankBaseValueType.MythicLevel,
+                    m_Type = AbilityRankType.Default,
+                    m_Progression = ContextRankProgression.OnePlusDivStep,
+                    m_StepLevel = 2,
+                    m_Max = 10,
+                    m_Stat = StatType.Unknown
+                };
                 Tools.LogMessage("Built: Skills Context Rank Config (Demon Companion Ascension)");
 
-                ContextValue _demonCompanionSkillsContextValue = new();
-                _demonCompanionSkillsContextValue.ValueType = ContextValueType.Rank;
-                _demonCompanionSkillsContextValue.Value = 1;
-                _demonCompanionSkillsContextValue.ValueShared = AbilitySharedValue.StatBonus;
-                _demonCompanionSkillsContextValue.Property = UnitProperty.None;
-                _demonCompanionSkillsContextValue.ValueRank = AbilityRankType.Default;
+                ContextValue _demonCompanionSkillsContextValue = new()
+                {
+                    ValueType = ContextValueType.Rank,
+                    Value = 1,
+                    ValueShared = AbilitySharedValue.StatBonus,
+                    Property = UnitProperty.None,
+                    ValueRank = AbilityRankType.Default
+                };
                 Tools.LogMessage("Built: Context Value (Mythic Ability Score Bonus)");
 
                 // Option for Demon Charge?

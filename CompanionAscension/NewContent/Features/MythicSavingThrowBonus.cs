@@ -64,27 +64,33 @@ namespace CompanionAscension.NewContent.Features
 
             public static void PatchMythicSavingThrowBonus()
             {
-                ContextValue _mythicSavingThrowBonusContextValue = new();
-                _mythicSavingThrowBonusContextValue.ValueType = ContextValueType.Rank;
-                _mythicSavingThrowBonusContextValue.Value = 1;
-                _mythicSavingThrowBonusContextValue.ValueShared = AbilitySharedValue.StatBonus;
-                _mythicSavingThrowBonusContextValue.Property = UnitProperty.None;
-                _mythicSavingThrowBonusContextValue.ValueRank = AbilityRankType.Default;
+                ContextValue _mythicSavingThrowBonusContextValue = new()
+                {
+                    ValueType = ContextValueType.Rank,
+                    Value = 1,
+                    ValueShared = AbilitySharedValue.StatBonus,
+                    Property = UnitProperty.None,
+                    ValueRank = AbilityRankType.Default
+                };
                 Tools.LogMessage("Built: Context Value (Mythic Saving Throw Bonus)");
 
-                LowestSaveBonus _mythicSavingThrowBonusHighestAbilityScoreBonus = new();
-                _mythicSavingThrowBonusHighestAbilityScoreBonus.name = "$AddMaxAbilityScoreBonus$35678b97eaba4aae94f4d965b2492ac7";
-                _mythicSavingThrowBonusHighestAbilityScoreBonus.LowestScoreBonus = _mythicSavingThrowBonusContextValue;
-                _mythicSavingThrowBonusHighestAbilityScoreBonus.Descriptor = ModifierDescriptor.Mythic;
+                LowestSaveBonus _mythicSavingThrowBonusHighestAbilityScoreBonus = new()
+                {
+                    name = "$AddMaxAbilityScoreBonus$35678b97eaba4aae94f4d965b2492ac7",
+                    LowestScoreBonus = _mythicSavingThrowBonusContextValue,
+                    Descriptor = ModifierDescriptor.Mythic
+                };
                 Tools.LogMessage("Built: Add Lowest Saving Throw Bonus (Mythic Saving Throw Bonus)");
 
-                ContextRankConfig _mythicSavingThrowBonusContextRankConfig = new();
-                _mythicSavingThrowBonusContextRankConfig.name = "$ContextRankConfig$31b5cbc3daf2488387600fdc14a3365f";
-                _mythicSavingThrowBonusContextRankConfig.m_BaseValueType = ContextRankBaseValueType.MythicLevel;
-                _mythicSavingThrowBonusContextRankConfig.m_Type = AbilityRankType.Default;
-                _mythicSavingThrowBonusContextRankConfig.m_Progression = ContextRankProgression.AsIs;
-                _mythicSavingThrowBonusContextRankConfig.m_Max = 10;
-                _mythicSavingThrowBonusContextRankConfig.m_Stat = StatType.Unknown;
+                ContextRankConfig _mythicSavingThrowBonusContextRankConfig = new()
+                {
+                    name = "$ContextRankConfig$31b5cbc3daf2488387600fdc14a3365f",
+                    m_BaseValueType = ContextRankBaseValueType.MythicLevel,
+                    m_Type = AbilityRankType.Default,
+                    m_Progression = ContextRankProgression.AsIs,
+                    m_Max = 10,
+                    m_Stat = StatType.Unknown
+                };
                 Tools.LogMessage("Built: Context Rank Config (Mythic Saving Throw Bonus)");
 
                 var _mythicSavingThrowBonus = FeatureConfigurator.New(MythicSavingThrowBonusName, MythicSavingThrowBonusGUID)
@@ -94,7 +100,8 @@ namespace CompanionAscension.NewContent.Features
                     .Configure();
                 _mythicSavingThrowBonus.AddComponents(new BlueprintComponent[] {
                     _mythicSavingThrowBonusHighestAbilityScoreBonus,
-                    _mythicSavingThrowBonusContextRankConfig });
+                    _mythicSavingThrowBonusContextRankConfig
+                    });
                 Tools.LogMessage("Built: Mythic Saving Throw Bonus -> " + _mythicSavingThrowBonus.AssetGuidThreadSafe);
             }
         }

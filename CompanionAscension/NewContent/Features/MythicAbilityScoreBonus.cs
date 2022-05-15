@@ -64,28 +64,34 @@ namespace CompanionAscension.NewContent.Features
 
             public static void PatchMythicAbilityScoreBonus()
             {
-                ContextValue _mythicAbilityScoreBonusContextValue = new();
-                _mythicAbilityScoreBonusContextValue.ValueType = ContextValueType.Rank;
-                _mythicAbilityScoreBonusContextValue.Value = 1;
-                _mythicAbilityScoreBonusContextValue.ValueShared = AbilitySharedValue.StatBonus;
-                _mythicAbilityScoreBonusContextValue.Property = UnitProperty.None;
-                _mythicAbilityScoreBonusContextValue.ValueRank = AbilityRankType.Default;
+                ContextValue _mythicAbilityScoreBonusContextValue = new()
+                {
+                    ValueType = ContextValueType.Rank,
+                    Value = 1,
+                    ValueShared = AbilitySharedValue.StatBonus,
+                    Property = UnitProperty.None,
+                    ValueRank = AbilityRankType.Default
+                };
                 Tools.LogMessage("Built: Context Value (Mythic Ability Score Bonus)");
 
-                HighestPhysicalMentalScoreBonus _mythicPhysicalMentalScoreBonusHighestAbilityScoreBonus = new();
-                _mythicPhysicalMentalScoreBonusHighestAbilityScoreBonus.name = "$HighestPhysicalMentalScoreBonus$35678b97eaba4aae94f4d965b2492ac7";
-                _mythicPhysicalMentalScoreBonusHighestAbilityScoreBonus.HighestStatBonus = _mythicAbilityScoreBonusContextValue;
-                _mythicPhysicalMentalScoreBonusHighestAbilityScoreBonus.Descriptor = ModifierDescriptor.Mythic;
+                HighestPhysicalMentalScoreBonus _mythicPhysicalMentalScoreBonusHighestAbilityScoreBonus = new()
+                {
+                    name = "$HighestPhysicalMentalScoreBonus$35678b97eaba4aae94f4d965b2492ac7",
+                    HighestStatBonus = _mythicAbilityScoreBonusContextValue,
+                    Descriptor = ModifierDescriptor.Mythic
+                };
                 Tools.LogMessage("Built: Add Physical Mental Score Bonus (Mythic Ability Score Bonus)");
 
-                ContextRankConfig _mythicAbilityScoreBonusContextRankConfig = new();
-                _mythicAbilityScoreBonusContextRankConfig.name = "$ContextRankConfig$31b5cbc3daf2488387600fdc14a3365f";
-                _mythicAbilityScoreBonusContextRankConfig.m_BaseValueType = ContextRankBaseValueType.MythicLevel;
-                _mythicAbilityScoreBonusContextRankConfig.m_Type = AbilityRankType.Default;
-                _mythicAbilityScoreBonusContextRankConfig.m_Progression = ContextRankProgression.OnePlusDivStep;
-                _mythicAbilityScoreBonusContextRankConfig.m_StepLevel = 2;
-                _mythicAbilityScoreBonusContextRankConfig.m_Max = 10;
-                _mythicAbilityScoreBonusContextRankConfig.m_Stat = StatType.Unknown;
+                ContextRankConfig _mythicAbilityScoreBonusContextRankConfig = new()
+                {
+                    name = "$ContextRankConfig$31b5cbc3daf2488387600fdc14a3365f",
+                    m_BaseValueType = ContextRankBaseValueType.MythicLevel,
+                    m_Type = AbilityRankType.Default,
+                    m_Progression = ContextRankProgression.OnePlusDivStep,
+                    m_StepLevel = 2,
+                    m_Max = 10,
+                    m_Stat = StatType.Unknown
+                };
                 Tools.LogMessage("Built: Context Rank Config (Mythic Ability Score Bonus)");
 
                 var _mythicAbilityScoreBonus = FeatureConfigurator.New(MythicAbilityScoreBonusName, MythicAbilityScoreBonusGUID)

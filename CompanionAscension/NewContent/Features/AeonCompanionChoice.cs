@@ -152,9 +152,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDescriptionKey, AeonCompanionNinthLevelImmunitiesDescription))
                     .AddFacts(new string[] { _immunityToCurseEffectsGUID, _immunityToDeathEffectsGUID, _immunityToEnergyDrainGUID })
                     //.PrerequisitePlayerHasFeature(AeonProgression)
-                    .SetHideInUi(true)
-                    .SetHideInCharacterSheetAndLevelUp(true)
-                    .SetHideNotAvailableInUI(true)
+                    //.SetHideInUi(true)
+                    //.SetHideInCharacterSheetAndLevelUp(true)
+                    //.SetHideNotAvailableInUI(true)
                     .SetIcon(AngelWardFromWeakness.Icon)
                     .Configure();
                 //_aeonCompanionNinthLevelImmunities.AddComponents(_aeonCompanionNinthLevelImmunitiesPrereq);
@@ -165,13 +165,13 @@ namespace CompanionAscension.NewContent.Features
                     AdditionalLevel = 0
                 };
                 string _aeonCompanionImmunityName = "AeonCompanionImmunityProgression";
-                string _aeonCompanionImmunityProgressionGUID = "A24BB471-A444-485F-A586-E8796095B5D4";
+                string _aeonCompanionImmunityProgressionGUID = "a24bb471a444485fa586e8796095b5d4";
                 var _aeonCompanionImmunityProgression = ProgressionConfigurator.New(_aeonCompanionImmunityName, _aeonCompanionImmunityProgressionGUID)
                     .SetDisplayName(LocalizationTool.CreateString(AeonCompanionEighthLevelImmunitiesDisplayNameKey, AeonCompanionEighthLevelImmunitiesDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(AeonCompanionEighthLevelImmunitiesDescriptionKey, AeonCompanionEighthLevelImmunitiesDescription))
                     .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions })
                     //.SetIcon(AngelWardFromWeakness.Icon)
-                    //.SetGiveFeaturesForPreviousLevels(true)
+                    .SetGiveFeaturesForPreviousLevels(true)
                     .Configure();
                 _aeonCompanionImmunityProgression.m_Classes = new[] { _classWithLevel };
                 _aeonCompanionImmunityProgression.LevelEntries.TemporaryContext(le =>
