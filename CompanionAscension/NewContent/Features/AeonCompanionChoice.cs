@@ -159,10 +159,11 @@ namespace CompanionAscension.NewContent.Features
                     .Configure();
                 //_aeonCompanionNinthLevelImmunities.AddComponents(_aeonCompanionNinthLevelImmunitiesPrereq);
 
-                var _mythicCompanionClassReference = Mythics.CompanionAscension.MythicCompanionClass.ToReference<BlueprintCharacterClassReference>();
-                BlueprintProgression.ClassWithLevel _classWithLevel = new();
-                _classWithLevel.m_Class = _mythicCompanionClassReference;
-                _classWithLevel.AdditionalLevel = 0;
+                BlueprintProgression.ClassWithLevel _classWithLevel = new()
+                {
+                    m_Class = Mythics.CompanionAscension.MythicCompanionClass.ToReference<BlueprintCharacterClassReference>(),
+                    AdditionalLevel = 0
+                };
                 string _aeonCompanionImmunityName = "AeonCompanionImmunityProgression";
                 string _aeonCompanionImmunityProgressionGUID = "A24BB471-A444-485F-A586-E8796095B5D4";
                 var _aeonCompanionImmunityProgression = ProgressionConfigurator.New(_aeonCompanionImmunityName, _aeonCompanionImmunityProgressionGUID)
