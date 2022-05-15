@@ -43,7 +43,7 @@ namespace CompanionAscension.NewContent.Features
         private static readonly string MythicSavingThrowBonusDisplayName = "Mythic Saving Throw Bonus";
         private static readonly string MythicSavingThrowBonusDisplayNameKey = "MythicSavingThrowBonusDisplayNameKey";
         private static readonly string MythicSavingThrowBonusDescription =
-            "Grants a mythic bonus equal to your mythic rank to your lowest save.";
+            "Grants a mythic bonus equal to your mythic rank to your lowest saving throw.";
         private static readonly string MythicSavingThrowBonusDescriptionKey = "MythicSavingThrowBonusDescriptionKey";
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]

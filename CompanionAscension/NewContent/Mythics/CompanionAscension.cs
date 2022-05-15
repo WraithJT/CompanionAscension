@@ -154,6 +154,9 @@ namespace CompanionAscension.NewContent.Mythics
         private static readonly BlueprintFeatureSelection MythicAbilitySelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("ba0e5a900b775be4a99702f1ed08914d");
         private static readonly BlueprintFeatureSelection MythicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("9ee0f6745f555484299b0a1563b99d81");
 
+        private static readonly BlueprintFeature MythicBypassEpicDR = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("c60933cc085132b49970cbc4a4b8338f");
+        private static readonly BlueprintFeatureSelection LifeBondingFriendshipSelection1 = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("69a33d6ced23446e819667149d088898");
+
         private static readonly string[] AscensionGUIDS = new string[] {
                     "46df0532714a9454eb5fbad64ce6c14f",     //Aeon
                     "b236003be2b9400498b9dd0f07b0c93c",     //Angel
@@ -281,7 +284,7 @@ namespace CompanionAscension.NewContent.Mythics
                     .AddToFeatures(AeonCompanionChoice.Guid)
                     .AddToFeatures(AngelCompanionChoice.Guid)
                     .AddToFeatures(AzataCompanionChoice.Guid)
-                    .AddToFeatures(DemonCompanionChoiceGUID)
+                    .AddToFeatures(DemonCompanionChoice.Guid)
                     .AddToFeatures(LichCompanionChoiceGUID)
                     .AddToFeatures(TricksterCompanionChoiceGUID)
                     .AddToFeatures(MythicMindAndBody.MythicMindAndBodyGUID)
@@ -318,11 +321,12 @@ namespace CompanionAscension.NewContent.Mythics
                             .ForEach(e =>
                             {
                                 e.m_Features.Add(_companionSecondAscension.ToReference<BlueprintFeatureBaseReference>());
-                                e.m_Features.Add(_companionAscensionChoice8.ToReference<BlueprintFeatureBaseReference>());
+                                //e.m_Features.Add(ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("57e6f40e11ec421c9b2e3edb34e2beb2").ToReference<BlueprintFeatureBaseReference>());
                             });
                         le.Where(e => e.Level == 9)
                             .ForEach(e =>
                             {
+                                e.m_Features.Add(LifeBondingFriendshipSelection1.ToReference<BlueprintFeatureBaseReference>());
                                 e.m_Features.Add(_aeonCompanionNinthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
                             });
                     });
@@ -330,7 +334,6 @@ namespace CompanionAscension.NewContent.Mythics
                     CorrectPrerequisites();
                     Tools.LogMessage("Built: Added Mythic Path companion ascensions");
                 }
-
                 MythicCompanionProgression.LevelEntries.TemporaryContext(le =>
                 {
                     le.Where(e => e.Level == 4)
@@ -338,7 +341,6 @@ namespace CompanionAscension.NewContent.Mythics
                         {
                             e.m_Features.Add(MythicIgnoreAlignmentRestrictions.ToReference<BlueprintFeatureBaseReference>());
                             e.m_Features.Add(_companionAscensionChoice4.ToReference<BlueprintFeatureBaseReference>());
-                            e.m_Features.Add(_aeonCompanionChoice.ToReference<BlueprintFeatureBaseReference>());
                         });
                     le.Where(e => e.Level == 8)
                         .ForEach(e =>
@@ -350,15 +352,20 @@ namespace CompanionAscension.NewContent.Mythics
 
                 MythicCompanionProgression.UIGroups = MythicCompanionProgression.UIGroups.AppendToArray(
                     Helpers.CreateUIGroup(
-                    _companionFirstAscension,
-                    _companionSecondAscension)
-                );
+                        _companionFirstAscension,
+                        _companionSecondAscension)
+                    );
                 MythicCompanionProgression.UIGroups = MythicCompanionProgression.UIGroups.AppendToArray(
                     Helpers.CreateUIGroup(
-                    MythicAbilitySelection,
-                    _companionAscensionChoice4,
-                    _companionAscensionChoice8)
-                );
+                        MythicAbilitySelection,
+                        _companionAscensionChoice4,
+                        _companionAscensionChoice8)
+                    );
+                MythicCompanionProgression.UIGroups = MythicCompanionProgression.UIGroups.AppendToArray(
+                    Helpers.CreateUIGroup(
+                        MythicBypassEpicDR,
+                        MythicFeatSelection)
+                    );
                 Tools.LogMessage("New Content: Companion Ascension patching completed");
             }
 

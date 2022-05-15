@@ -44,7 +44,7 @@ namespace CompanionAscension.NewContent.Features
         private static readonly string MythicMindAndBodyDisplayNameKey = "MythicMindAndBodyName";
         private static readonly string MythicMindAndBodyDescription =
             "Increases your highest ability score by an amount equal to 1 plus half your mythic level. " +
-            "\nIncreases your lowest save by an amount equal to your mythic level.";
+            "\nIncreases your lowest saving throw by an amount equal to your mythic level.";
         private static readonly string MythicMindAndBodyDescriptionKey = "MythicMindAndBodyDescription";
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]

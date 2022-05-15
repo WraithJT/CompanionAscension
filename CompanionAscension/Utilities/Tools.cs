@@ -15,6 +15,8 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using System.Data;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 using UnityEngine;
+using CompanionAscension.Utilities.TTTCore;
+using CompanionAscension.NewContent.Components;
 
 namespace CompanionAscension.Utilities
 {
@@ -44,5 +46,7 @@ namespace CompanionAscension.Utilities
             setting = GUILayout.Toggle(setting, name, GUILayout.ExpandWidth(false));
             GUILayout.EndHorizontal();
         }
+
+
     }
 }

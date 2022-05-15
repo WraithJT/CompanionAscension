@@ -154,6 +154,7 @@ namespace CompanionAscension.NewContent.Features
                     .PrerequisitePlayerHasFeature(AeonProgression)
                     .SetHideInUi(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
+                    .SetHideNotAvailableInUI(true)
                     .SetIcon(AngelWardFromWeakness.Icon)
                     .Configure();
                 _aeonCompanionNinthLevelImmunities.AddComponents(_aeonCompanionNinthLevelImmunitiesPrereq);
