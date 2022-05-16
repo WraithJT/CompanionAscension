@@ -100,9 +100,9 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                PatchAeonCompanionChoice();
-                //try { PatchAeonCompanionChoice(); }
-                //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
+                //PatchAeonCompanionChoice();
+                try { PatchAeonCompanionChoice(); }
+                catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
 
             public static void PatchAeonCompanionChoice()
@@ -151,7 +151,10 @@ namespace CompanionAscension.NewContent.Features
                 var _aeonCompanionNinthLevelImmunities = FeatureConfigurator.New(AeonCompanionNinthLevelImmunitiesName, AeonCompanionNinthLevelImmunitiesGUID)
                     .SetDisplayName(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDisplayNameKey, AeonCompanionNinthLevelImmunitiesDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDescriptionKey, AeonCompanionNinthLevelImmunitiesDescription))
-                    .AddFacts(new string[] { _immunityToCurseEffectsGUID, _immunityToDeathEffectsGUID, _immunityToEnergyDrainGUID })
+                    .AddFacts(new string[] {
+                        _immunityToCurseEffects.AssetGuidThreadSafe,
+                        _immunityToDeathEffects.AssetGuidThreadSafe,
+                        _immunityToEnergyDrain.AssetGuidThreadSafe })
                     //.PrerequisitePlayerHasFeature(AeonProgression)
                     .SetHideInUi(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
@@ -215,8 +218,8 @@ namespace CompanionAscension.NewContent.Features
                     .PrerequisitePlayerHasFeature(AeonProgression)
                     .SetHideInUi(true)
                     .Configure();
-            Tools.LogMessage("Built: Aeon Companion Choices -> " + _aeonCompanionChoice.AssetGuidThreadSafe);
+                Tools.LogMessage("Built: Aeon Companion Choices -> " + _aeonCompanionChoice.AssetGuidThreadSafe);
             }
+        }
     }
-}
 }

@@ -43,7 +43,7 @@ namespace CompanionAscension.NewContent.Features
         private static readonly string ShortName = "AngelCompanionChoice";
         private static readonly string DisplayName = "Angel Companion Ascension";
         private static readonly string DisplayNameKey = "AngelCompanionChoiceName";
-        private static readonly string Description = "";
+        private static readonly string Description = "At 8th mythic rank, Angel's companions can gain further power.";
         private static readonly string DescriptionKey = "AngelCompanionChoiceDescription";
 
         private static readonly string AngelProgression = "2f6fe889e91b6a645b055696c01e2f74";
@@ -71,8 +71,8 @@ namespace CompanionAscension.NewContent.Features
                 Initialized = true;
 
                 //PatchAngelCompanionChoice();
-                //try { PatchAngelCompanionChoice(); }
-                //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
+                try { PatchAngelCompanionChoice(); }
+                catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
 
             public static void PatchAngelCompanionChoice()

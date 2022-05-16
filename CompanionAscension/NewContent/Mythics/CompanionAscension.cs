@@ -272,9 +272,10 @@ namespace CompanionAscension.NewContent.Mythics
                     .SetDescription(LocalizationTool.CreateString(CompanionAscensionChoice4DescriptionKey, CompanionAscensionChoice4Description))
                     .SetFeatureGroups(FeatureGroup.MythicAbility, FeatureGroup.MythicFeat, FeatureGroup.Feat, FeatureGroup.MythicAdditionalProgressions)
                     .SetIcon(MythicAbilitySelection.Icon)
-                    .AddToFeatures(CompanionAscensionMythicFeatGUID)
-                    .AddToFeatures(CompanionAscensionMythicAbilityGUID)
-                    .AddToFeatures(BasicFeatSelectionGUID)
+                    .AddToFeatures(new string[] {
+                        CompanionAscensionMythicFeatGUID,
+                        CompanionAscensionMythicAbilityGUID,
+                        BasicFeatSelectionGUID})
                     .Configure();
                 Tools.LogMessage("Built: Companion First Ascension bonus choice -> " + _companionAscensionChoice4.AssetGuidThreadSafe);
 
@@ -287,10 +288,9 @@ namespace CompanionAscension.NewContent.Mythics
                         AngelCompanionChoice.Guid,
                         AzataCompanionChoice.Guid,
                         DemonCompanionChoice.Guid,
-                        LichCompanionChoiceGUID,
-                        TricksterCompanionChoiceGUID,
-                        MythicMindAndBody.MythicMindAndBodyGUID,
-                    "a24bb471a444485fa586e8796095b5d4"})
+                        LichCompanionChoice.Guid,
+                        TricksterCompanionChoice.Guid,
+                        MythicMindAndBody.Guid})
                     //.AddToFeatures(AngelCompanionChoice.Guid)
                     //.AddToFeatures(AzataCompanionChoice.Guid)
                     //.AddToFeatures(DemonCompanionChoice.Guid)
@@ -305,15 +305,18 @@ namespace CompanionAscension.NewContent.Mythics
                     .SetDescription(LocalizationTool.CreateString(CompanionAscensionChoice8DescriptionKey, CompanionAscensionChoice8Description))
                     .SetFeatureGroups(FeatureGroup.MythicAbility, FeatureGroup.MythicFeat, FeatureGroup.Feat, FeatureGroup.MythicAdditionalProgressions)
                     .SetIcon(MythicAbilitySelection.Icon)
-                    .AddToFeatures(CompanionAscensionMythicFeatGUID)
-                    .AddToFeatures(CompanionAscensionMythicAbilityGUID)
-                    .AddToFeatures(BasicFeatSelectionGUID)
+                    .AddToFeatures(new string[]
+                    {
+                        _companionAscensionMythicFeat.AssetGuidThreadSafe,
+                        _companionAscensionMythicAbility.AssetGuidThreadSafe,
+                        BasicFeatSelectionGUID
+                    })
                     .Configure();
                 Tools.LogMessage("Built: Companion Second Ascension bonus choice -> " + _companionAscensionChoice8.AssetGuidThreadSafe);
 
                 // TESTING AREA
                 var _aeonCompanionChoice = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>(AeonCompanionChoice.Guid);
-                var _aeonCompanionProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("a24bb471a444485fa586e8796095b5d4");
+                //var _aeonCompanionProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("a24bb471a444485fa586e8796095b5d4");
                 var _aeonCompanionNinthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonCompanionChoice.AeonCompanionNinthLevelImmunitiesGUID);
                 // END TESTING AREA
 

@@ -38,7 +38,7 @@ namespace CompanionAscension.NewContent.Features
 {
     class MythicMindAndBody
     {
-        public static readonly string MythicMindAndBodyGUID = "628730c77f664bb5954a50f0cf5acaf7";
+        public static readonly string Guid = "628730c77f664bb5954a50f0cf5acaf7";
         private static readonly string MythicMindAndBodyName = "MythicMindAndBody";
         private static readonly string MythicMindAndBodyDisplayName = "Mythic Mind and Body";
         private static readonly string MythicMindAndBodyDisplayNameKey = "MythicMindAndBodyName";
@@ -65,7 +65,7 @@ namespace CompanionAscension.NewContent.Features
 
             public static void PatchMythicMindAndBody()
             {
-                var _mythicMindAndBody = FeatureConfigurator.New(MythicMindAndBodyName, MythicMindAndBodyGUID)
+                var _mythicMindAndBody = FeatureConfigurator.New(MythicMindAndBodyName, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(MythicMindAndBodyDisplayNameKey, MythicMindAndBodyDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(MythicMindAndBodyDescriptionKey, MythicMindAndBodyDescription))
                     .AddFacts(new string[] { MythicSavingThrowBonus.MythicSavingThrowBonusGUID, MythicAbilityScoreBonus.MythicAbilityScoreBonusGUID })
