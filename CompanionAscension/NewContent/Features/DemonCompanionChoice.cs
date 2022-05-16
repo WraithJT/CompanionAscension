@@ -277,6 +277,7 @@ namespace CompanionAscension.NewContent.Features
                     .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect, FeatureGroup.MythicAdditionalProgressions })
                     .Configure();
                 _demonMinorAspectChoice.AddSelectionCallback(_demonMinorAspectChoiceSelectionSelection, MythicCompanionProgression);
+                _demonMinorAspectChoice.AddSelectionCallback(_demonMinorAspectChoiceSelectionSelection, MythicCompanionProgression);
 
                 //PrerequisiteFeature _demonAspectPrerequisite = new();
                 //_demonAspectPrerequisite.CheckInProgression = true;

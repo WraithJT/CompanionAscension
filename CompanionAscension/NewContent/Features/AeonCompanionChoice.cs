@@ -46,14 +46,14 @@ namespace CompanionAscension.NewContent.Features
             "At 8th mythic rank, Aeon's companions can gain further power.";
         private static readonly string DescriptionKey = "AeonCompanionChoiceDescription";
 
-        private static readonly string AeonCompanionEighthLevelImmunitiesName = "AeonCompanionImmunities";
+        private static readonly string AeonCompanionEighthLevelImmunitiesName = "AeonCompanionImmunitiesEightLevel";
         private static readonly string AeonCompanionEighthLevelImmunitiesGUID = "e54bd0e9361c407fb8e26f64de8e4e4a";
         private static readonly string AeonCompanionEighthLevelImmunitiesDisplayName = "Aeon Companion Immunities";
-        private static readonly string AeonCompanionEighthLevelImmunitiesDisplayNameKey = "AeonCompanionImmunitiesNameKey";
+        private static readonly string AeonCompanionEighthLevelImmunitiesDisplayNameKey = "AeonCompanionImmunitiesEightLevelNameKey";
         private static readonly string AeonCompanionEighthLevelImmunitiesDescription =
             "Aeon's companion gains immunity to bleed, mind-affecting effects, and ability damage. " +
-            "At the next mythic level, they also gain immunity to curse and death effects, as well as energy drain.";
-        private static readonly string AeonCompanionEighthLevelImmunitiesDescriptionKey = "AeonCompanionImmunitiesDescriptionKey";
+            "\nAt the next mythic level, they also gain immunity to curse and death effects, as well as energy drain.";
+        private static readonly string AeonCompanionEighthLevelImmunitiesDescriptionKey = "AeonCompanionImmunitiesEightLevelDescriptionKey";
         private static readonly string[] AeonFifthLevelImmunitiesList = {
                 "52f8ef060a751a247964adae7fcb7e64",             // ImmunityToBleed
                 "3eb606c0564d0814ea01a824dbe42fb0",             // ImmunityToMindAffecting
@@ -84,6 +84,7 @@ namespace CompanionAscension.NewContent.Features
         private static readonly BlueprintFeature AeonSeventhLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonSeventhLevelImmunitiesGUID);
 
         private static readonly string AeonProgression = "34b9484b0d5ce9340ae51d2bf9518bbe";
+        public static readonly BlueprintCharacterClass MythicCompanionClass = ResourcesLibrary.TryGetBlueprint<BlueprintCharacterClass>("530b6a79cb691c24ba99e1577b4beb6d");
 
         private static readonly BlueprintAbility AngelWardFromWeakness = ResourcesLibrary.TryGetBlueprint<BlueprintAbility>("b66eee357e8404d49b7d8ad58cbb7f15");
         private static readonly BlueprintAbility OathOfPeace = ResourcesLibrary.TryGetBlueprint<BlueprintAbility>("cb3d70cc98b5f1540bddfff6f9667f73");
@@ -142,9 +143,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetIcon(AngelWardFromWeakness.Icon)
                     .Configure();
 
-                //PrerequisiteFeature _aeonCompanionNinthLevelImmunitiesPrereq = new();
-                //_aeonCompanionNinthLevelImmunitiesPrereq.m_Feature = _aeonCompanionEighthLevelImmunities.ToReference<BlueprintFeatureReference>();
-                //_aeonCompanionNinthLevelImmunitiesPrereq.CheckInProgression = true;
+                PrerequisiteFeature _aeonCompanionNinthLevelImmunitiesPrereq = new();
+                _aeonCompanionNinthLevelImmunitiesPrereq.m_Feature = _aeonCompanionEighthLevelImmunities.ToReference<BlueprintFeatureReference>();
+                _aeonCompanionNinthLevelImmunitiesPrereq.CheckInProgression = true;
 
                 //string[] _aeonSeventhLevelImmunities = { _immunityToCurseEffectsGUID, _immunityToDeathEffectsGUID, _immunityToEnergyDrainGUID };
                 var _aeonCompanionNinthLevelImmunities = FeatureConfigurator.New(AeonCompanionNinthLevelImmunitiesName, AeonCompanionNinthLevelImmunitiesGUID)
@@ -152,54 +153,70 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDescriptionKey, AeonCompanionNinthLevelImmunitiesDescription))
                     .AddFacts(new string[] { _immunityToCurseEffectsGUID, _immunityToDeathEffectsGUID, _immunityToEnergyDrainGUID })
                     //.PrerequisitePlayerHasFeature(AeonProgression)
-                    //.SetHideInUi(true)
-                    //.SetHideInCharacterSheetAndLevelUp(true)
-                    //.SetHideNotAvailableInUI(true)
+                    .SetHideInUi(true)
+                    .SetHideInCharacterSheetAndLevelUp(true)
+                    .SetHideNotAvailableInUI(true)
                     .SetIcon(AngelWardFromWeakness.Icon)
                     .Configure();
-                //_aeonCompanionNinthLevelImmunities.AddComponents(_aeonCompanionNinthLevelImmunitiesPrereq);
+                _aeonCompanionNinthLevelImmunities.AddComponents(_aeonCompanionNinthLevelImmunitiesPrereq);
 
-                BlueprintProgression.ClassWithLevel _classWithLevel = new()
-                {
-                    m_Class = Mythics.CompanionAscension.MythicCompanionClass.ToReference<BlueprintCharacterClassReference>(),
-                    AdditionalLevel = 0
-                };
-                string _aeonCompanionImmunityName = "AeonCompanionImmunityProgression";
-                string _aeonCompanionImmunityProgressionGUID = "a24bb471a444485fa586e8796095b5d4";
-                var _aeonCompanionImmunityProgression = ProgressionConfigurator.New(_aeonCompanionImmunityName, _aeonCompanionImmunityProgressionGUID)
-                    .SetDisplayName(LocalizationTool.CreateString(AeonCompanionEighthLevelImmunitiesDisplayNameKey, AeonCompanionEighthLevelImmunitiesDisplayName, false))
-                    .SetDescription(LocalizationTool.CreateString(AeonCompanionEighthLevelImmunitiesDescriptionKey, AeonCompanionEighthLevelImmunitiesDescription))
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions })
-                    //.SetIcon(AngelWardFromWeakness.Icon)
-                    .SetGiveFeaturesForPreviousLevels(true)
-                    .Configure();
-                _aeonCompanionImmunityProgression.m_Classes = new[] { _classWithLevel };
-                _aeonCompanionImmunityProgression.LevelEntries.TemporaryContext(le =>
-                {
-                    le.Where(e => e.Level == 8)
-                        .ForEach(e =>
-                        {
-                            e.m_Features.Add(_aeonCompanionEighthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
-                        });
-                    le.Where(e => e.Level == 9)
-                        .ForEach(e =>
-                        {
-                            e.m_Features.Add(_aeonCompanionNinthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
-                        });
-                });
+
+                //BlueprintFeature PowerAttackFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("9972f33f977fc724c838e59641b2fca5");
+                //BlueprintProgression.ClassWithLevel _classWithLevel = new()
+                //{
+                //    m_Class = MythicCompanionClass.ToReference<BlueprintCharacterClassReference>(),
+                //    AdditionalLevel = 0
+                //};
+                //string _aeonCompanionImmunityName = "AeonCompanionImmunityProgression";
+                //string _aeonCompanionImmunityProgressionGUID = "a24bb471a444485fa586e8796095b5d4";
+                //var _aeonCompanionImmunityProgression = ProgressionConfigurator.New(_aeonCompanionImmunityName, _aeonCompanionImmunityProgressionGUID)
+                //    .SetDisplayName(LocalizationTool.CreateString(_aeonCompanionImmunityName + "NameKey", "Aeon Companion Immunities Progression", false))
+                //    .SetDescription(LocalizationTool.CreateString(_aeonCompanionImmunityName + "DescriptionKey", "description here"))
+                //    //.AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions, FeatureGroup.MythicAbility })
+                //    //.SetIcon(AngelWardFromWeakness.Icon)
+                //    .Configure();
+                ////BlueprintProgression _aeonCompanionImmunityProgression = new()
+                ////{
+                ////    name = _aeonCompanionImmunityName,
+                ////    AssetGuid = BlueprintGuid.Parse(_aeonCompanionImmunityProgressionGUID),
+                ////    m_DisplayName = LocalizationTool.CreateString(_aeonCompanionImmunityName + "NameKey", "Aeon Companion Immunities Progression", false),
+                ////    m_Description = LocalizationTool.CreateString(_aeonCompanionImmunityName + "DescriptionKey", "description here"),
+                ////    m_DescriptionShort = LocalizationTool.CreateString(_aeonCompanionImmunityName + "DescriptionKey", "description here"),
+                //_aeonCompanionImmunityProgression.GiveFeaturesForPreviousLevels = true;
+                //_aeonCompanionImmunityProgression.Ranks = 1;
+                //_aeonCompanionImmunityProgression.IsClassFeature = true;
+                //_aeonCompanionImmunityProgression.m_Classes = new[] { _classWithLevel };
+                ////};
+                //_aeonCompanionImmunityProgression.LevelEntries.TemporaryContext(le =>
+                //        {
+                //            le.Where(e => e.Level == 8)
+                //                .ForEach(e =>
+                //                {
+                //                    e.m_Features.Add(_aeonCompanionEighthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
+                //                    e.m_Features.Add(PowerAttackFeature.ToReference<BlueprintFeatureBaseReference>());
+                //                });
+                //            le.Where(e => e.Level == 9)
+                //                .ForEach(e =>
+                //                {
+                //                    e.m_Features.Add(_aeonCompanionNinthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
+                //                });
+                //        });
+
+                //Tools.LogMessage("Built: Aeon Companion Progression -> " + _aeonCompanionImmunityProgression.AssetGuidThreadSafe);
 
                 var _aeonCompanionChoice = FeatureSelectionConfigurator.New(ShortName, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
                     .AddToFeatureGroups(FeatureGroup.MythicAdditionalProgressions)
                     .AddToFeatures(AeonBaneFeatureGUID)
-                    .AddToFeatures(_aeonCompanionImmunityProgressionGUID)
+                    //.AddToFeatures(_aeonCompanionImmunityProgression.AssetGuidThreadSafe)
+                    .AddToFeatures(_aeonCompanionEighthLevelImmunities.AssetGuidThreadSafe)
                     .SetIcon(OathOfPeace.Icon)
-                    //.PrerequisitePlayerHasFeature(AeonProgression)
+                    .PrerequisitePlayerHasFeature(AeonProgression)
                     .SetHideInUi(true)
                     .Configure();
-                Tools.LogMessage("Built: Aeon Companion Choices -> " + _aeonCompanionChoice.AssetGuidThreadSafe);
+            Tools.LogMessage("Built: Aeon Companion Choices -> " + _aeonCompanionChoice.AssetGuidThreadSafe);
             }
-        }
     }
+}
 }

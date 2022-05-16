@@ -289,7 +289,8 @@ namespace CompanionAscension.NewContent.Mythics
                         DemonCompanionChoice.Guid,
                         LichCompanionChoiceGUID,
                         TricksterCompanionChoiceGUID,
-                        MythicMindAndBody.MythicMindAndBodyGUID})
+                        MythicMindAndBody.MythicMindAndBodyGUID,
+                    "a24bb471a444485fa586e8796095b5d4"})
                     //.AddToFeatures(AngelCompanionChoice.Guid)
                     //.AddToFeatures(AzataCompanionChoice.Guid)
                     //.AddToFeatures(DemonCompanionChoice.Guid)
@@ -312,6 +313,7 @@ namespace CompanionAscension.NewContent.Mythics
 
                 // TESTING AREA
                 var _aeonCompanionChoice = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>(AeonCompanionChoice.Guid);
+                var _aeonCompanionProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("a24bb471a444485fa586e8796095b5d4");
                 var _aeonCompanionNinthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonCompanionChoice.AeonCompanionNinthLevelImmunitiesGUID);
                 // END TESTING AREA
 
@@ -334,8 +336,8 @@ namespace CompanionAscension.NewContent.Mythics
                         le.Where(e => e.Level == 9)
                             .ForEach(e =>
                             {
-                                //e.m_Features.Add(LifeBondingFriendshipSelection1.ToReference<BlueprintFeatureBaseReference>());
-                                //e.m_Features.Add(_aeonCompanionNinthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
+                                e.m_Features.Add(LifeBondingFriendshipSelection1.ToReference<BlueprintFeatureBaseReference>());
+                                e.m_Features.Add(_aeonCompanionNinthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
                             });
                     });
                     AddCompanionsToFirstAscensions();
