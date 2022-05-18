@@ -41,7 +41,7 @@ namespace CompanionAscension.NewContent.Features
         public static readonly string Guid = "095edab4d08f4b7dab6eb7450e93cfca";
         private static readonly BlueprintFeatureSelection TricksterRank1Selection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("4fbc563529717de4d92052048143e0f1");
         private static readonly string TricksterCompanionChoiceName = "TricksterCompanionChoice";
-        private static readonly string TricksterCompanionChoiceDisplayName = "Second Companion Ascension";
+        private static readonly string TricksterCompanionChoiceDisplayName = "Trickster Companion Ascension";
         private static readonly string TricksterCompanionChoiceDisplayNameKey = "TricksterCompanionChoiceName";
         private static readonly string TricksterCompanionChoiceDescription = "";
         private static readonly string TricksterCompanionChoiceDescriptionKey = "TricksterCompanionChoiceDescription";
@@ -59,7 +59,7 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                //PatchTricksterCompanionChoice();
+                PatchTricksterCompanionChoice();
                 //try { PatchTricksterCompanionChoice(); }
                 //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
@@ -68,9 +68,13 @@ namespace CompanionAscension.NewContent.Features
             {
                 Tools.LogMessage("New Content: Building Trickster Companion Choices");
 
+                UnitState unitState = new();
+                //AddMechanicsFeature
+
                 var _tricksterCompanionChoice = FeatureSelectionConfigurator.New(TricksterCompanionChoiceName, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(TricksterCompanionChoiceDisplayNameKey, TricksterCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(TricksterCompanionChoiceDescriptionKey, TricksterCompanionChoiceDescription))
+                    //.AddMechanicsFeature(AddMechanicsFeature)
                     //.PrerequisitePlayerHasFeature(TricksterProgression)
                     //.SetHideInUi(true)
                     .Configure();

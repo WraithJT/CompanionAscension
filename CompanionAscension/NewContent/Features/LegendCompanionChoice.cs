@@ -33,17 +33,17 @@ using System.Text.RegularExpressions;
 using CompanionAscension.NewContent.Components;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Abilities;
+using static CompanionAscension.NewContent.Components.CustomMechanicsFeatures;
 
 namespace CompanionAscension.NewContent.Features
 {
     class LegendCompanionChoice
     {
         public static readonly string LegendCompanionChoiceGUID = "4387b5bc3f424b2fa9575d4620d9489c";
-        //private static readonly BlueprintFeatureSelection LegendUniqueAbilitiesSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("1f646b820a37d3d4a8ab116a24ee0022");
         private static readonly string LegendCompanionChoiceName = "LegendCompanionChoice";
-        private static readonly string LegendCompanionChoiceDisplayName = "Second Companion Ascension";
+        private static readonly string LegendCompanionChoiceDisplayName = "Legend Companion Ascension";
         private static readonly string LegendCompanionChoiceDisplayNameKey = "LegendCompanionChoiceName";
-        private static readonly string LegendCompanionChoiceDescription = "";
+        private static readonly string LegendCompanionChoiceDescription = "At 8th mythic rank, Legend's companions can gain further power.";
         private static readonly string LegendCompanionChoiceDescriptionKey = "LegendCompanionChoiceDescription";
 
         private static readonly string LegendProgression = "905383229aaf79e4b8d7e2d316b68715";
@@ -60,21 +60,71 @@ namespace CompanionAscension.NewContent.Features
                 Initialized = true;
 
                 //PatchLegendCompanionChoice();
-                //try { PatchLegendCompanionChoice(); }
-                //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
+                try { PatchLegendCompanionChoice(); }
+                catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
 
             public static void PatchLegendCompanionChoice()
             {
                 Tools.LogMessage("New Content: Building Legend Companion Choices");
 
+                string _legendAbilityScoreBonusName = "LegendAbilityScoreBonus";
+                string _legendAbilityScoreBonusGUID = "bc6e0de28fce416e90c12f688fef95c5";
+                string _legendAbilityScoreBonusDisplayName = "Legendary Ability Scores";
+                string _legendAbilityScoreBonusDisplayNameKey = "LegendAbilityScoreBonusNameKey";
+                string _legendAbilityScoreBonusDescription =
+                    "All of your ability scores are increased by 2.";
+                string _legendAbilityScoreBonusDescriptionKey = "LegendAbilityScoreBonusDescriptionKey";
+                var _legendAbilityScoreBonus = FeatureConfigurator.New(_legendAbilityScoreBonusName, _legendAbilityScoreBonusGUID)
+                    .SetDisplayName(LocalizationTool.CreateString(_legendAbilityScoreBonusDisplayNameKey, _legendAbilityScoreBonusDisplayName, false))
+                    .SetDescription(LocalizationTool.CreateString(_legendAbilityScoreBonusDescriptionKey, _legendAbilityScoreBonusDescription))
+                    .AddStatBonus(
+                        stat: StatType.Strength,
+                        descriptor: ModifierDescriptor.None,
+                        value: 2)
+                    .AddStatBonus(
+                        stat: StatType.Dexterity,
+                        descriptor: ModifierDescriptor.None,
+                        value: 2)
+                    .AddStatBonus(
+                        stat: StatType.Constitution,
+                        descriptor: ModifierDescriptor.None,
+                        value: 2)
+                    .AddStatBonus(
+                        stat: StatType.Wisdom,
+                        descriptor: ModifierDescriptor.None,
+                        value: 2)
+                    .AddStatBonus(
+                        stat: StatType.Intelligence,
+                        descriptor: ModifierDescriptor.None,
+                        value: 2)
+                    .AddStatBonus(
+                        stat: StatType.Charisma,
+                        descriptor: ModifierDescriptor.None,
+                        value: 2)
+                    .Configure();
+
+                string _legendLegendaryCompanionName = "LegendLegendaryCompanion";
+                string _legendLegendaryCompanionGUID = "8DF46707-8090-464E-8509-4D7E85D81938";
+                string _legendLegendaryCompanionDisplayName = "Legendary Companion";
+                string _legendLegendaryCompanionDisplayNameKey = "LegendLegendaryCompanionNameKey";
+                string _legendLegendaryCompanionDescription =
+                    "Your level cap has become 28 (you still can only get 20 levels in one character " +
+                    "class), and the amount of XP needed to level up is drastically decreased.";
+                string _legendLegendaryCompanionDescriptionKey = "LegendLegendaryCompanionDescriptionKey";
+                var _legendLegendaryCompanionFeature = FeatureConfigurator.New(_legendLegendaryCompanionName, _legendLegendaryCompanionGUID)
+                    .SetDisplayName(LocalizationTool.CreateString(_legendLegendaryCompanionDisplayNameKey, _legendLegendaryCompanionDisplayName, false))
+                    .SetDescription(LocalizationTool.CreateString(_legendLegendaryCompanionDescriptionKey, _legendLegendaryCompanionDescription))
+                    .Configure();
+                _legendLegendaryCompanionFeature.AddComponent<AddCustomMechanicsFeature>(c => { c.Feature = CustomMechanicsFeature.LegendaryCompanion; });
+
                 var _legendCompanionChoice = FeatureSelectionConfigurator.New(LegendCompanionChoiceName, LegendCompanionChoiceGUID)
                     .SetDisplayName(LocalizationTool.CreateString(LegendCompanionChoiceDisplayNameKey, LegendCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(LegendCompanionChoiceDescriptionKey, LegendCompanionChoiceDescription))
+                    .AddToFeatures(new string[] { _legendLegendaryCompanionFeature.AssetGuidThreadSafe, _legendAbilityScoreBonus.AssetGuidThreadSafe })
                     //.PrerequisitePlayerHasFeature(LegendProgression)
                     //.SetHideInUi(true)
                     .Configure();
-                //_legendCompanionChoice.m_AllFeatures = LegendUniqueAbilitiesSelection.m_AllFeatures;
                 Tools.LogMessage("Built: Legend Companion Choices -> " + _legendCompanionChoice.AssetGuidThreadSafe);
             }
         }

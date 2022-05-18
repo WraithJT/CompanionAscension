@@ -149,13 +149,77 @@ namespace CompanionAscension.NewContent.Features
                 //    .AddSpellbookLevel()
                 //    .Configure();
                 //_angelCompanionSpellbook.AddSelectionCallback(AngelIncorporateSpellbook, MythicCompanionProgression);
-                
+
                 // book selection shows up but can't click anything
+
+                var _angelCompanionAngelTypeBonus = FeatureConfigurator.New("AngelProtections", "c75c84aaf1784c6996ad65e2caaa6a0c")
+                    .SetDisplayName(LocalizationTool.CreateString("AngelProtectionsKey", "Angel Protections", false))
+                    .SetDescription(LocalizationTool.CreateString("AngelProtectionsDescriptionKey",
+                        "You gain a +2 deflection bonus to AC and +2 resistance " +
+                        "bonus on saving throws against the attacks and spells from Evil creatures."))
+                    .AddSavingThrowBonusAgainstAlignment(
+                        alignment: AlignmentComponent.Evil, 
+                        descriptor: ModifierDescriptor.Resistance, 
+                        bonus: 2)
+                    .AddArmorClassBonusAgainstAlignment(
+                        alignment: AlignmentComponent.Evil, 
+                        descriptor: ModifierDescriptor.Deflection, 
+                        bonus: 2)
+                    .Configure();
+
+                string AcidImmunityGUID = "c994f1a0dfce1c54f94420588da61617";
+                string ImmunityToPetrificationGUID = "b625283fc6eb72c47a2fc5e2a3ff9eb4";
+                string ColdImmunityGUID = "9ae23798a9284e044ad2716a772a410e";
+                string FireResistance10GUID = "24700a71dd3dc844ea585345f6dd18f6";
+                string ElectricityResistance10GUID = "a5049e0d1b1a1454aa1a221a6e20b714";
+                string FeatureWingsAngelGUID = "d9bd0fde6deb2e44a93268f2dfb3e169";
+
+                string[] _angelCompanionAngelFacts = new string[] 
+                {
+                    AcidImmunityGUID,
+                    ImmunityToPetrificationGUID,
+                    ColdImmunityGUID,
+                    FireResistance10GUID,
+                    ElectricityResistance10GUID,
+                    FeatureWingsAngelGUID,
+                    _angelCompanionAngelTypeBonus.AssetGuidThreadSafe
+                };
+
+                string _angelCompanionAngelTypeGUID = "ea5c6dba3dab4d87b42578894b31151a";
+                string _angelCompanionAngelTypeName = "AngelCompanion";
+                string _angelCompanionAngelTypeDisplayName = "Angel Companion";
+                string _angelCompanionAngelTypeDisplayNameKey = "AngelCompanionNameKey";
+                string _angelCompanionAngelTypeDescription =
+                    "The Angel's companion gains some of the traits of an Angel creature. " +
+                    "\nResistances and immunities. Angel companions gain resist fire 10, resist " +
+                    "electricity 10, and immunity to acid and cold effects, as well as petrification." +
+                    "\nWings. They gain a pair of wings that grant a +3 dodge bonus to AC against " +
+                    "melee attacks and an immunity to ground based effects, such as difficult terrain." +
+                    "\nProtections. They gain a further +2 deflection bonus to AC and +2 resistance " +
+                    "bonus on saving throws against the attacks and spells from Evil creatures.";
+                string _angelCompanionAngelTypeDescriptionKey = "AngelTypeCompanionDescriptionKey";
+                var _angelCompanionAngelType = FeatureConfigurator.New(_angelCompanionAngelTypeName, _angelCompanionAngelTypeGUID)
+                    .SetDisplayName(LocalizationTool.CreateString(_angelCompanionAngelTypeDisplayNameKey, _angelCompanionAngelTypeDisplayName, false))
+                    .SetDescription(LocalizationTool.CreateString(_angelCompanionAngelTypeDescriptionKey, _angelCompanionAngelTypeDescription))
+                    .AddFacts(_angelCompanionAngelFacts)
+                    .Configure();
+
+                // SubtypeAngel:            65d9b6889df167044abb624e2160c43b
+                //  AcidImmunity:           c994f1a0dfce1c54f94420588da61617
+                //  ImmunityToPetrification:b625283fc6eb72c47a2fc5e2a3ff9eb4
+                //  ColdImmunity:           9ae23798a9284e044ad2716a772a410e
+                //  FireResistance10:       24700a71dd3dc844ea585345f6dd18f6
+                //  ElectricityResistance10:a5049e0d1b1a1454aa1a221a6e20b714
+                // FeatureWingsAngel:       d9bd0fde6deb2e44a93268f2dfb3e169
+
+                // +2 against Evil
+                // SavingThrowBonusAgainstDescriptor -- resistance
+                // ACBonusAgainstFactOwner -- deflection
 
                 var _angelCompanionChoice = FeatureSelectionConfigurator.New(ShortName, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
-                    .AddToFeatures(AngelSwordFeatureGUID)
+                    .AddToFeatures(new string[] { AngelSwordFeatureGUID, _angelCompanionAngelTypeGUID })
                     //.AddToFeatures(_angelCompanionSpellbookGUID)
                     //.PrerequisitePlayerHasFeature(AngelProgression)
                     .SetHideInUi(true)

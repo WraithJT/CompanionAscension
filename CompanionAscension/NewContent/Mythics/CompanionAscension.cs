@@ -34,6 +34,9 @@ using CompanionAscension.NewContent.Components;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Abilities;
 using CompanionAscension.NewContent.Features;
+using static CompanionAscension.NewContent.Components.CustomMechanicsFeatures;
+using Kingmaker.Blueprints.Items.Weapons;
+using Kingmaker.RuleSystem.Rules;
 
 namespace CompanionAscension.NewContent.Mythics
 {
@@ -266,6 +269,8 @@ namespace CompanionAscension.NewContent.Mythics
                 //csm.m_MythicSpellList = lichbookselect.m_MythicSpellList;
                 //Tools.LogMessage("Built CSM: " + csm.AssetGuidThreadSafe);
                 // END TESTING
+
+
 
                 var _companionAscensionChoice4 = FeatureSelectionConfigurator.New(CompanionAscensionChoice4Name, CompanionAscensionChoice4GUID)
                     .SetDisplayName(LocalizationTool.CreateString(CompanionAscensionChoice4DisplayNameKey, CompanionAscensionChoice4DisplayName, false))
