@@ -9,12 +9,14 @@ namespace CompanionAscension
     static class Main
     {
         internal static UnityModManager.ModEntry.ModLogger logger;
+        internal static UnityModManager.ModEntry ModContext_CA;
         public static Settings Settings;
         public static bool Enabled;
 
         static bool Load(UnityModManager.ModEntry modEntry)
         {
             var harmony = new Harmony(modEntry.Info.Id);
+            ModContext_CA = modEntry;
             //Harmony.DEBUG = true;
             logger = modEntry.Logger;
             Settings = Settings.Load<Settings>(modEntry);

@@ -58,9 +58,9 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                PatchMythicMindAndBody();
-                //try { PatchMythicMindAndBody(); }
-                //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
+                //PatchMythicMindAndBody();
+                try { PatchMythicMindAndBody(); }
+                catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
 
             public static void PatchMythicMindAndBody()

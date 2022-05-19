@@ -183,7 +183,12 @@ namespace CompanionAscension.NewContent.Mythics
                 RemoveDefaultProgressions();
                 PatchCompanionAscension();
                 ReaddDefaultProgressions();
-                //try { PatchCompanionAscension(); }
+                //try 
+                //{
+                //    RemoveDefaultProgressions();
+                //    PatchCompanionAscension();
+                //    ReaddDefaultProgressions();
+                //}
                 //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
             public static void PatchCompanionAscension()
