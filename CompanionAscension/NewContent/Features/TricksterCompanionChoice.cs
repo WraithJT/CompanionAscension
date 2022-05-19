@@ -74,9 +74,11 @@ namespace CompanionAscension.NewContent.Features
                 var _tricksterCompanionChoice = FeatureSelectionConfigurator.New(TricksterCompanionChoiceName, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(TricksterCompanionChoiceDisplayNameKey, TricksterCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(TricksterCompanionChoiceDescriptionKey, TricksterCompanionChoiceDescription))
-                    //.AddMechanicsFeature(AddMechanicsFeature)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_TricksterAscension.png"))
                     //.PrerequisitePlayerHasFeature(TricksterProgression)
-                    //.SetHideInUi(true)
+                    .SetHideInUi(true)
+                    .SetHideInCharacterSheetAndLevelUp(true)
+                    .SetHideNotAvailableInUI(true)
                     .Configure();
                 _tricksterCompanionChoice.m_AllFeatures = TricksterRank1Selection.m_AllFeatures;
                 Tools.LogMessage("Built: Trickster Companion Choices -> " + _tricksterCompanionChoice.AssetGuidThreadSafe);

@@ -47,6 +47,7 @@ namespace CompanionAscension.NewContent.Features
         private static readonly string GoldDragonCompanionChoiceDescriptionKey = "GoldDragonCompanionChoiceDescription";
 
         private static readonly string GoldDragonProgression = "a6fbca43902c6194c947546e89af64bd";
+        private static readonly BlueprintProgression BloodlineDraconicGoldProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("6c67ef823db8d7d45bb0ef82f959743d");
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_patch
@@ -71,8 +72,11 @@ namespace CompanionAscension.NewContent.Features
                 var _goldDragonCompanionChoice = FeatureSelectionConfigurator.New(GoldDragonCompanionChoiceName, GoldDragonCompanionChoiceGUID)
                     .SetDisplayName(LocalizationTool.CreateString(GoldDragonCompanionChoiceDisplayNameKey, GoldDragonCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(GoldDragonCompanionChoiceDescriptionKey, GoldDragonCompanionChoiceDescription))
+                    .SetIcon(BloodlineDraconicGoldProgression.Icon)
                     //.PrerequisitePlayerHasFeature(GoldDragonProgression)
-                    //.SetHideInUi(true)
+                    .SetHideInUi(true)
+                    .SetHideInCharacterSheetAndLevelUp(true)
+                    .SetHideNotAvailableInUI(true)
                     .Configure();
                 //_goldDragonCompanionChoice.m_AllFeatures = GoldDragonUniqueAbilitiesSelection.m_AllFeatures;
                 Tools.LogMessage("Built: Gold Dragon Companion Choices -> " + _goldDragonCompanionChoice.AssetGuidThreadSafe);

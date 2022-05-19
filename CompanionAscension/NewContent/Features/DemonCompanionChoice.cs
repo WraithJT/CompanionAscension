@@ -52,7 +52,7 @@ namespace CompanionAscension.NewContent.Features
 
         private static readonly BlueprintFeature DemonRageFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("6a8af3f208a0fa747a465b70b7043019");
         private static readonly BlueprintFeature DemonChargeFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("9586810ab12098f4e979d5a13a4e94df");
-        
+
         private static readonly BlueprintFeature BabauAspectFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("99a34a0fa0c3a154fbc5b11fe2d18009");
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
@@ -102,7 +102,7 @@ namespace CompanionAscension.NewContent.Features
                 string _demonCompanionAspectOfBabauGUID = "b3cc3715391248f2993c24c4688d7ac6";
                 string _demonCompanionAspectOfBabauDisplayName = "Aspect of Babau";
                 string _demonCompanionAspectOfBabauDisplayNameKey = "CompanionAspectOfBabauNameKey";
-                string _demonCompanionAspectOfBabauDescription = 
+                string _demonCompanionAspectOfBabauDescription =
                     "You adopt the aspect of Babau, gaining a bonus on all Mobility, Trickery, " +
                     "and Stealth skill checks equal to half of your mythic rank plus one. Those " +
                     "bonuses do not stack with other bonuses from demonic aspects.";
@@ -124,7 +124,7 @@ namespace CompanionAscension.NewContent.Features
                 string _demonCompanionAspectOfBrimorakGUID = "1135699c0d6f4450b7565bc4ad23a277";
                 string _demonCompanionAspectOfBrimorakDisplayName = "Aspect of Brimorak";
                 string _demonCompanionAspectOfBrimorakDisplayNameKey = "CompanionAspectOfBrimorakNameKey";
-                string _demonCompanionAspectOfBrimorakDescription = 
+                string _demonCompanionAspectOfBrimorakDescription =
                     "You adopt the aspect of Brimorak, gaining a bonus on all Mobility, Trickery, " +
                     "and Use Magic Device skill checks equal to half of your mythic rank plus one. " +
                     "Those bonuses do not stack with other bonuses from demonic aspects.";
@@ -146,7 +146,7 @@ namespace CompanionAscension.NewContent.Features
                 string _demonCompanionAspectOfIncubusGUID = "b40ecca2e1e34771bf6441b9c0741400";
                 string _demonCompanionAspectOfIncubusDisplayName = "Aspect of Incubus";
                 string _demonCompanionAspectOfIncubusDisplayNameKey = "CompanionAspectOfIncubusNameKey";
-                string _demonCompanionAspectOfIncubusDescription = 
+                string _demonCompanionAspectOfIncubusDescription =
                     "You adopt the aspect of Incubus, gaining a bonus on all Persuasion, Athletics, " +
                     "and Lore (nature) skill checks equal to half of your mythic rank plus one. Those " +
                     "bonuses do not stack with other bonuses from demonic aspects.";
@@ -168,7 +168,7 @@ namespace CompanionAscension.NewContent.Features
                 string _demonCompanionAspectOfKalavakusGUID = "a45213d9014f469db6f948a8bf2b4d81";
                 string _demonCompanionAspectOfKalavakusDisplayName = "Aspect of Kalavakus";
                 string _demonCompanionAspectOfKalavakusDisplayNameKey = "CompanionAspectOfKalavakusNameKey";
-                string _demonCompanionAspectOfKalavakusDescription = 
+                string _demonCompanionAspectOfKalavakusDescription =
                     "You adopt the aspect of Kalavakus, gaining a bonus on all Perception, Athletics, " +
                     "and Use Magic Device skill checks equal to half of your mythic rank plus one. Those " +
                     "bonuses do not stack with other bonuses from demonic aspects.";
@@ -190,7 +190,7 @@ namespace CompanionAscension.NewContent.Features
                 string _demonCompanionAspectOfNabasuGUID = "d8d930a7d1424ed09c8d587405bab4b7";
                 string _demonCompanionAspectOfNabasuDisplayName = "Aspect of Nabasu";
                 string _demonCompanionAspectOfNabasuDisplayNameKey = "CompanionAspectOfNabasuNameKey";
-                string _demonCompanionAspectOfNabasuDescription = 
+                string _demonCompanionAspectOfNabasuDescription =
                     "You adopt the aspect of Nabasu, gaining a bonus on all Lore (religion), Perception, " +
                     "and Use Magic Device skill checks equal to half of your mythic rank plus one. Those " +
                     "bonuses do not stack with other bonuses from demonic aspects.";
@@ -212,7 +212,7 @@ namespace CompanionAscension.NewContent.Features
                 string _demonCompanionAspectOfSchirGUID = "56b48c98a2914688b7139c55417686e2";
                 string _demonCompanionAspectOfSchirDisplayName = "Aspect of Schir";
                 string _demonCompanionAspectOfSchirDisplayNameKey = "CompanionAspectOfSchirNameKey";
-                string _demonCompanionAspectOfSchirDescription = 
+                string _demonCompanionAspectOfSchirDescription =
                     "You adopt the aspect of Schir, gaining a bonus on all Lore (nature), Mobility, " +
                     "and Athletics skill checks equal to half of your mythic rank plus one. Those " +
                     "bonuses do not stack with other bonuses from demonic aspects.";
@@ -234,7 +234,7 @@ namespace CompanionAscension.NewContent.Features
                 string _demonCompanionAspectOfSuccubusGUID = "db8cc17589d54f80836771c47a364738";
                 string _demonCompanionAspectOfSuccubusDisplayName = "Aspect of Succubus";
                 string _demonCompanionAspectOfSuccubusDisplayNameKey = "CompanionAspectOfSuccubusNameKey";
-                string _demonCompanionAspectOfSuccubusDescription = 
+                string _demonCompanionAspectOfSuccubusDescription =
                     "You adopt the aspect of Succubus, gaining a bonus on all Persuasion, Perception, and " +
                     "Knowledge (world) skill checks equal to half of your mythic rank plus one. Those " +
                     "bonuses do not stack with other bonuses from demonic aspects.";
@@ -256,7 +256,7 @@ namespace CompanionAscension.NewContent.Features
                 string _demonCompanionAspectOfVrockGUID = "df86167a7957445cb26f1e6fbad955ee";
                 string _demonCompanionAspectOfVrockDisplayName = "Aspect of Vrock";
                 string _demonCompanionAspectOfVrockDisplayNameKey = "CompanionAspectOfVrockNameKey";
-                string _demonCompanionAspectOfVrockDescription = 
+                string _demonCompanionAspectOfVrockDescription =
                     "You adopt the aspect of Vrock, gaining a bonus on all Knowledge (arcana), Knowledge (world), " +
                     "and Lore (religion) skill checks equal to half of your mythic rank plus one. Those " +
                     "bonuses do not stack with other bonuses from demonic aspects.";
@@ -312,7 +312,7 @@ namespace CompanionAscension.NewContent.Features
                 string _demonCompanionAspectOfBalorGUID = "f2a15d910b3a4b45b2e99f36a8b3cbd6";
                 string _demonCompanionAspectOfBalorDisplayName = "Aspect of Balor";
                 string _demonCompanionAspectOfBalorDisplayNameKey = "CompanionAspectOfBalorNameKey";
-                string _demonCompanionAspectOfBalorDescription = 
+                string _demonCompanionAspectOfBalorDescription =
                     "You adopt the aspect of Balor, gaining a bonus to Constitution score equal to half of your mythic rank plus one.";
                 string _demonCompanionAspectOfBalorDescriptionKey = "CompanionAspectOfBalorDescriptionKey";
                 var _demonCompanionAspectOfBalor = FeatureConfigurator.New(_demonCompanionAspectOfBalorName, _demonCompanionAspectOfBalorGUID)
@@ -461,7 +461,7 @@ namespace CompanionAscension.NewContent.Features
                 string _demonCompanionRageGUID = "0d77eb210ddb4d55b392cbbc5afe7540";
                 string _demonCompanionRageDisplayName = "Demonic Rage";
                 string _demonCompanionRageDisplayNameKey = "CompanionDemonRageNameKey";
-                string _demonCompanionRageDescription = 
+                string _demonCompanionRageDescription =
                     "The power of the Abyss courses through the Demon's companion waiting to be unleashed. " +
                     "The Demon's companion can enter a demonic rage as a free action. The demonic rage lasts " +
                     "until the end of combat. While in demonic rage, the Demon's companion gains +2 bonus on " +
@@ -513,6 +513,8 @@ namespace CompanionAscension.NewContent.Features
                         _demonAspectChoice.AssetGuidThreadSafe
                     })
                     //.PrerequisitePlayerHasFeature(DemonProgression)
+                    .SetHideInCharacterSheetAndLevelUp(true)
+                    .SetHideNotAvailableInUI(true)
                     .SetHideInUi(true)
                     .Configure();
                 Tools.LogMessage("Built: Demon Companion Choices -> " + _demonCompanionChoice.AssetGuidThreadSafe);

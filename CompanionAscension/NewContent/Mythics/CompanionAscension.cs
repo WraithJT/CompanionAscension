@@ -198,7 +198,7 @@ namespace CompanionAscension.NewContent.Mythics
                 var _companionFirstAscension = FeatureSelectionConfigurator.New(CompanionFirstAscensionName, CompanionFirstAscensionGUID)
                     .SetDisplayName(LocalizationTool.CreateString(CompanionFirstAscensionDisplayNameKey, CompanionFirstAscensionDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(CompanionFirstAscensionDescriptionKey, CompanionFirstAscensionDescription))
-                    .SetIcon(Guidance.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_Ascension.png"))
                     .Configure();
                 _companionFirstAscension.m_AllFeatures = FirstAscensionSelection.m_AllFeatures;
                 Tools.LogMessage("Built: Companion First Ascension -> " + _companionFirstAscension.AssetGuidThreadSafe);
@@ -206,7 +206,7 @@ namespace CompanionAscension.NewContent.Mythics
                 var _companionAscensionMythicAbility = FeatureSelectionConfigurator.New(CompanionAscensionMythicAbilityName, CompanionAscensionMythicAbilityGUID)
                     .SetDisplayName(LocalizationTool.CreateString(CompanionAscensionMythicAbilityDisplayNameKey, CompanionAscensionMythicAbilityDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(CompanionAscensionMythicAbilityDescriptionKey, CompanionAscensionMythicAbilityDescription))
-                    .SetIcon(RemoveDisease.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_AscensionMythicAbility.png"))
                     .Configure();
                 _companionAscensionMythicAbility.m_AllFeatures = MythicAbilitySelection.m_AllFeatures.Where(c => (
                     c.deserializedGuid != ExtraMythicFeatMythicAbilitySelection.ToReference<BlueprintFeatureReference>().deserializedGuid
@@ -281,7 +281,7 @@ namespace CompanionAscension.NewContent.Mythics
                     .SetDisplayName(LocalizationTool.CreateString(CompanionAscensionChoice4DisplayNameKey, CompanionAscensionChoice4DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(CompanionAscensionChoice4DescriptionKey, CompanionAscensionChoice4Description))
                     .SetFeatureGroups(FeatureGroup.MythicAbility, FeatureGroup.MythicFeat, FeatureGroup.Feat, FeatureGroup.MythicAdditionalProgressions)
-                    .SetIcon(MythicAbilitySelection.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_CompanionAscensionChoice.png"))
                     .AddToFeatures(new string[] {
                         CompanionAscensionMythicFeatGUID,
                         CompanionAscensionMythicAbilityGUID,
@@ -292,7 +292,7 @@ namespace CompanionAscension.NewContent.Mythics
                 var _companionSecondAscension = FeatureSelectionConfigurator.New(CompanionSecondAscensionName, CompanionSecondAscensionGUID)
                     .SetDisplayName(LocalizationTool.CreateString(CompanionSecondAscensionDisplayNameKey, CompanionSecondAscensionDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(CompanionSecondAscensionDescriptionKey, CompanionSecondAscensionDescription))
-                    .SetIcon(Guidance.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_Ascension.png"))
                     .AddToFeatures(new string[] {
                         AeonCompanionChoice.Guid,
                         AngelCompanionChoice.Guid,
@@ -314,7 +314,7 @@ namespace CompanionAscension.NewContent.Mythics
                     .SetDisplayName(LocalizationTool.CreateString(CompanionAscensionChoice8DisplayNameKey, CompanionAscensionChoice8DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(CompanionAscensionChoice8DescriptionKey, CompanionAscensionChoice8Description))
                     .SetFeatureGroups(FeatureGroup.MythicAbility, FeatureGroup.MythicFeat, FeatureGroup.Feat, FeatureGroup.MythicAdditionalProgressions)
-                    .SetIcon(MythicAbilitySelection.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_CompanionAscensionChoice.png"))
                     .AddToFeatures(new string[]
                     {
                         _companionAscensionMythicFeat.AssetGuidThreadSafe,
@@ -325,7 +325,7 @@ namespace CompanionAscension.NewContent.Mythics
                 Tools.LogMessage("Built: Companion Second Ascension bonus choice -> " + _companionAscensionChoice8.AssetGuidThreadSafe);
 
                 // TESTING AREA
-                var _aeonCompanionChoice = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>(AeonCompanionChoice.Guid);
+                //var _aeonCompanionChoice = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>(AeonCompanionChoice.Guid);
                 //var _aeonCompanionProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("a24bb471a444485fa586e8796095b5d4");
                 var _aeonCompanionNinthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonCompanionChoice.AeonCompanionNinthLevelImmunitiesGUID);
                 // END TESTING AREA

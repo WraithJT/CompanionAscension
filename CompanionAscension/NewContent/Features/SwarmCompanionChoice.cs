@@ -72,7 +72,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(SwarmCompanionChoiceDisplayNameKey, SwarmCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(SwarmCompanionChoiceDescriptionKey, SwarmCompanionChoiceDescription))
                     //.PrerequisitePlayerHasFeature(SwarmProgression)
-                    //.SetHideInUi(true)
+                    .SetHideInUi(true)
+                    .SetHideInCharacterSheetAndLevelUp(true)
+                    .SetHideNotAvailableInUI(true)
                     .Configure();
                 //_swarmCompanionChoice.m_AllFeatures = SwarmUniqueAbilitiesSelection.m_AllFeatures;
                 Tools.LogMessage("Built: Swarm Companion Choices -> " + _swarmCompanionChoice.AssetGuidThreadSafe);

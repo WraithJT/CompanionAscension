@@ -140,7 +140,7 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(AeonCompanionEighthLevelImmunitiesDisplayNameKey, AeonCompanionEighthLevelImmunitiesDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(AeonCompanionEighthLevelImmunitiesDescriptionKey, AeonCompanionEighthLevelImmunitiesDescription))
                     .AddFacts(AeonFifthLevelImmunitiesList)
-                    .SetIcon(AngelWardFromWeakness.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_AeonCompanionImmunities.png"))
                     .Configure();
 
                 PrerequisiteFeature _aeonCompanionNinthLevelImmunitiesPrereq = new();
@@ -214,9 +214,11 @@ namespace CompanionAscension.NewContent.Features
                     .AddToFeatures(AeonBaneFeatureGUID)
                     //.AddToFeatures(_aeonCompanionImmunityProgression.AssetGuidThreadSafe)
                     .AddToFeatures(_aeonCompanionEighthLevelImmunities.AssetGuidThreadSafe)
-                    .SetIcon(OathOfPeace.Icon)
-                    .PrerequisitePlayerHasFeature(AeonProgression)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_AeonCompanionChoice.png"))
+                    //.PrerequisitePlayerHasFeature(AeonProgression)
                     .SetHideInUi(true)
+                    .SetHideNotAvailableInUI(true)
+                    .SetHideInCharacterSheetAndLevelUp(true)
                     .Configure();
                 Tools.LogMessage("Built: Aeon Companion Choices -> " + _aeonCompanionChoice.AssetGuidThreadSafe);
             }

@@ -72,7 +72,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(DevilCompanionChoiceDisplayNameKey, DevilCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DevilCompanionChoiceDescriptionKey, DevilCompanionChoiceDescription))
                     //.PrerequisitePlayerHasFeature(DevilProgression)
-                    //.SetHideInUi(true)
+                    .SetHideInUi(true)
+                    .SetHideInCharacterSheetAndLevelUp(true)
+                    .SetHideNotAvailableInUI(true)
                     .Configure();
                 //_devilCompanionChoice.m_AllFeatures = DevilUniqueAbilitiesSelection.m_AllFeatures;
                 Tools.LogMessage("Built: Devil Companion Choices -> " + _devilCompanionChoice.AssetGuidThreadSafe);

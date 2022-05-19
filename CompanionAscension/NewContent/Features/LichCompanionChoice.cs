@@ -87,7 +87,8 @@ namespace CompanionAscension.NewContent.Features
                 var _lichCompanionUndead = FeatureConfigurator.New(_lichCompanionUndeadName, _lichCompanionUndeadGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_lichCompanionUndeadDisplayNameKey, _lichCompanionUndeadDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_lichCompanionUndeadDescriptionKey, _lichCompanionUndeadDescription))
-                    .SetIcon(AnimateDead.Icon)
+                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions })
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_LichUndeadCompanion.png"))
                     .Configure();
                 _lichCompanionUndead.Components = _undeadType.Components;
 
@@ -102,16 +103,20 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(_lichAspectChoiceDisplayNameKey, _lichAspectChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_lichAspectChoiceDescriptionKey, _lichAspectChoiceDescription))
                     .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.LichUniqueAbility, FeatureGroup.MythicAdditionalProgressions })
-                    .SetIcon(Scare.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_LichPowers.png"))
                     .Configure();
                 _lichCompanionAbilities.AddSelectionCallback(LichUniqueAbilitiesSelection, MythicCompanionProgression);
 
                 var _lichCompanionChoice = FeatureSelectionConfigurator.New(LichCompanionChoiceName, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(LichCompanionChoiceDisplayNameKey, LichCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(LichCompanionChoiceDescriptionKey, LichCompanionChoiceDescription))
+                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions })
                     .AddToFeatures(new string[] { _lichCompanionUndead.AssetGuidThreadSafe, _lichCompanionAbilities.AssetGuidThreadSafe })
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_LichCompanionChoice.png"))
                     //.PrerequisitePlayerHasFeature(LichProgression)
-                    //.SetHideInUi(true)
+                    .SetHideInUi(true)
+                    .SetHideInCharacterSheetAndLevelUp(true)
+                    .SetHideNotAvailableInUI(true)
                     .Configure();
                 Tools.LogMessage("Built: Lich Companion Choices -> " + _lichCompanionChoice.AssetGuidThreadSafe);
             }

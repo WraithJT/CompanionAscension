@@ -123,7 +123,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString(LegendCompanionChoiceDescriptionKey, LegendCompanionChoiceDescription))
                     .AddToFeatures(new string[] { _legendLegendaryCompanionFeature.AssetGuidThreadSafe, _legendAbilityScoreBonus.AssetGuidThreadSafe })
                     //.PrerequisitePlayerHasFeature(LegendProgression)
-                    //.SetHideInUi(true)
+                    .SetHideInUi(true)
+                    .SetHideInCharacterSheetAndLevelUp(true)
+                    .SetHideNotAvailableInUI(true)
                     .Configure();
                 Tools.LogMessage("Built: Legend Companion Choices -> " + _legendCompanionChoice.AssetGuidThreadSafe);
             }

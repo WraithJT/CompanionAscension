@@ -187,7 +187,7 @@ namespace CompanionAscension.NewContent.Features
 
                 string _angelCompanionAngelTypeGUID = "ea5c6dba3dab4d87b42578894b31151a";
                 string _angelCompanionAngelTypeName = "AngelCompanion";
-                string _angelCompanionAngelTypeDisplayName = "Angel Companion";
+                string _angelCompanionAngelTypeDisplayName = "Angelic Companion";
                 string _angelCompanionAngelTypeDisplayNameKey = "AngelCompanionNameKey";
                 string _angelCompanionAngelTypeDescription =
                     "The Angel's companion gains some of the traits of an Angel creature. " +
@@ -201,6 +201,7 @@ namespace CompanionAscension.NewContent.Features
                 var _angelCompanionAngelType = FeatureConfigurator.New(_angelCompanionAngelTypeName, _angelCompanionAngelTypeGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_angelCompanionAngelTypeDisplayNameKey, _angelCompanionAngelTypeDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_angelCompanionAngelTypeDescriptionKey, _angelCompanionAngelTypeDescription))
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_AngelicCompanion.png"))
                     .AddFacts(_angelCompanionAngelFacts)
                     .Configure();
 
@@ -220,9 +221,12 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
                     .AddToFeatures(new string[] { AngelSwordFeatureGUID, _angelCompanionAngelTypeGUID })
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_AngelCompanionChoice.png"))
                     //.AddToFeatures(_angelCompanionSpellbookGUID)
                     //.PrerequisitePlayerHasFeature(AngelProgression)
                     .SetHideInUi(true)
+                    .SetHideInCharacterSheetAndLevelUp(true)
+                    .SetHideNotAvailableInUI(true)
                     .Configure();
                 //_angelCompanionChoice.m_AllFeatures = LichUniqueAbilitiesSelection.m_AllFeatures;
                 Tools.LogMessage("Built: Angel Companion Choices -> " + _angelCompanionChoice.AssetGuidThreadSafe);

@@ -73,7 +73,8 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
                     .SetIcon(AzataSuperpowersSelection.Icon)
-                    .PrerequisitePlayerHasFeature(AzataProgression)
+                    //.PrerequisitePlayerHasFeature(AzataProgression)
+                    .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideNotAvailableInUI(true)
                     .SetHideInUi(true)
                     .Configure();

@@ -1,5 +1,4 @@
-﻿// WraithJT: Copied from Vek17's TabletopTweaks-Core: https://github.com/Vek17/TabletopTweaks-Core
-
+﻿// WraithJT: Copied and modified from Vek17's TabletopTweaks-Core: https://github.com/Vek17/TabletopTweaks-Core
 using System.IO;
 using UnityEngine;
 using UnityModManagerNet;
