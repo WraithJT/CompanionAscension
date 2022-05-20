@@ -300,6 +300,9 @@ namespace CompanionAscension.NewContent.Mythics
                         DemonCompanionChoice.Guid,
                         LichCompanionChoice.Guid,
                         TricksterCompanionChoice.Guid,
+                        DevilCompanionChoice.DevilCompanionChoiceGUID,
+                        GoldDragonCompanionChoice.Guid,
+                        LegendCompanionChoice.LegendCompanionChoiceGUID,
                         MythicMindAndBody.Guid})
                     //.AddToFeatures(AngelCompanionChoice.Guid)
                     //.AddToFeatures(AzataCompanionChoice.Guid)
