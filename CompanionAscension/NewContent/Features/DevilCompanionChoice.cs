@@ -38,7 +38,7 @@ namespace CompanionAscension.NewContent.Features
 {
     class DevilCompanionChoice
     {
-        public static readonly string DevilCompanionChoiceGUID = "4387b5bc3f424b2fa9575d4620d9489c";
+        public static readonly string DevilCompanionChoiceGUID = "";
         //private static readonly BlueprintFeatureSelection DevilUniqueAbilitiesSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("1f646b820a37d3d4a8ab116a24ee0022");
         private static readonly string DevilCompanionChoiceName = "DevilCompanionChoice";
         private static readonly string DevilCompanionChoiceDisplayName = "Second Companion Ascension";

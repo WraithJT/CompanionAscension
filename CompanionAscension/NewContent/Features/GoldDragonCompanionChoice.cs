@@ -38,16 +38,17 @@ namespace CompanionAscension.NewContent.Features
 {
     class GoldDragonCompanionChoice
     {
-        internal static readonly string Guid = "4387b5bc3f424b2fa9575d4620d9489c";
-        //private static readonly BlueprintFeatureSelection GoldDragonUniqueAbilitiesSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("1f646b820a37d3d4a8ab116a24ee0022");
+        internal static readonly string Guid = "d43a226ead4b41759dfd6f1669e5b76a";
         private static readonly string Name = "GoldDragonCompanionChoice";
-        private static readonly string DisplayName = "Second Companion Ascension";
+        private static readonly string DisplayName = "Gold Dragon Companion Ascension";
         private static readonly string DisplayNameKey = "GoldDragonCompanionChoiceName";
         private static readonly string Description = "";
         private static readonly string DescriptionKey = "GoldDragonCompanionChoiceDescription";
 
         private static readonly string GoldDragonProgression = "a6fbca43902c6194c947546e89af64bd";
         static BlueprintFeatureSelection DragonLevel2FeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("a21acdafc0169f5488a9bd3256e2e65b");
+
+        static readonly BlueprintFeatureSelection BasicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("247a4068296e8be42890143f451b4b45");
 
         private static readonly BlueprintProgression BloodlineDraconicGoldProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("6c67ef823db8d7d45bb0ef82f959743d");
 
@@ -62,7 +63,7 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                //PatchGoldDragonCompanionChoice();
+                PatchGoldDragonCompanionChoice();
                 //try { PatchGoldDragonCompanionChoice(); }
                 //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
@@ -80,10 +81,12 @@ namespace CompanionAscension.NewContent.Features
                 // option 2 - Gold Dragon Defenses
                 // wings
                 // increase saves to 12 - scale to 14 at MR9?
+                // immunities
+                //
                 //
                 // dragon feat at MR9
 
-                
+
 
                 string _goldDragonProwessName = "GoldDragonProwess";
                 string _goldDragonProwessGUID = "d921137953ed4278a4d03bdd43a0960b";
@@ -107,17 +110,34 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString(_goldDragonDefensesDescriptionKey, _goldDragonDefensesDescription))
                     .Configure();
 
+                string _goldDragonCompanionFeatName = "GoldDragonCompanionFeat";
+                string _goldDragonCompanionFeatGUID = "4d13d31796a1490db39eb252b53dd87d";
+                string _goldDragonCompanionFeatDisplayName = "Gold Dragon Companion Feat";
+                string _goldDragonCompanionFeatDisplayNameKey = "GoldDragonCompanionFeatNameKey";
+                string _goldDragonCompanionFeatDescription = "You can select any feat, ignoring its prerequisites.";
+                string _goldDragonCompanionFeatDescriptionKey = "GoldDragonCompanionFeatDescriptionKey";
+                var _goldDragonCompanionFeat = FeatureSelectionConfigurator.New(_goldDragonCompanionFeatName, _goldDragonCompanionFeatGUID)
+                    .SetDisplayName(LocalizationTool.CreateString(_goldDragonCompanionFeatDisplayNameKey, _goldDragonCompanionFeatDisplayName, false))
+                    .SetDescription(LocalizationTool.CreateString(_goldDragonCompanionFeatDescriptionKey, _goldDragonCompanionFeatDescription))
+                    .SetIgnorePrerequisites(true)
+                    //.PrerequisiteFeature(_goldDragonProwess.AssetGuidThreadSafe)
+                    .SetHideInUi(true)
+                    .SetHideInCharacterSheetAndLevelUp(true)
+                    .SetHideNotAvailableInUI(true)
+                    .Configure();
+                _goldDragonCompanionFeat.m_AllFeatures = BasicFeatSelection.m_AllFeatures;
+
                 var _goldDragonCompanionChoice = FeatureSelectionConfigurator.New(Name, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
                     .SetIcon(BloodlineDraconicGoldProgression.Icon)
                     .AddToFeatures(new string[] { _goldDragonProwess.AssetGuidThreadSafe, _goldDragonDefenses.AssetGuidThreadSafe })
+                    .AddToFeatures(new string[] { _goldDragonCompanionFeat.AssetGuidThreadSafe })
                     //.PrerequisitePlayerHasFeature(GoldDragonProgression)
                     .SetHideInUi(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideNotAvailableInUI(true)
                     .Configure();
-                //_goldDragonCompanionChoice.m_AllFeatures = GoldDragonUniqueAbilitiesSelection.m_AllFeatures;
                 Tools.LogMessage("Built: Gold Dragon Companion Choices -> " + _goldDragonCompanionChoice.AssetGuidThreadSafe);
             }
         }

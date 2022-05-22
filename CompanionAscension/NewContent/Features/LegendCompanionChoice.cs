@@ -39,7 +39,7 @@ namespace CompanionAscension.NewContent.Features
 {
     class LegendCompanionChoice
     {
-        public static readonly string LegendCompanionChoiceGUID = "4387b5bc3f424b2fa9575d4620d9489c";
+        public static readonly string LegendCompanionChoiceGUID = "e1aedb0ed75248faaa79d0a2a0fa1dd8";
         private static readonly string LegendCompanionChoiceName = "LegendCompanionChoice";
         private static readonly string LegendCompanionChoiceDisplayName = "Legend Companion Ascension";
         private static readonly string LegendCompanionChoiceDisplayNameKey = "LegendCompanionChoiceName";

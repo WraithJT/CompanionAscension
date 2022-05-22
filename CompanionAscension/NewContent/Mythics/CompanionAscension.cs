@@ -90,53 +90,7 @@ namespace CompanionAscension.NewContent.Mythics
         private static readonly string CompanionAscensionMythicFeatDescription = "Select one new mythic feat.";
         private static readonly string CompanionAscensionMythicFeatDescriptionKey = "CompanionAscensionMythicFeatDescription";
 
-        //private static readonly string AzataSuperpowersGUID = "8a30e92cd04ff5b459ba7cb03584fda0";
-        private static readonly BlueprintFeatureSelection AzataSuperpowersSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("8a30e92cd04ff5b459ba7cb03584fda0");
-        private static readonly string AzataCompanionChoiceName = "AzataCompanionChoice";
-        private static readonly string AzataCompanionChoiceGUID = "f7191b869724482b8f1d14b9b195c764";
-        private static readonly string AzataCompanionChoiceDisplayName = "Second Companion Ascension";
-        private static readonly string AzataCompanionChoiceDisplayNameKey = "AzataCompanionChoiceName";
-        private static readonly string AzataCompanionChoiceDescription = "Select one Azata Superpower.";
-        private static readonly string AzataCompanionChoiceDescriptionKey = "AzataCompanionChoiceDescription";
-
-        //private static readonly BlueprintFeatureSelection AzataSuperpowersSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("8a30e92cd04ff5b459ba7cb03584fda0");
-        private static readonly string DemonCompanionChoiceName = "DemonCompanionChoice";
-        private static readonly string DemonCompanionChoiceGUID = "57e6f40e11ec421c9b2e3edb34e2beb2";
-        private static readonly string DemonCompanionChoiceDisplayName = "Second Companion Ascension";
-        private static readonly string DemonCompanionChoiceDisplayNameKey = "DemonCompanionChoiceName";
-        private static readonly string DemonCompanionChoiceDescription = "";
-        private static readonly string DemonCompanionChoiceDescriptionKey = "DemonCompanionChoiceDescription";
-
-        private static readonly BlueprintFeatureSelection LichUniqueAbilitiesSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("1f646b820a37d3d4a8ab116a24ee0022");
-        private static readonly string LichCompanionChoiceName = "LichCompanionChoice";
-        private static readonly string LichCompanionChoiceGUID = "4387b5bc3f424b2fa9575d4620d9489c";
-        private static readonly string LichCompanionChoiceDisplayName = "Second Companion Ascension";
-        private static readonly string LichCompanionChoiceDisplayNameKey = "LichCompanionChoiceName";
-        private static readonly string LichCompanionChoiceDescription = "";
-        private static readonly string LichCompanionChoiceDescriptionKey = "LichCompanionChoiceDescription";
-
-        private static readonly BlueprintFeatureSelection TricksterRank1Selection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("4fbc563529717de4d92052048143e0f1");
-        private static readonly string TricksterCompanionChoiceName = "TricksterCompanionChoice";
-        private static readonly string TricksterCompanionChoiceGUID = "095edab4d08f4b7dab6eb7450e93cfca";
-        private static readonly string TricksterCompanionChoiceDisplayName = "Second Companion Ascension";
-        private static readonly string TricksterCompanionChoiceDisplayNameKey = "TricksterCompanionChoiceName";
-        private static readonly string TricksterCompanionChoiceDescription = "";
-        private static readonly string TricksterCompanionChoiceDescriptionKey = "TricksterCompanionChoiceDescription";
-
         private static readonly BlueprintFeature MythicIgnoreAlignmentRestrictions = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("24e78475f0a243e1a810452d14d0a1bd");
-
-        private static readonly string AeonProgression = "34b9484b0d5ce9340ae51d2bf9518bbe";
-        private static readonly string AngelProgression = "2f6fe889e91b6a645b055696c01e2f74";
-        private static readonly string AzataProgression = "9db53de4bf21b564ca1a90ff5bd16586";
-        private static readonly string DemonProgression = "285fe49f7df8587468f676aa49362213";
-        private static readonly string LichProgression = "ccec4e01b85bf5d46a3c3717471ba639";
-        private static readonly string TricksterProgression = "cc64789b0cc5df14b90da1ffee7bbeea";
-        private static readonly string DevilProgression = "87bc9abf00b240a44bb344fea50ec9bc";
-        private static readonly string GoldDragonProgression = "a6fbca43902c6194c947546e89af64bd";
-        private static readonly string LegendProgression = "905383229aaf79e4b8d7e2d316b68715";
-        private static readonly string SwarmThatWalksProgression = "bf5f103ccdf69254abbad84fd371d5c9";
-
-
 
         //private static readonly string ExtraMythicAbilityMythicFeatSelectionGUID = "8a6a511c55e67d04db328cc49aaad2b8";
         //private static readonly string ExtraMythicFeatSelectionGUID = "e10c4f18a6c8b4342afe6954bde0587b";
@@ -300,7 +254,6 @@ namespace CompanionAscension.NewContent.Mythics
                         DemonCompanionChoice.Guid,
                         LichCompanionChoice.Guid,
                         TricksterCompanionChoice.Guid,
-                        DevilCompanionChoice.DevilCompanionChoiceGUID,
                         GoldDragonCompanionChoice.Guid,
                         LegendCompanionChoice.LegendCompanionChoiceGUID,
                         MythicMindAndBody.Guid})
@@ -331,6 +284,7 @@ namespace CompanionAscension.NewContent.Mythics
                 //var _aeonCompanionChoice = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>(AeonCompanionChoice.Guid);
                 //var _aeonCompanionProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("a24bb471a444485fa586e8796095b5d4");
                 var _aeonCompanionNinthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonCompanionChoice.AeonCompanionNinthLevelImmunitiesGUID);
+                var _goldDragonCompanionFeat = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("4d13d31796a1490db39eb252b53dd87d");
                 // END TESTING AREA
 
                 if (Main.Settings.useCompanionAscension == false) { return; }
@@ -354,6 +308,7 @@ namespace CompanionAscension.NewContent.Mythics
                             {
                                 e.m_Features.Add(LifeBondingFriendshipSelection1.ToReference<BlueprintFeatureBaseReference>());
                                 e.m_Features.Add(_aeonCompanionNinthLevelImmunities.ToReference<BlueprintFeatureBaseReference>());
+                                e.m_Features.Add(_goldDragonCompanionFeat.ToReference<BlueprintFeatureBaseReference>());
                             });
                     });
                     AddCompanionsToFirstAscensions();
