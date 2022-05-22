@@ -1,7 +1,5 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
-using BlueprintCore.Blueprints.Configurators.Abilities;
-using BlueprintCore.Blueprints.Components;
 using BlueprintCore.Utils;
 using HarmonyLib;
 using Kingmaker.Blueprints.Classes;
@@ -134,7 +132,7 @@ namespace CompanionAscension.NewContent.Features
                 //var _angelCompanionSpellbookSelection = FeatureSelectionConfigurator.New(_angelCompanionSpellbookSelectionName, _angelCompanionSpellbookSelectionGUID)
                 //    .SetDisplayName(LocalizationTool.CreateString(_angelCompanionSpellbookSelectionDisplayNameKey, _angelCompanionSpellbookSelectionDisplayName, false))
                 //    .SetDescription(LocalizationTool.CreateString(_angelCompanionSpellbookSelectionDescriptionKey, _angelCompanionSpellbookSelectionDescription))
-                //    .AddToFeatures()
+                //    .AddToAllFeatures()
                 //    .Configure();
 
                 //string _angelCompanionSpellbookName = "AngelCompanionSpellbook";
@@ -158,12 +156,12 @@ namespace CompanionAscension.NewContent.Features
                         "You gain a +2 deflection bonus to AC and +2 resistance " +
                         "bonus on saving throws against the attacks and spells from Evil creatures."))
                     .AddSavingThrowBonusAgainstAlignment(
-                        alignment: AlignmentComponent.Evil, 
-                        descriptor: ModifierDescriptor.Resistance, 
+                        alignment: AlignmentComponent.Evil,
+                        descriptor: ModifierDescriptor.Resistance,
                         bonus: 2)
                     .AddArmorClassBonusAgainstAlignment(
-                        alignment: AlignmentComponent.Evil, 
-                        descriptor: ModifierDescriptor.Deflection, 
+                        alignment: AlignmentComponent.Evil,
+                        descriptor: ModifierDescriptor.Deflection,
                         bonus: 2)
                     .Configure();
 
@@ -174,7 +172,7 @@ namespace CompanionAscension.NewContent.Features
                 string ElectricityResistance10GUID = "a5049e0d1b1a1454aa1a221a6e20b714";
                 string FeatureWingsAngelGUID = "d9bd0fde6deb2e44a93268f2dfb3e169";
 
-                string[] _angelCompanionAngelFacts = new string[] 
+                string[] _angelCompanionAngelFacts = new string[]
                 {
                     AcidImmunityGUID,
                     ImmunityToPetrificationGUID,
@@ -202,7 +200,16 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(_angelCompanionAngelTypeDisplayNameKey, _angelCompanionAngelTypeDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_angelCompanionAngelTypeDescriptionKey, _angelCompanionAngelTypeDescription))
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_AngelicCompanion.png"))
-                    .AddFacts(_angelCompanionAngelFacts)
+                    .AddFacts(new()
+                    {
+                        AcidImmunityGUID,
+                        ImmunityToPetrificationGUID,
+                        ColdImmunityGUID,
+                        FireResistance10GUID,
+                        ElectricityResistance10GUID,
+                        FeatureWingsAngelGUID,
+                        _angelCompanionAngelTypeBonus.AssetGuidThreadSafe
+                    })
                     .Configure();
 
                 // SubtypeAngel:            65d9b6889df167044abb624e2160c43b
@@ -220,13 +227,13 @@ namespace CompanionAscension.NewContent.Features
                 var _angelCompanionChoice = FeatureSelectionConfigurator.New(ShortName, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
-                    .AddToFeatures(new string[] { AngelSwordFeatureGUID, _angelCompanionAngelTypeGUID })
+                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] { AngelSwordFeatureGUID, _angelCompanionAngelTypeGUID })
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_AngelCompanionChoice.png"))
-                    //.AddToFeatures(_angelCompanionSpellbookGUID)
+                    //.AddToAllFeatures(_angelCompanionSpellbookGUID)
                     //.PrerequisitePlayerHasFeature(AngelProgression)
-                    .SetHideInUi(true)
+                    .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
-                    .SetHideNotAvailableInUI(true)
+                    .SetHideNotAvailibleInUI(true)
                     .Configure();
                 //_angelCompanionChoice.m_AllFeatures = LichUniqueAbilitiesSelection.m_AllFeatures;
                 Tools.LogMessage("Built: Angel Companion Choices -> " + _angelCompanionChoice.AssetGuidThreadSafe);

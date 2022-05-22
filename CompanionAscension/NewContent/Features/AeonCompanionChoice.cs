@@ -1,7 +1,5 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
-using BlueprintCore.Blueprints.Configurators.Abilities;
-using BlueprintCore.Blueprints.Components;
 using BlueprintCore.Utils;
 using HarmonyLib;
 using Kingmaker.Blueprints.Classes;
@@ -33,6 +31,7 @@ using System.Text.RegularExpressions;
 using CompanionAscension.NewContent.Components;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.Blueprints.Facts;
 
 namespace CompanionAscension.NewContent.Features
 {
@@ -59,6 +58,9 @@ namespace CompanionAscension.NewContent.Features
                 "3eb606c0564d0814ea01a824dbe42fb0",             // ImmunityToMindAffecting
                 "fda40b9ba7644754f97cb51f04759a3e"              // ImmunityToAbilityDamage
         };
+        private static readonly BlueprintFeature ImmunityToBleed = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("52f8ef060a751a247964adae7fcb7e64");
+        private static readonly BlueprintFeature ImmunityToMindAffecting = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("3eb606c0564d0814ea01a824dbe42fb0");
+        private static readonly BlueprintFeature ImmunityToAbilityDamage = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("fda40b9ba7644754f97cb51f04759a3e");
 
         public static readonly string AeonCompanionNinthLevelImmunitiesGUID = "76a5af87f6594d5e90568b706f0809ed";
         private static readonly string AeonCompanionNinthLevelImmunitiesName = "AeonCompanionImmunitiesNinthLevel";
@@ -139,7 +141,7 @@ namespace CompanionAscension.NewContent.Features
                 var _aeonCompanionEighthLevelImmunities = FeatureConfigurator.New(AeonCompanionEighthLevelImmunitiesName, AeonCompanionEighthLevelImmunitiesGUID)
                     .SetDisplayName(LocalizationTool.CreateString(AeonCompanionEighthLevelImmunitiesDisplayNameKey, AeonCompanionEighthLevelImmunitiesDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(AeonCompanionEighthLevelImmunitiesDescriptionKey, AeonCompanionEighthLevelImmunitiesDescription))
-                    .AddFacts(AeonFifthLevelImmunitiesList)
+                    .AddFacts(new() { ImmunityToBleed, ImmunityToMindAffecting, ImmunityToAbilityDamage })
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_AeonCompanionImmunities.png"))
                     .Configure();
 
@@ -151,14 +153,14 @@ namespace CompanionAscension.NewContent.Features
                 var _aeonCompanionNinthLevelImmunities = FeatureConfigurator.New(AeonCompanionNinthLevelImmunitiesName, AeonCompanionNinthLevelImmunitiesGUID)
                     .SetDisplayName(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDisplayNameKey, AeonCompanionNinthLevelImmunitiesDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDescriptionKey, AeonCompanionNinthLevelImmunitiesDescription))
-                    .AddFacts(new string[] {
+                    .AddFacts(new() {
                         _immunityToCurseEffects.AssetGuidThreadSafe,
                         _immunityToDeathEffects.AssetGuidThreadSafe,
                         _immunityToEnergyDrain.AssetGuidThreadSafe })
                     //.PrerequisitePlayerHasFeature(AeonProgression)
-                    .SetHideInUi(true)
+                    .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
-                    .SetHideNotAvailableInUI(true)
+                    .SetHideNotAvailibleInUI(true)
                     .SetIcon(AngelWardFromWeakness.Icon)
                     .Configure();
                 _aeonCompanionNinthLevelImmunities.AddComponents(_aeonCompanionNinthLevelImmunitiesPrereq);
@@ -175,7 +177,7 @@ namespace CompanionAscension.NewContent.Features
                 //var _aeonCompanionImmunityProgression = ProgressionConfigurator.New(_aeonCompanionImmunityName, _aeonCompanionImmunityProgressionGUID)
                 //    .SetDisplayName(LocalizationTool.CreateString(_aeonCompanionImmunityName + "NameKey", "Aeon Companion Immunities Progression", false))
                 //    .SetDescription(LocalizationTool.CreateString(_aeonCompanionImmunityName + "DescriptionKey", "description here"))
-                //    //.AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions, FeatureGroup.MythicAbility })
+                //    //.AddToGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions, FeatureGroup.MythicAbility })
                 //    //.SetIcon(AngelWardFromWeakness.Icon)
                 //    .Configure();
                 ////BlueprintProgression _aeonCompanionImmunityProgression = new()
@@ -210,14 +212,14 @@ namespace CompanionAscension.NewContent.Features
                 var _aeonCompanionChoice = FeatureSelectionConfigurator.New(ShortName, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
-                    .AddToFeatureGroups(FeatureGroup.MythicAdditionalProgressions)
-                    .AddToFeatures(AeonBaneFeatureGUID)
-                    //.AddToFeatures(_aeonCompanionImmunityProgression.AssetGuidThreadSafe)
-                    .AddToFeatures(_aeonCompanionEighthLevelImmunities.AssetGuidThreadSafe)
+                    .AddToGroups(FeatureGroup.MythicAdditionalProgressions)
+                    .AddToAllFeatures(AeonBaneFeatureGUID)
+                    //.AddToAllFeatures(_aeonCompanionImmunityProgression.AssetGuidThreadSafe)
+                    .AddToAllFeatures(_aeonCompanionEighthLevelImmunities.AssetGuidThreadSafe)
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_AeonCompanionChoice.png"))
                     //.PrerequisitePlayerHasFeature(AeonProgression)
-                    .SetHideInUi(true)
-                    .SetHideNotAvailableInUI(true)
+                    .SetHideInUI(true)
+                    .SetHideNotAvailibleInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .Configure();
                 Tools.LogMessage("Built: Aeon Companion Choices -> " + _aeonCompanionChoice.AssetGuidThreadSafe);

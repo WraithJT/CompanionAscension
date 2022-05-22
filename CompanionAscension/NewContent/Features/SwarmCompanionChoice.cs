@@ -1,7 +1,5 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
-using BlueprintCore.Blueprints.Configurators.Abilities;
-using BlueprintCore.Blueprints.Components;
 using BlueprintCore.Utils;
 using HarmonyLib;
 using Kingmaker.Blueprints.Classes;
@@ -72,9 +70,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(SwarmCompanionChoiceDisplayNameKey, SwarmCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(SwarmCompanionChoiceDescriptionKey, SwarmCompanionChoiceDescription))
                     //.PrerequisitePlayerHasFeature(SwarmProgression)
-                    .SetHideInUi(true)
+                    .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
-                    .SetHideNotAvailableInUI(true)
+                    .SetHideNotAvailibleInUI(true)
                     .Configure();
                 //_swarmCompanionChoice.m_AllFeatures = SwarmUniqueAbilitiesSelection.m_AllFeatures;
                 Tools.LogMessage("Built: Swarm Companion Choices -> " + _swarmCompanionChoice.AssetGuidThreadSafe);

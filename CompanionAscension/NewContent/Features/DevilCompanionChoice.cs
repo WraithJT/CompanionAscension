@@ -1,7 +1,5 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
-using BlueprintCore.Blueprints.Configurators.Abilities;
-using BlueprintCore.Blueprints.Components;
 using BlueprintCore.Utils;
 using HarmonyLib;
 using Kingmaker.Blueprints.Classes;
@@ -72,9 +70,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(DevilCompanionChoiceDisplayNameKey, DevilCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DevilCompanionChoiceDescriptionKey, DevilCompanionChoiceDescription))
                     //.PrerequisitePlayerHasFeature(DevilProgression)
-                    .SetHideInUi(true)
+                    .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
-                    .SetHideNotAvailableInUI(true)
+                    .SetHideNotAvailibleInUI(true)
                     .Configure();
                 //_devilCompanionChoice.m_AllFeatures = DevilUniqueAbilitiesSelection.m_AllFeatures;
                 Tools.LogMessage("Built: Devil Companion Choices -> " + _devilCompanionChoice.AssetGuidThreadSafe);

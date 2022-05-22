@@ -1,7 +1,5 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
-using BlueprintCore.Blueprints.Configurators.Abilities;
-using BlueprintCore.Blueprints.Components;
 using BlueprintCore.Utils;
 using HarmonyLib;
 using Kingmaker.Blueprints.Classes;
@@ -87,7 +85,7 @@ namespace CompanionAscension.NewContent.Features
                 var _lichCompanionUndead = FeatureConfigurator.New(_lichCompanionUndeadName, _lichCompanionUndeadGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_lichCompanionUndeadDisplayNameKey, _lichCompanionUndeadDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_lichCompanionUndeadDescriptionKey, _lichCompanionUndeadDescription))
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions })
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_LichUndeadCompanion.png"))
                     .Configure();
                 _lichCompanionUndead.Components = _undeadType.Components;
@@ -102,7 +100,7 @@ namespace CompanionAscension.NewContent.Features
                 var _lichCompanionAbilities = FeatureConfigurator.New(_lichAspectChoiceName, _lichAspectChoiceGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_lichAspectChoiceDisplayNameKey, _lichAspectChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_lichAspectChoiceDescriptionKey, _lichAspectChoiceDescription))
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.LichUniqueAbility, FeatureGroup.MythicAdditionalProgressions })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.LichUniqueAbility, FeatureGroup.MythicAdditionalProgressions })
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_LichPowers.png"))
                     .Configure();
                 _lichCompanionAbilities.AddSelectionCallback(LichUniqueAbilitiesSelection, MythicCompanionProgression);
@@ -110,13 +108,13 @@ namespace CompanionAscension.NewContent.Features
                 var _lichCompanionChoice = FeatureSelectionConfigurator.New(LichCompanionChoiceName, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(LichCompanionChoiceDisplayNameKey, LichCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(LichCompanionChoiceDescriptionKey, LichCompanionChoiceDescription))
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions })
-                    .AddToFeatures(new string[] { _lichCompanionUndead.AssetGuidThreadSafe, _lichCompanionAbilities.AssetGuidThreadSafe })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions })
+                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] { _lichCompanionUndead.AssetGuidThreadSafe, _lichCompanionAbilities.AssetGuidThreadSafe })
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_LichCompanionChoice.png"))
                     //.PrerequisitePlayerHasFeature(LichProgression)
-                    .SetHideInUi(true)
+                    .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
-                    .SetHideNotAvailableInUI(true)
+                    .SetHideNotAvailibleInUI(true)
                     .Configure();
                 Tools.LogMessage("Built: Lich Companion Choices -> " + _lichCompanionChoice.AssetGuidThreadSafe);
             }

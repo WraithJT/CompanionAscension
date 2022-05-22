@@ -1,7 +1,5 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
-using BlueprintCore.Blueprints.Configurators.Abilities;
-using BlueprintCore.Blueprints.Components;
 using BlueprintCore.Utils;
 using HarmonyLib;
 using Kingmaker.Blueprints.Classes;
@@ -114,9 +112,9 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.SkillStealth, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextStatBonus(StatType.SkillThievery, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfBabauGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfBabauGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 
@@ -136,9 +134,9 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.SkillThievery, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextStatBonus(StatType.SkillUseMagicDevice, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfBrimorakGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfBrimorakGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 
@@ -158,9 +156,9 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.SkillAthletics, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextStatBonus(StatType.SkillLoreNature, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfIncubusGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfIncubusGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 
@@ -180,9 +178,9 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.SkillAthletics, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextStatBonus(StatType.SkillUseMagicDevice, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfKalavakusGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfKalavakusGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 
@@ -202,9 +200,9 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.SkillPerception, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextStatBonus(StatType.SkillUseMagicDevice, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfNabasuGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfNabasuGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 
@@ -224,9 +222,9 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.SkillLoreNature, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextStatBonus(StatType.SkillAthletics, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfSchirGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfSchirGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 
@@ -246,9 +244,9 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.SkillPerception, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextStatBonus(StatType.SkillKnowledgeWorld, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfSuccubusGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfSuccubusGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 
@@ -268,9 +266,9 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.SkillKnowledgeWorld, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextStatBonus(StatType.SkillLoreReligion, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfVrockGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfVrockGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 
@@ -283,11 +281,11 @@ namespace CompanionAscension.NewContent.Features
                 var _demonMinorAspectChoiceSelectionSelection = FeatureSelectionConfigurator.New(_demonMinorAspectChoiceSelectionName, _demonMinorAspectChoiceSelectionGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_demonMinorAspectChoiceSelectionDisplayNameKey, _demonMinorAspectChoiceSelectionDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_demonMinorAspectChoiceSelectionDescriptionKey, _demonMinorAspectChoiceSelectionDescription))
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
                     .SetHideInCharacterSheetAndLevelUp(true)
-                    .SetHideInUi(true)
-                    .SetHideNotAvailableInUI(true)
-                    .AddToFeatures(new string[] {
+                    .SetHideInUI(true)
+                    .SetHideNotAvailibleInUI(true)
+                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] {
                         _demonCompanionAspectOfBabau.AssetGuidThreadSafe,
                         _demonCompanionAspectOfBrimorak.AssetGuidThreadSafe,
                         _demonCompanionAspectOfIncubus.AssetGuidThreadSafe,
@@ -320,9 +318,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString(_demonCompanionAspectOfBalorDescriptionKey, _demonCompanionAspectOfBalorDescription))
                     .AddContextStatBonus(StatType.Constitution, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfBalorGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfBalorGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 
@@ -338,9 +336,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString(_demonCompanionAspectOfColoxusDescriptionKey, _demonCompanionAspectOfColoxusDescription))
                     .AddContextStatBonus(StatType.Intelligence, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfColoxusGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfColoxusGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 
@@ -355,9 +353,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(_demonCompanionAspectOfOmoxDisplayNameKey, _demonCompanionAspectOfOmoxDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_demonCompanionAspectOfOmoxDescriptionKey, _demonCompanionAspectOfOmoxDescription))
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfOmoxGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfOmoxGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
                 _demonCompanionAspectOfOmox.AddComponent(new AddDamageResistancePhysical
@@ -386,9 +384,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString(_demonCompanionAspectOfShadowDemonDescriptionKey, _demonCompanionAspectOfShadowDemonDescription))
                     .AddContextStatBonus(StatType.Wisdom, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfShadowDemonGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfShadowDemonGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 
@@ -404,9 +402,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString(_demonCompanionAspectOfVavakiaDescriptionKey, _demonCompanionAspectOfVavakiaDescription))
                     .AddContextStatBonus(StatType.Strength, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfVavakiaGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfVavakiaGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 
@@ -422,9 +420,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString(_demonCompanionAspectOfVrolikaiDescriptionKey, _demonCompanionAspectOfVrolikaiDescription))
                     .AddContextStatBonus(StatType.Constitution, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
-                    .PrerequisiteNoFeature(_demonCompanionAspectOfVrolikaiGUID)
+                    .AddPrerequisiteNoFeature(_demonCompanionAspectOfVrolikaiGUID)
                     .SetIcon(BabauAspectFeature.Icon)
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
                 _demonCompanionAspectOfVrolikai.AddComponent(new AddEffectFastHealing
@@ -443,11 +441,11 @@ namespace CompanionAscension.NewContent.Features
                 var _demonMajorAspectChoiceSelectionSelection = FeatureSelectionConfigurator.New(_demonMajorAspectChoiceSelectionName, _demonMajorAspectChoiceSelectionGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_demonMajorAspectChoiceSelectionDisplayNameKey, _demonMajorAspectChoiceSelectionDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_demonMajorAspectChoiceSelectionDescriptionKey, _demonMajorAspectChoiceSelectionDescription))
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect })
                     .SetHideInCharacterSheetAndLevelUp(true)
-                    .SetHideInUi(true)
-                    .SetHideNotAvailableInUI(true)
-                    .AddToFeatures(new string[] {
+                    .SetHideInUI(true)
+                    .SetHideNotAvailibleInUI(true)
+                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] {
                         _demonCompanionAspectOfBalor.AssetGuidThreadSafe,
                         _demonCompanionAspectOfColoxus.AssetGuidThreadSafe,
                         _demonCompanionAspectOfOmox.AssetGuidThreadSafe,
@@ -485,7 +483,7 @@ namespace CompanionAscension.NewContent.Features
                 //var _demonMajorAspectChoice = FeatureConfigurator.New(_demonMajorAspectChoiceName, _demonMajorAspectChoiceGUID)
                 //    .SetDisplayName(LocalizationTool.CreateString(_demonMajorAspectChoiceDisplayNameKey, _demonMajorAspectChoiceDisplayName, false))
                 //    .SetDescription(LocalizationTool.CreateString(_demonMajorAspectChoiceDescriptionKey, _demonMajorAspectChoiceDescription))
-                //    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect, FeatureGroup.MythicAdditionalProgressions })
+                //    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect, FeatureGroup.MythicAdditionalProgressions })
                 //    .Configure();
                 string _demonAspectChoiceName = "CompanionAspectChoice";
                 string _demonAspectChoiceGUID = "906077e087064ff3a44a15a96b62655c";
@@ -496,7 +494,7 @@ namespace CompanionAscension.NewContent.Features
                 var _demonAspectChoice = FeatureConfigurator.New(_demonAspectChoiceName, _demonAspectChoiceGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_demonAspectChoiceDisplayNameKey, _demonAspectChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_demonAspectChoiceDescriptionKey, _demonAspectChoiceDescription))
-                    .AddToFeatureGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect, FeatureGroup.DemonMajorAspect, FeatureGroup.MythicAdditionalProgressions })
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect, FeatureGroup.DemonMajorAspect, FeatureGroup.MythicAdditionalProgressions })
                     .SetIcon(BabauAspectFeature.Icon)
                     .Configure();
                 _demonAspectChoice.AddSelectionCallback(_demonMinorAspectChoiceSelectionSelection, MythicCompanionProgression);
@@ -506,7 +504,7 @@ namespace CompanionAscension.NewContent.Features
                 var _demonCompanionChoice = FeatureSelectionConfigurator.New(Name, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
-                    .AddToFeatures(new string[]
+                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[]
                     {
                         _demonCompanionRage.AssetGuidThreadSafe,
                         DemonChargeFeature.AssetGuidThreadSafe,
@@ -514,8 +512,8 @@ namespace CompanionAscension.NewContent.Features
                     })
                     //.PrerequisitePlayerHasFeature(DemonProgression)
                     .SetHideInCharacterSheetAndLevelUp(true)
-                    .SetHideNotAvailableInUI(true)
-                    .SetHideInUi(true)
+                    .SetHideNotAvailibleInUI(true)
+                    .SetHideInUI(true)
                     .Configure();
                 Tools.LogMessage("Built: Demon Companion Choices -> " + _demonCompanionChoice.AssetGuidThreadSafe);
             }

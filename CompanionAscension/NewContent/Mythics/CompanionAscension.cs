@@ -1,7 +1,5 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
-using BlueprintCore.Blueprints.Configurators.Abilities;
-using BlueprintCore.Blueprints.Components;
 using BlueprintCore.Utils;
 using HarmonyLib;
 using Kingmaker.Blueprints.Classes;
@@ -37,6 +35,8 @@ using CompanionAscension.NewContent.Features;
 using static CompanionAscension.NewContent.Components.CustomMechanicsFeatures;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.RuleSystem.Rules;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace CompanionAscension.NewContent.Mythics
 {
@@ -96,6 +96,7 @@ namespace CompanionAscension.NewContent.Mythics
         //private static readonly string ExtraMythicFeatSelectionGUID = "e10c4f18a6c8b4342afe6954bde0587b";
         //private static readonly string ExtraMythicFeatMythicAbilitySelectionGUID = "c916448f690d4f4e9d824d6f376e621d";
         private static readonly string BasicFeatSelectionGUID = "247a4068296e8be42890143f451b4b45";
+        private static readonly BlueprintFeatureSelection BasicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("247a4068296e8be42890143f451b4b45");
         //private static readonly string MythicAbilitySelectionGUID = "ba0e5a900b775be4a99702f1ed08914d";
         //private static readonly string MythicFeatSelectionGUID = "9ee0f6745f555484299b0a1563b99d81";
 
@@ -234,12 +235,16 @@ namespace CompanionAscension.NewContent.Mythics
                 var _companionAscensionChoice4 = FeatureSelectionConfigurator.New(CompanionAscensionChoice4Name, CompanionAscensionChoice4GUID)
                     .SetDisplayName(LocalizationTool.CreateString(CompanionAscensionChoice4DisplayNameKey, CompanionAscensionChoice4DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(CompanionAscensionChoice4DescriptionKey, CompanionAscensionChoice4Description))
-                    .SetFeatureGroups(FeatureGroup.MythicAbility, FeatureGroup.MythicFeat, FeatureGroup.Feat, FeatureGroup.MythicAdditionalProgressions)
+                    .AddToGroups(new FeatureGroup[] {
+                        FeatureGroup.MythicAbility,
+                        FeatureGroup.MythicFeat,
+                        FeatureGroup.Feat,
+                        FeatureGroup.MythicAdditionalProgressions })
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_CompanionAscensionChoice.png"))
-                    .AddToFeatures(new string[] {
-                        CompanionAscensionMythicFeatGUID,
-                        CompanionAscensionMythicAbilityGUID,
-                        BasicFeatSelectionGUID})
+                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] {
+                        _companionAscensionMythicFeat,
+                        _companionAscensionMythicAbility,
+                        BasicFeatSelection })
                     .Configure();
                 Tools.LogMessage("Built: Companion First Ascension bonus choice -> " + _companionAscensionChoice4.AssetGuidThreadSafe);
 
@@ -247,7 +252,7 @@ namespace CompanionAscension.NewContent.Mythics
                     .SetDisplayName(LocalizationTool.CreateString(CompanionSecondAscensionDisplayNameKey, CompanionSecondAscensionDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(CompanionSecondAscensionDescriptionKey, CompanionSecondAscensionDescription))
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_Ascension.png"))
-                    .AddToFeatures(new string[] {
+                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] {
                         AeonCompanionChoice.Guid,
                         AngelCompanionChoice.Guid,
                         AzataCompanionChoice.Guid,
@@ -257,26 +262,24 @@ namespace CompanionAscension.NewContent.Mythics
                         GoldDragonCompanionChoice.Guid,
                         LegendCompanionChoice.LegendCompanionChoiceGUID,
                         MythicMindAndBody.Guid})
-                    //.AddToFeatures(AngelCompanionChoice.Guid)
-                    //.AddToFeatures(AzataCompanionChoice.Guid)
-                    //.AddToFeatures(DemonCompanionChoice.Guid)
-                    //.AddToFeatures(LichCompanionChoiceGUID)
-                    //.AddToFeatures(TricksterCompanionChoiceGUID)
-                    //.AddToFeatures(MythicMindAndBody.MythicMindAndBodyGUID)
+                    //.AddToAllFeatures(AngelCompanionChoice.Guid)
+                    //.AddToAllFeatures(AzataCompanionChoice.Guid)
+                    //.AddToAllFeatures(DemonCompanionChoice.Guid)
+                    //.AddToAllFeatures(LichCompanionChoiceGUID)
+                    //.AddToAllFeatures(TricksterCompanionChoiceGUID)
+                    //.AddToAllFeatures(MythicMindAndBody.MythicMindAndBodyGUID)
                     .Configure();
                 Tools.LogMessage("Built: Companion Second Ascension -> " + _companionSecondAscension.AssetGuidThreadSafe);
 
                 var _companionAscensionChoice8 = FeatureSelectionConfigurator.New(CompanionAscensionChoice8Name, CompanionAscensionChoice8GUID)
                     .SetDisplayName(LocalizationTool.CreateString(CompanionAscensionChoice8DisplayNameKey, CompanionAscensionChoice8DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(CompanionAscensionChoice8DescriptionKey, CompanionAscensionChoice8Description))
-                    .SetFeatureGroups(FeatureGroup.MythicAbility, FeatureGroup.MythicFeat, FeatureGroup.Feat, FeatureGroup.MythicAdditionalProgressions)
+                    .AddToGroups(new FeatureGroup[] { FeatureGroup.MythicAbility, FeatureGroup.MythicFeat, FeatureGroup.Feat, FeatureGroup.MythicAdditionalProgressions })
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_CompanionAscensionChoice.png"))
-                    .AddToFeatures(new string[]
-                    {
-                        _companionAscensionMythicFeat.AssetGuidThreadSafe,
-                        _companionAscensionMythicAbility.AssetGuidThreadSafe,
-                        BasicFeatSelectionGUID
-                    })
+                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] {
+                        _companionAscensionMythicFeat,
+                        _companionAscensionMythicAbility,
+                        BasicFeatSelection })
                     .Configure();
                 Tools.LogMessage("Built: Companion Second Ascension bonus choice -> " + _companionAscensionChoice8.AssetGuidThreadSafe);
 

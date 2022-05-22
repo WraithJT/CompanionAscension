@@ -1,7 +1,5 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
-using BlueprintCore.Blueprints.Configurators.Abilities;
-using BlueprintCore.Blueprints.Components;
 using BlueprintCore.Utils;
 using HarmonyLib;
 using Kingmaker.Blueprints.Classes;
@@ -68,7 +66,7 @@ namespace CompanionAscension.NewContent.Features
                 var _mythicMindAndBody = FeatureConfigurator.New(MythicMindAndBodyName, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(MythicMindAndBodyDisplayNameKey, MythicMindAndBodyDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(MythicMindAndBodyDescriptionKey, MythicMindAndBodyDescription))
-                    .AddFacts(new string[] { MythicSavingThrowBonus.MythicSavingThrowBonusGUID, MythicAbilityScoreBonus.MythicAbilityScoreBonusGUID })
+                    .AddFacts(new() { MythicSavingThrowBonus.MythicSavingThrowBonusGUID, MythicAbilityScoreBonus.MythicAbilityScoreBonusGUID })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
                 //_MythicMindAndBody.AddComponents(new BlueprintComponent[] {

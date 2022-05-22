@@ -1,7 +1,5 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
-using BlueprintCore.Blueprints.Configurators.Abilities;
-using BlueprintCore.Blueprints.Components;
 using BlueprintCore.Utils;
 using HarmonyLib;
 using Kingmaker.Blueprints.Classes;
@@ -121,9 +119,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString(_goldDragonCompanionFeatDescriptionKey, _goldDragonCompanionFeatDescription))
                     .SetIgnorePrerequisites(true)
                     //.PrerequisiteFeature(_goldDragonProwess.AssetGuidThreadSafe)
-                    .SetHideInUi(true)
+                    .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
-                    .SetHideNotAvailableInUI(true)
+                    .SetHideNotAvailibleInUI(true)
                     .Configure();
                 _goldDragonCompanionFeat.m_AllFeatures = BasicFeatSelection.m_AllFeatures;
 
@@ -131,12 +129,12 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
                     .SetIcon(BloodlineDraconicGoldProgression.Icon)
-                    .AddToFeatures(new string[] { _goldDragonProwess.AssetGuidThreadSafe, _goldDragonDefenses.AssetGuidThreadSafe })
-                    .AddToFeatures(new string[] { _goldDragonCompanionFeat.AssetGuidThreadSafe })
+                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] { _goldDragonProwess.AssetGuidThreadSafe, _goldDragonDefenses.AssetGuidThreadSafe })
+                    .AddToAllFeatures(_goldDragonCompanionFeat.AssetGuidThreadSafe)
                     //.PrerequisitePlayerHasFeature(GoldDragonProgression)
-                    .SetHideInUi(true)
+                    .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
-                    .SetHideNotAvailableInUI(true)
+                    .SetHideNotAvailibleInUI(true)
                     .Configure();
                 Tools.LogMessage("Built: Gold Dragon Companion Choices -> " + _goldDragonCompanionChoice.AssetGuidThreadSafe);
             }

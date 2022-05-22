@@ -1,7 +1,5 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
-using BlueprintCore.Blueprints.Configurators.Abilities;
-using BlueprintCore.Blueprints.Components;
 using BlueprintCore.Utils;
 using HarmonyLib;
 using Kingmaker.Blueprints.Classes;
@@ -72,11 +70,10 @@ namespace CompanionAscension.NewContent.Features
                 var _azataCompanionChoice = FeatureSelectionConfigurator.New(Name, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
-                    .SetIcon(AzataSuperpowersSelection.Icon)
                     //.PrerequisitePlayerHasFeature(AzataProgression)
                     .SetHideInCharacterSheetAndLevelUp(true)
-                    .SetHideNotAvailableInUI(true)
-                    .SetHideInUi(true)
+                    .SetHideNotAvailibleInUI(true)
+                    .SetHideInUI(true)
                     .Configure();
                 _azataCompanionChoice.m_AllFeatures = AzataSuperpowersSelection.m_AllFeatures;
                 Tools.LogMessage("Built: Azata Companion Choices -> " + _azataCompanionChoice.AssetGuidThreadSafe);
