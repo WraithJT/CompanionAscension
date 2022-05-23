@@ -7,7 +7,7 @@
   "HomePage": "https://github.com/WraithJT/CompanionAscension",
   "Id": "CompanionAscension",
   "ManagerVersion": "0.23.0",
-  "Repository": "https://github.com/WraithJT/CompanionAscension",
+  "Repository": "https://raw.githubusercontent.com/WraithJT/CompanionAscension/master/repository.json",
   "Requirements": [],
   "Version": "0.1.2"
 }
