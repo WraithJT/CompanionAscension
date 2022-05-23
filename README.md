@@ -16,29 +16,37 @@
 		* Choice of a bonus feat, mythic ability, or mythic feat
 		* Choice of one of a few options, depending on Main Character's Mythic Path
 			* Default Choices
-				* Mythic Ability Score Bonus: Adds a bonus to the character's highest ability score equal to 1 + half their mythic levels (maximum of 6)
+				* Mythic Mind and Body: Increases your highest physical (STR, DEX, CON) and mental (INT, WIS, CHA) ability scores, and your lowest saving throw
 			* Aeon Choices
-				* TBD
+				* Aeon Bane: No increases to this, just the base ability
+				* Aeon Immunities: Grants the second (and third set at Mythic Rank 9) of Aeon immunities to the companion
 			* Angel Choices
-				* TBD
-				* (Still in progress) Option to merge spellbook for Divine casters
+				* Sword of Heaven: No increases to this, just the base ability
+				* Angelic Companion: Grants many of the features of the angel creature subtype to the companion
 			* Azata Choices
 				* Choice of one Azata Superpower
 			* Demon Choices
-				* TBD
+				* Demon Rage: No increases to this, just the base ability
+				* Demonic Charge: No increases to this, just the base ability
+				* Demonic Aspects: Gives a choice of the passive effects of 2 minor aspects and 1 major aspect
 			* Lich Choices
-				* Choice of one Lich unique ability (Death of Elements, Tainted Sneak Attack, etc)
-				* (Still in progress) Option to merge spellbook for Arcane casters
+				* Lich Powers: Choice of one Lich unique ability (Death of Elements, Tainted Sneak Attack, etc)
+				* Undead Companion: Grants the undead creature subtype benefits to the companion
 			* Trickster Choices
 				* Choice of one of the level 1 Trickster Tricks
-			* Devil Choices
-				* TBD
+			* Devil Choices (still under construction and balancing)
+				* Contract of Deimavigga: Grants a bonus to DEX and CHA, and increases spell and melee range
+				* Contract of Pit Fiend: Grants a bonus to STR and WIS, AC, saving throws, and spell resistance
+				* Contract of Puragaus: Grants a bonus to CON and INT, increased damage on spells and Chaotic Outsider bane on weapons
 			* Gold Dragon Choices
-				* TBD
-			* Legend Choices
-				* TBD
+				* Both options give a Gold Dragon Feat choice at Mythic Rank 9
+				* Gold Dragon Defenses: Grants immunities, energy resistance, saving throw bonuses, and wings
+				* Gold Dragon Prowess: Increases all ability scores to 14. Gives a bonus to highest ability score, and makes all weapons +5 enchanted
+			* Legend Choices (still under construction and balancing)
+				* Legendary Ability Scores: Increases all ability scores by 2
+				* Legendary Companion: Allows the companion to reach level 24
 			* Swarm that Walks Choices
-				* You have companions?
+				* You have companions? (grants nothing)
 
 ## Credits, acknowledgments, other info
 -   Pathfinder Wrath of The Righteous Discord channel members
