@@ -33,6 +33,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Enums.Damage;
 
 namespace CompanionAscension.NewContent.Features
 {
@@ -58,9 +59,9 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                PatchDevilCompanionChoice();
-                //try { PatchDevilCompanionChoice(); }
-                //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
+                //PatchDevilCompanionChoice();
+                try { PatchDevilCompanionChoice(); }
+                catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
 
             public static void PatchDevilCompanionChoice()
@@ -84,11 +85,6 @@ namespace CompanionAscension.NewContent.Features
                     Property = UnitProperty.None,
                     ValueRank = AbilityRankType.Default
                 };
-
-                // contracts
-                // Deimavigga - DEX/CHA, increased reach, extended spell range?
-                // Pit Fiend - STR/WIS, 
-                // Puragaus - CON/INT, +1damage/die on all? spells (DraconicBloodlineArcana, no descriptor)
 
                 string _devilContractWithDeimaviggaName = "ContractWithDeimavigga";
                 string _devilContractWithDeimaviggaGUID = "caddd62c3b1c4be69e9b3e8f481bc589";
@@ -121,6 +117,7 @@ namespace CompanionAscension.NewContent.Features
                         stat: StatType.Reach,
                         value: 5,
                         scaleByBasicAttackBonus: false)
+                    .SetReapplyOnLevelUp(true)
                     .Configure();
 
                 BuffEnchantAnyWeapon _devilPuragausEnchantPrimary = new()
@@ -162,16 +159,117 @@ namespace CompanionAscension.NewContent.Features
                     .AddComponent(_devilPuragausSpellDamageBonus)
                     .AddComponent(_devilPuragausEnchantPrimary)
                     .AddComponent(_devilPuragausEnchantSecondary)
+                    .SetReapplyOnLevelUp(true)
                     .Configure();
 
-                // armor class? resists?
+                ContextRankConfig _devilPitFiendCharacterLevelContextRankConfig = new()
+                {
+                    name = "$ContextRankConfig$6a8e3416159f48558e20066cf9e5dae3",
+                    m_BaseValueType = ContextRankBaseValueType.CharacterLevel,
+                    m_Progression = ContextRankProgression.AsIs,
+                    m_Max = 20,
+                    m_Stat = StatType.Unknown,
+                    m_Type = AbilityRankType.Default
+                };
+                ContextRankConfig _devilPitFiendMythicLevelContextRankConfig = new()
+                {
+                    name = "$ContextRankConfig$12e04d7ca021426ea6c2274b64342ff6",
+                    m_BaseValueType = ContextRankBaseValueType.MythicLevel,
+                    m_Progression = ContextRankProgression.Div2,
+                    m_Max = 5,
+                    m_Stat = StatType.Unknown,
+                    m_Type = AbilityRankType.DamageDice
+                };
+                ContextCalculateSharedValue _devilPitFiendContextCalculateSharedValue = new()
+                {
+                    name = "$ContextCalculateSharedValue$b983433de65244cabfb86b990427c0b4",
+                    ValueType = AbilitySharedValue.Damage,
+                    Value = new ContextDiceValue()
+                    {
+                        DiceType = Kingmaker.RuleSystem.DiceType.One,
+                        BonusValue = new ContextValue()
+                        {
+                            Value = 0,
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice,
+                            ValueShared = AbilitySharedValue.Damage
+                        },
+                        DiceCountValue = new ContextValue()
+                        {
+                            Value = 0,
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage
+                        }
+                    }
+                };
+                var _devilPitFiendSpellResistance = FeatureConfigurator.New("DevilPitFiendSpellResistance", "6fd1692fb59e4494afa07004bb6ac464")
+                    .SetDisplayName(LocalizationTool.CreateString("DevilPitFiendSpellResistanceNameKey", "Contract with Pit Fiend", false))
+                    .SetDescription(LocalizationTool.CreateString("DevilPitFiendSpellResistanceDescriptionKey", ""))
+                    .AddComponent(_devilPitFiendCharacterLevelContextRankConfig)
+                    .AddComponent(_devilPitFiendMythicLevelContextRankConfig)
+                    .AddComponent(_devilPitFiendContextCalculateSharedValue)
+                    .AddSpellResistance(
+                        value: new ContextValue()
+                        {
+                            Value = 5,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            ValueType = ContextValueType.Shared
+                        })
+                    .SetReapplyOnLevelUp(true)
+                    .SetHideInUI(true)
+                    .Configure();
+
+                ContextRankConfig _devilPitFiendContextRankConfig = new()
+                {
+                    m_BaseValueType = ContextRankBaseValueType.MythicLevel,
+                    m_Type = AbilityRankType.Default,
+                    m_Progression = ContextRankProgression.AsIs,
+                    m_StepLevel = 1,
+                    m_Max = 10,
+                    m_Stat = StatType.Unknown
+                };
+                ContextValue _devilPitFiendContextValue = new()
+                {
+                    ValueType = ContextValueType.Rank,
+                    Value = 1,
+                    ValueShared = AbilitySharedValue.StatBonus,
+                    Property = UnitProperty.None,
+                    ValueRank = AbilityRankType.Default
+                };
+                var _devilPitFiendArmorSaves = FeatureConfigurator.New("DevilPitFiendArmorSaves", "a429d287a73648a794f5291c9f8bb227")
+                    .SetDisplayName(LocalizationTool.CreateString("DevilPitFiendArmorSavesDisplayName", "Contract with Pit Fiend", false))
+                    .SetDescription(LocalizationTool.CreateString("DevilPitFiendArmorSavesDescriptionKey", ""))
+                    .AddContextRankConfig(_devilPitFiendContextRankConfig)
+                    .AddContextStatBonus(
+                        stat: StatType.AC, 
+                        value: _devilPitFiendContextValue,
+                        descriptor: ModifierDescriptor.UntypedStackable)
+                    .AddContextStatBonus(
+                        stat: StatType.SaveFortitude,
+                        value: _devilPitFiendContextValue,
+                        descriptor: ModifierDescriptor.UntypedStackable)
+                    .AddContextStatBonus(
+                        stat: StatType.SaveReflex,
+                        value: _devilPitFiendContextValue,
+                        descriptor: ModifierDescriptor.UntypedStackable)
+                    .AddContextStatBonus(
+                        stat: StatType.SaveWill,
+                        value: _devilPitFiendContextValue,
+                        descriptor: ModifierDescriptor.UntypedStackable)
+                    .SetReapplyOnLevelUp(true)
+                    .SetHideInUI(true)
+                    .Configure();
                 string _devilContractWithPitFiendName = "ContractWithPitFiend";
                 string _devilContractWithPitFiendGUID = "a5690c7afbed4fe7afdc848a39a43ff4";
                 string _devilContractWithPitFiendDisplayName = "Contract with Pit Fiend";
                 string _devilContractWithPitFiendDisplayNameKey = "ContractWithPitFiendNameKey";
                 string _devilContractWithPitFiendDescription =
                     "You sign a contract with a pit fiend, granting you a bonus to your Strength and Wisdom " +
-                    "equal to one-third of your mythic level plus 1 (maximum of 4). \nAdditionally, ";
+                    "equal to one-third of your mythic level plus 1 (maximum of 4). \nAdditionally, you gain a " +
+                    "bonus to your armor class and saving throws equal to your mythic level, as well as spell resistance equal to " +
+                    "your character level plus half  your mythic level.";
                 string _devilContractWithPitFiendDescriptionKey = "ContractWithPitFiendDescriptionKey";
                 var _devilContractWithPitFiend = FeatureConfigurator.New(_devilContractWithPitFiendName, _devilContractWithPitFiendGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_devilContractWithPitFiendDisplayNameKey, _devilContractWithPitFiendDisplayName, false))
@@ -185,16 +283,22 @@ namespace CompanionAscension.NewContent.Features
                         descriptor: ModifierDescriptor.Mythic,
                         stat: StatType.Wisdom,
                         value: _devilContractContextValue)
+                    .AddFacts(new()
+                    {
+                        _devilPitFiendArmorSaves,
+                        _devilPitFiendSpellResistance
+                    })
+                    .SetReapplyOnLevelUp(true)
                     .Configure();
 
                 var _devilCompanionChoice = FeatureSelectionConfigurator.New(Name, Guid)
                         .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                         .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
-                        .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] {
+                        .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] {
                             _devilContractWithDeimavigga.AssetGuidThreadSafe,
                             _devilContractWithPuragaus.AssetGuidThreadSafe,
                             _devilContractWithPitFiend.AssetGuidThreadSafe})
-                        //.PrerequisitePlayerHasFeature(DevilProgression)
+                        //.AddPrerequisitePlayerHasFeature(DevilProgression)
                         .SetHideInUI(true)
                         .SetHideInCharacterSheetAndLevelUp(true)
                         .SetHideNotAvailibleInUI(true)

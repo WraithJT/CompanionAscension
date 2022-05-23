@@ -70,7 +70,7 @@ namespace CompanionAscension.NewContent.Features
                 var _azataCompanionChoice = FeatureSelectionConfigurator.New(Name, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
-                    //.PrerequisitePlayerHasFeature(AzataProgression)
+                    //.AddPrerequisitePlayerHasFeature(AzataProgression)
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideNotAvailibleInUI(true)
                     .SetHideInUI(true)

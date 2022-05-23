@@ -119,7 +119,7 @@ namespace CompanionAscension.NewContent.Features
                 var _legendCompanionChoice = FeatureSelectionConfigurator.New(Name, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
-                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] { _legendLegendaryCompanionFeature.AssetGuidThreadSafe, _legendAbilityScoreBonus.AssetGuidThreadSafe })
+                    .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] { _legendLegendaryCompanionFeature.AssetGuidThreadSafe, _legendAbilityScoreBonus.AssetGuidThreadSafe })
                     //.PrerequisitePlayerHasFeature(LegendProgression)
                     .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)

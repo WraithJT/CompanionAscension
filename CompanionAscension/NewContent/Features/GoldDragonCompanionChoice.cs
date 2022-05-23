@@ -64,28 +64,14 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                PatchGoldDragonCompanionChoice();
-                //try { PatchGoldDragonCompanionChoice(); }
-                //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
+                //PatchGoldDragonCompanionChoice();
+                try { PatchGoldDragonCompanionChoice(); }
+                catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
 
             public static void PatchGoldDragonCompanionChoice()
             {
                 Tools.LogMessage("New Content: Building Gold Dragon Companion Choices");
-
-                // option 1 - Gold Dragon Prowess
-                // 
-                // bonus to highest ability score: +4, +6 at MR9
-                // increase scores to 12 - scale to 14 at MR9?
-                //
-                //
-                // option 2 - Gold Dragon Defenses
-                // wings
-                // increase saves to 12 - scale to 14 at MR9?
-                // immunities
-                //
-                //
-                // dragon feat at MR9
 
                 string DragonLevel1StrengthOverride = "b7524715218c4c14ea4f75881797fc6c";
                 string DragonLevel1DexterityOverride = "fc2120ccd6a528c46a48e3b8c93c2685";
@@ -100,7 +86,6 @@ namespace CompanionAscension.NewContent.Features
                     name = "$HighestAbilityScoreBonus$c48be3da280f452cb366c65e00701beb",
                     HighestStatBonus = 4
                 };
-
                 BuffEnchantAnyWeapon _goldDragonEnchantPrimary = new()
                 {
                     m_EnchantmentBlueprint = ResourcesLibrary.TryGetBlueprint<BlueprintWeaponEnchantment>("bdba267e951851449af552aa9f9e3992").ToReference<BlueprintItemEnchantmentReference>(),
@@ -111,7 +96,6 @@ namespace CompanionAscension.NewContent.Features
                     m_EnchantmentBlueprint = ResourcesLibrary.TryGetBlueprint<BlueprintWeaponEnchantment>("bdba267e951851449af552aa9f9e3992").ToReference<BlueprintItemEnchantmentReference>(),
                     Slot = Kingmaker.UI.GenericSlot.EquipSlotBase.SlotType.SecondaryHand
                 };
-
                 string _goldDragonProwessName = "GoldDragonProwess";
                 string _goldDragonProwessGUID = "d921137953ed4278a4d03bdd43a0960b";
                 string _goldDragonProwessDisplayName = "Gold Dragon Prowess";
@@ -143,6 +127,7 @@ namespace CompanionAscension.NewContent.Features
                     .AddRecalculateOnStatChange(StatType.Intelligence)
                     .AddRecalculateOnStatChange(StatType.Wisdom)
                     .AddRecalculateOnStatChange(StatType.Charisma)
+                    .SetReapplyOnLevelUp(true)
                     .Configure();
 
                 BuffDescriptorImmunity _goldDragonBuffDescriptorImmunity = new()
@@ -191,28 +176,31 @@ namespace CompanionAscension.NewContent.Features
                     Value = new ContextDiceValue()
                     {
                         DiceType = Kingmaker.RuleSystem.DiceType.One,
-                        BonusValue = new ContextValue() { 
-                            Value = 0, 
-                            ValueType = ContextValueType.Rank, 
-                            ValueRank = AbilityRankType.DamageDice, 
-                            ValueShared = AbilitySharedValue.Damage },
-                        DiceCountValue = new ContextValue() { 
-                            Value = 0, 
-                            ValueType = ContextValueType.Rank, 
-                            ValueRank = AbilityRankType.Default, 
-                            ValueShared = AbilitySharedValue.Damage }
+                        BonusValue = new ContextValue()
+                        {
+                            Value = 0,
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice,
+                            ValueShared = AbilitySharedValue.Damage
+                        },
+                        DiceCountValue = new ContextValue()
+                        {
+                            Value = 0,
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage
+                        }
                     }
                 };
                 string FeatureWingsDraconicGold = "6929bac6c67ae194c8c8446e3d593953";
                 string DragonLevel1SavingThrowsOverrideFortitude = "a54cb7d8d86e6cc4099fc1c8c13bdecc";
                 string DragonLevel1SavingThrowsOverrideReflex = "379db58af291030438d2647975e8c16f";
                 string DragonLevel1SavingThrowsOverrideWill = "9a160f24043d9534897f08350f938b99";
-
                 string _goldDragonDefensesName = "GoldDragonDefenses";
                 string _goldDragonDefensesGUID = "81d28dbec3c64e7e8be61da6ef0c78c1";
                 string _goldDragonDefensesDisplayName = "Gold Dragon Defenses";
                 string _goldDragonDefensesDisplayNameKey = "GoldDragonDefensesNameKey";
-                string _goldDragonDefensesDescription = 
+                string _goldDragonDefensesDescription =
                     "You gain immunity to poison, disease, fear, confusion, paralysis and sleep. " +
                     "You also gain resistance to all energies equal to (half your character level plus half your mythic rank)." +
                     "\nIf any of your saving throws bonuses before modifiers is less than (5 + your mythic rank), you gain a bonus up to that number." +
@@ -270,7 +258,7 @@ namespace CompanionAscension.NewContent.Features
                         DragonLevel1SavingThrowsOverrideReflex,
                         DragonLevel1SavingThrowsOverrideWill
                     })
-                    
+                    .SetReapplyOnLevelUp(true)
                     .Configure();
 
                 string _goldDragonCompanionFeatName = "GoldDragonCompanionFeat";
@@ -283,8 +271,8 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(_goldDragonCompanionFeatDisplayNameKey, _goldDragonCompanionFeatDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_goldDragonCompanionFeatDescriptionKey, _goldDragonCompanionFeatDescription))
                     .SetIgnorePrerequisites(true)
-                    .AddPrerequisiteFeature(_goldDragonProwess, group: Prerequisite.GroupType.Any)
-                    .AddPrerequisiteFeature(_goldDragonDefenses, group: Prerequisite.GroupType.Any)
+                    .AddPrerequisiteFeature(_goldDragonProwess, group: Prerequisite.GroupType.Any, checkInProgression: true)
+                    .AddPrerequisiteFeature(_goldDragonDefenses, group: Prerequisite.GroupType.Any, checkInProgression: true)
                     .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideNotAvailibleInUI(true)
@@ -295,11 +283,10 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
                     .SetIcon(BloodlineDraconicGoldProgression.Icon)
-                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] { 
-                        _goldDragonProwess.AssetGuidThreadSafe, 
+                    .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] {
+                        _goldDragonProwess.AssetGuidThreadSafe,
                         _goldDragonDefenses.AssetGuidThreadSafe })
-                    //.AddToAllFeatures(_goldDragonCompanionFeat.AssetGuidThreadSafe)
-                    //.PrerequisitePlayerHasFeature(GoldDragonProgression)
+                    //.AddPrerequisitePlayerHasFeature(GoldDragonProgression)
                     .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideNotAvailibleInUI(true)

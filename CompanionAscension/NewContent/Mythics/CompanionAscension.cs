@@ -241,7 +241,7 @@ namespace CompanionAscension.NewContent.Mythics
                         FeatureGroup.Feat,
                         FeatureGroup.MythicAdditionalProgressions })
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_CompanionAscensionChoice.png"))
-                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] {
+                    .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] {
                         _companionAscensionMythicFeat,
                         _companionAscensionMythicAbility,
                         BasicFeatSelection })
@@ -252,7 +252,7 @@ namespace CompanionAscension.NewContent.Mythics
                     .SetDisplayName(LocalizationTool.CreateString(CompanionSecondAscensionDisplayNameKey, CompanionSecondAscensionDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(CompanionSecondAscensionDescriptionKey, CompanionSecondAscensionDescription))
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_Ascension.png"))
-                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] {
+                    .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] {
                         AeonCompanionChoice.Guid,
                         AngelCompanionChoice.Guid,
                         AzataCompanionChoice.Guid,
@@ -277,7 +277,7 @@ namespace CompanionAscension.NewContent.Mythics
                     .SetDescription(LocalizationTool.CreateString(CompanionAscensionChoice8DescriptionKey, CompanionAscensionChoice8Description))
                     .AddToGroups(new FeatureGroup[] { FeatureGroup.MythicAbility, FeatureGroup.MythicFeat, FeatureGroup.Feat, FeatureGroup.MythicAdditionalProgressions })
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_CompanionAscensionChoice.png"))
-                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] {
+                    .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] {
                         _companionAscensionMythicFeat,
                         _companionAscensionMythicAbility,
                         BasicFeatSelection })

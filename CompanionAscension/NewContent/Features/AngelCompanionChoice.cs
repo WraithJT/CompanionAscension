@@ -212,30 +212,16 @@ namespace CompanionAscension.NewContent.Features
                     })
                     .Configure();
 
-                // SubtypeAngel:            65d9b6889df167044abb624e2160c43b
-                //  AcidImmunity:           c994f1a0dfce1c54f94420588da61617
-                //  ImmunityToPetrification:b625283fc6eb72c47a2fc5e2a3ff9eb4
-                //  ColdImmunity:           9ae23798a9284e044ad2716a772a410e
-                //  FireResistance10:       24700a71dd3dc844ea585345f6dd18f6
-                //  ElectricityResistance10:a5049e0d1b1a1454aa1a221a6e20b714
-                // FeatureWingsAngel:       d9bd0fde6deb2e44a93268f2dfb3e169
-
-                // +2 against Evil
-                // SavingThrowBonusAgainstDescriptor -- resistance
-                // ACBonusAgainstFactOwner -- deflection
-
                 var _angelCompanionChoice = FeatureSelectionConfigurator.New(ShortName, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
-                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] { AngelSwordFeatureGUID, _angelCompanionAngelTypeGUID })
+                    .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] { AngelSwordFeatureGUID, _angelCompanionAngelTypeGUID })
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_AngelCompanionChoice.png"))
-                    //.AddToAllFeatures(_angelCompanionSpellbookGUID)
-                    //.PrerequisitePlayerHasFeature(AngelProgression)
+                    //.AddPrerequisitePlayerHasFeature(AngelProgression)
                     .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideNotAvailibleInUI(true)
                     .Configure();
-                //_angelCompanionChoice.m_AllFeatures = LichUniqueAbilitiesSelection.m_AllFeatures;
                 Tools.LogMessage("Built: Angel Companion Choices -> " + _angelCompanionChoice.AssetGuidThreadSafe);
             }
         }

@@ -55,9 +55,9 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                PatchMythicSavingThrowBonus();
-                //try { PatchMythicSavingThrowBonus(); }
-                //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
+                //PatchMythicSavingThrowBonus();
+                try { PatchMythicSavingThrowBonus(); }
+                catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
 
             public static void PatchMythicSavingThrowBonus()

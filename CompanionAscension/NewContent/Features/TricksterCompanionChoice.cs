@@ -57,9 +57,9 @@ namespace CompanionAscension.NewContent.Features
                 if (Initialized) return;
                 Initialized = true;
 
-                PatchTricksterCompanionChoice();
-                //try { PatchTricksterCompanionChoice(); }
-                //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
+                //PatchTricksterCompanionChoice();
+                try { PatchTricksterCompanionChoice(); }
+                catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
 
             public static void PatchTricksterCompanionChoice()

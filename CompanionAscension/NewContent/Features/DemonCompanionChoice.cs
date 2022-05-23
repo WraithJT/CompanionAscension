@@ -285,7 +285,7 @@ namespace CompanionAscension.NewContent.Features
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideInUI(true)
                     .SetHideNotAvailibleInUI(true)
-                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] {
+                    .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] {
                         _demonCompanionAspectOfBabau.AssetGuidThreadSafe,
                         _demonCompanionAspectOfBrimorak.AssetGuidThreadSafe,
                         _demonCompanionAspectOfIncubus.AssetGuidThreadSafe,
@@ -296,15 +296,6 @@ namespace CompanionAscension.NewContent.Features
                         _demonCompanionAspectOfVrock.AssetGuidThreadSafe
                     })
                     .Configure();
-
-
-
-                //PrerequisiteFeature _demonAspectPrerequisite = new();
-                //_demonAspectPrerequisite.CheckInProgression = true;
-                //_demonAspectPrerequisite.Group = Prerequisite.GroupType.All;
-                //_demonAspectPrerequisite.m_Feature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(_demonMinorAspectChoiceGUID).ToReference<BlueprintFeatureReference>();
-                //_demonAspectPrerequisite.name = "customprereqname";
-                ////_demonMinorAspectChoiceSelectionSelection.AddComponents(_demonAspectPrerequisite);
 
                 string _demonCompanionAspectOfBalorName = "CompanionAspectOfBalor";
                 string _demonCompanionAspectOfBalorGUID = "f2a15d910b3a4b45b2e99f36a8b3cbd6";
@@ -445,7 +436,7 @@ namespace CompanionAscension.NewContent.Features
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideInUI(true)
                     .SetHideNotAvailibleInUI(true)
-                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] {
+                    .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] {
                         _demonCompanionAspectOfBalor.AssetGuidThreadSafe,
                         _demonCompanionAspectOfColoxus.AssetGuidThreadSafe,
                         _demonCompanionAspectOfOmox.AssetGuidThreadSafe,
@@ -474,17 +465,6 @@ namespace CompanionAscension.NewContent.Features
                     .Configure();
                 _demonCompanionRage.Components = DemonRageFeature.Components;
 
-                //string _demonMajorAspectChoiceName = "CompanionMajorAspectChoice";
-                //string _demonMajorAspectChoiceGUID = "c6418650d3df411d97bb02fea64990ad";
-                //string _demonMajorAspectChoiceDisplayName = "Demon Major Aspect Choice";
-                //string _demonMajorAspectChoiceDisplayNameKey = "CompanionMajorAspectChoiceNameKey";
-                //string _demonMajorAspectChoiceDescription = "do something";
-                //string _demonMajorAspectChoiceDescriptionKey = "CompanionMajorAspectChoiceDescriptionKey";
-                //var _demonMajorAspectChoice = FeatureConfigurator.New(_demonMajorAspectChoiceName, _demonMajorAspectChoiceGUID)
-                //    .SetDisplayName(LocalizationTool.CreateString(_demonMajorAspectChoiceDisplayNameKey, _demonMajorAspectChoiceDisplayName, false))
-                //    .SetDescription(LocalizationTool.CreateString(_demonMajorAspectChoiceDescriptionKey, _demonMajorAspectChoiceDescription))
-                //    .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonicAspect, FeatureGroup.MythicAdditionalProgressions })
-                //    .Configure();
                 string _demonAspectChoiceName = "CompanionAspectChoice";
                 string _demonAspectChoiceGUID = "906077e087064ff3a44a15a96b62655c";
                 string _demonAspectChoiceDisplayName = "Demonic Aspects";
@@ -504,13 +484,13 @@ namespace CompanionAscension.NewContent.Features
                 var _demonCompanionChoice = FeatureSelectionConfigurator.New(Name, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
-                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[]
+                    .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[]
                     {
                         _demonCompanionRage.AssetGuidThreadSafe,
                         DemonChargeFeature.AssetGuidThreadSafe,
                         _demonAspectChoice.AssetGuidThreadSafe
                     })
-                    //.PrerequisitePlayerHasFeature(DemonProgression)
+                    //.AddPrerequisitePlayerHasFeature(DemonProgression)
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideNotAvailibleInUI(true)
                     .SetHideInUI(true)

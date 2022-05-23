@@ -19,7 +19,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ILRepack.MSBuild.Task" Version="2.0.13" />
-    <PackageReference Include="WW-Blueprint-Core" Version="2.0.2" />
+    <PackageReference Include="WW-Blueprint-Core" Version="2.0.3" />
   </ItemGroup>
 
   <Target Name="Publicize" AfterTargets="Clean">

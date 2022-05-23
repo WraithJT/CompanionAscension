@@ -109,7 +109,7 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(LichCompanionChoiceDisplayNameKey, LichCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(LichCompanionChoiceDescriptionKey, LichCompanionChoiceDescription))
                     .AddToGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions })
-                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] { _lichCompanionUndead.AssetGuidThreadSafe, _lichCompanionAbilities.AssetGuidThreadSafe })
+                    .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] { _lichCompanionUndead.AssetGuidThreadSafe, _lichCompanionAbilities.AssetGuidThreadSafe })
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_LichCompanionChoice.png"))
                     //.PrerequisitePlayerHasFeature(LichProgression)
                     .SetHideInUI(true)
