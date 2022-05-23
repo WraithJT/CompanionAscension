@@ -37,12 +37,12 @@ namespace CompanionAscension.NewContent.Features
 {
     class LegendCompanionChoice
     {
-        public static readonly string LegendCompanionChoiceGUID = "e1aedb0ed75248faaa79d0a2a0fa1dd8";
-        private static readonly string LegendCompanionChoiceName = "LegendCompanionChoice";
-        private static readonly string LegendCompanionChoiceDisplayName = "Legend Companion Ascension";
-        private static readonly string LegendCompanionChoiceDisplayNameKey = "LegendCompanionChoiceName";
-        private static readonly string LegendCompanionChoiceDescription = "At 8th mythic rank, Legend's companions can gain further power.";
-        private static readonly string LegendCompanionChoiceDescriptionKey = "LegendCompanionChoiceDescription";
+        public static readonly string Guid = "e1aedb0ed75248faaa79d0a2a0fa1dd8";
+        private static readonly string Name = "LegendCompanionChoice";
+        private static readonly string DisplayName = "Legend Companion Ascension";
+        private static readonly string DisplayNameKey = "LegendCompanionChoiceName";
+        private static readonly string Description = "At 8th mythic rank, Legend's companions can gain further power.";
+        private static readonly string DescriptionKey = "LegendCompanionChoiceDescription";
 
         private static readonly string LegendProgression = "905383229aaf79e4b8d7e2d316b68715";
 
@@ -107,7 +107,7 @@ namespace CompanionAscension.NewContent.Features
                 string _legendLegendaryCompanionDisplayName = "Legendary Companion";
                 string _legendLegendaryCompanionDisplayNameKey = "LegendLegendaryCompanionNameKey";
                 string _legendLegendaryCompanionDescription =
-                    "Your level cap has become 28 (you still can only get 20 levels in one character " +
+                    "Your level cap has become 24 (you still can only get 20 levels in one character " +
                     "class), and the amount of XP needed to level up is drastically decreased.";
                 string _legendLegendaryCompanionDescriptionKey = "LegendLegendaryCompanionDescriptionKey";
                 var _legendLegendaryCompanionFeature = FeatureConfigurator.New(_legendLegendaryCompanionName, _legendLegendaryCompanionGUID)
@@ -116,9 +116,9 @@ namespace CompanionAscension.NewContent.Features
                     .Configure();
                 _legendLegendaryCompanionFeature.AddComponent<AddCustomMechanicsFeature>(c => { c.Feature = CustomMechanicsFeature.LegendaryCompanion; });
 
-                var _legendCompanionChoice = FeatureSelectionConfigurator.New(LegendCompanionChoiceName, LegendCompanionChoiceGUID)
-                    .SetDisplayName(LocalizationTool.CreateString(LegendCompanionChoiceDisplayNameKey, LegendCompanionChoiceDisplayName, false))
-                    .SetDescription(LocalizationTool.CreateString(LegendCompanionChoiceDescriptionKey, LegendCompanionChoiceDescription))
+                var _legendCompanionChoice = FeatureSelectionConfigurator.New(Name, Guid)
+                    .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
+                    .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
                     .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] { _legendLegendaryCompanionFeature.AssetGuidThreadSafe, _legendAbilityScoreBonus.AssetGuidThreadSafe })
                     //.PrerequisitePlayerHasFeature(LegendProgression)
                     .SetHideInUI(true)

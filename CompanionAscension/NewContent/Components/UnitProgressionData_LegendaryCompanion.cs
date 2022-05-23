@@ -71,7 +71,7 @@ namespace CompanionAscension.NewContent.Components
             if (__instance.Owner.State.Features.LegendaryHero)
                 __result = 40;
             else if (__instance.Owner.CustomMechanicsFeature(CustomMechanicsFeature.LegendaryCompanion))
-                __result = 28;
+                __result = 24;
             else
                 return true;
 

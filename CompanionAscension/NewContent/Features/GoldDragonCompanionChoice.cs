@@ -94,16 +94,12 @@ namespace CompanionAscension.NewContent.Features
                 string DragonLevel1IntelligenceOverride = "6f86213d9732eec4abfb94561e2acc09";
                 string DragonLevel1WisdomOverride = "8aebc472d039bc944b3a88c729f0e013";
 
-
-
                 HighestAbilityScoreBonus _goldDragonHighestAbilityScoreBonus = new()
                 {
                     Descriptor = ModifierDescriptor.Mythic,
                     name = "$HighestAbilityScoreBonus$c48be3da280f452cb366c65e00701beb",
                     HighestStatBonus = 4
                 };
-
-
 
                 BuffEnchantAnyWeapon _goldDragonEnchantPrimary = new()
                 {
@@ -220,7 +216,8 @@ namespace CompanionAscension.NewContent.Features
                     "You gain immunity to poison, disease, fear, confusion, paralysis and sleep. " +
                     "You also gain resistance to all energies equal to (half your character level plus half your mythic rank)." +
                     "\nIf any of your saving throws bonuses before modifiers is less than (5 + your mythic rank), you gain a bonus up to that number." +
-                    "\nYou gain wings that grant a +3 dodge bonus to AC against melee attacks and an immunity to ground based effects, such as difficult terrain.";
+                    "\nYou gain wings that grant a +3 dodge bonus to AC against melee attacks and an immunity to ground based effects, such as difficult terrain." +
+                    "\nAt the next mythic level, you can select any feat, ignoring its prerequisites.";
                 string _goldDragonDefensesDescriptionKey = "GoldDragonDefensesDescriptionKey";
                 var _goldDragonDefenses = FeatureConfigurator.New(_goldDragonDefensesName, _goldDragonDefensesGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_goldDragonDefensesDisplayNameKey, _goldDragonDefensesDisplayName, false))
@@ -298,7 +295,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
                     .SetIcon(BloodlineDraconicGoldProgression.Icon)
-                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] { _goldDragonProwess.AssetGuidThreadSafe, _goldDragonDefenses.AssetGuidThreadSafe })
+                    .AddToAllFeatures(new Blueprint<BlueprintFeature, BlueprintFeatureReference>[] { 
+                        _goldDragonProwess.AssetGuidThreadSafe, 
+                        _goldDragonDefenses.AssetGuidThreadSafe })
                     //.AddToAllFeatures(_goldDragonCompanionFeat.AssetGuidThreadSafe)
                     //.PrerequisitePlayerHasFeature(GoldDragonProgression)
                     .SetHideInUI(true)
