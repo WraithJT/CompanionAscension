@@ -46,6 +46,8 @@ namespace CompanionAscension.NewContent.Features
         private static readonly string Description = "";
         private static readonly string DescriptionKey = "GoldDragonCompanionChoiceDescription";
 
+        public static readonly string GoldDragonCompanionFeatGUID = "4d13d31796a1490db39eb252b53dd87d";
+
         private static readonly string GoldDragonProgression = "a6fbca43902c6194c947546e89af64bd";
         static BlueprintFeatureSelection DragonLevel2FeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("a21acdafc0169f5488a9bd3256e2e65b");
 
@@ -262,12 +264,12 @@ namespace CompanionAscension.NewContent.Features
                     .Configure();
 
                 string _goldDragonCompanionFeatName = "GoldDragonCompanionFeat";
-                string _goldDragonCompanionFeatGUID = "4d13d31796a1490db39eb252b53dd87d";
+                
                 string _goldDragonCompanionFeatDisplayName = "Gold Dragon Companion Feat";
                 string _goldDragonCompanionFeatDisplayNameKey = "GoldDragonCompanionFeatNameKey";
                 string _goldDragonCompanionFeatDescription = "You can select any feat, ignoring its prerequisites.";
                 string _goldDragonCompanionFeatDescriptionKey = "GoldDragonCompanionFeatDescriptionKey";
-                var _goldDragonCompanionFeat = FeatureSelectionConfigurator.New(_goldDragonCompanionFeatName, _goldDragonCompanionFeatGUID)
+                var _goldDragonCompanionFeat = FeatureSelectionConfigurator.New(_goldDragonCompanionFeatName, GoldDragonCompanionFeatGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_goldDragonCompanionFeatDisplayNameKey, _goldDragonCompanionFeatDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_goldDragonCompanionFeatDescriptionKey, _goldDragonCompanionFeatDescription))
                     .SetIgnorePrerequisites(true)

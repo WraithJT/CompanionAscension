@@ -287,10 +287,11 @@ namespace CompanionAscension.NewContent.Mythics
                 // TESTING AREA
                 //var _aeonCompanionChoice = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>(AeonCompanionChoice.Guid);
                 //var _aeonCompanionProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("a24bb471a444485fa586e8796095b5d4");
-                var _aeonCompanionNinthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonCompanionChoice.AeonCompanionNinthLevelImmunitiesGUID);
-                var _goldDragonCompanionFeat = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("4d13d31796a1490db39eb252b53dd87d");
+
                 // END TESTING AREA
 
+                var _aeonCompanionNinthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonCompanionChoice.AeonCompanionNinthLevelImmunitiesGUID);
+                var _goldDragonCompanionFeat = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(GoldDragonCompanionChoice.GoldDragonCompanionFeatGUID);
                 if (Main.Settings.useCompanionAscension == false) { return; }
                 if (Main.Settings.useBasicAscensionsOnly == false)
                 {
