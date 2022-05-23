@@ -1,54 +1,19 @@
 ﻿// Inspiration and code taken from Vek17's TabletopTweaks and cabarius's ToyBox
 // TabletopTweaks-Core: https://github.com/Vek17/TabletopTweaks-Core
 // ToyBox: https://github.com/cabarius/ToyBox
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
-using Kingmaker.Armies.TacticalCombat.Parts;
-using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Classes;
-using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.Blueprints.Root;
-using Kingmaker.ElementsSystem;
-using Kingmaker.EntitySystem.Entities;
-using Kingmaker.EntitySystem.Stats;
-using Kingmaker.Enums;
-using Kingmaker.PubSubSystem;
-using Kingmaker.QA;
-using Kingmaker.QA.Statistics;
-using Kingmaker.UnitLogic.ActivatableAbilities;
-using Kingmaker.UnitLogic.Buffs;
-using Kingmaker.UnitLogic.Class.LevelUp.Actions;
-using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.UnitLogic.Parts;
-using Kingmaker.Utility;
-using Kingmaker.View;
-using Newtonsoft.Json;
-using Owlcat.Runtime.Core.Utils;
-using UnityEngine;
-using System.ComponentModel;
-using Kingmaker;
-using Kingmaker.UnitLogic;
 using HarmonyLib;
-using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.UI.MVVM._VM.CharGen.Phases.Class;
-using Kingmaker.UnitLogic.Class.LevelUp;
-using Kingmaker.UI.MVVM._VM.CharGen.Phases.Skills;
-using Kingmaker.UI.MVVM._VM.CharGen.Phases.FeatureSelector;
-using Kingmaker.UI.MVVM._VM.ServiceWindows.CharacterInfo.Sections.LevelClassScores.Experience;
-using Kingmaker.UI.ServiceWindow;
-using System.Reflection;
-using System.Reflection.Emit;
+using Kingmaker;
+using Kingmaker.Blueprints.Classes;
+using Kingmaker.EntitySystem.Entities;
+using Kingmaker.UnitLogic;
+using Kingmaker.Utility;
+using System.Collections.Generic;
 using static CompanionAscension.NewContent.Components.CustomMechanicsFeatures;
 
 namespace CompanionAscension.NewContent.Components
 {
-	[HarmonyPatch(typeof(UnitProgressionData))]
-	public class UnitProgressionData_LegendaryCompanion
+    [HarmonyPatch(typeof(UnitProgressionData))]
+    public class UnitProgressionData_LegendaryCompanion
     {
         [HarmonyPatch(nameof(UnitProgressionData.ExperienceTable), MethodType.Getter)]
         private static bool Prefix(ref BlueprintStatProgression __result, UnitProgressionData __instance)
@@ -120,7 +85,7 @@ namespace CompanionAscension.NewContent.Components
     {
         public static CountableFlag CustomMechanicsFeature(this UnitDescriptor unit, CustomMechanicsFeature type)
         {
-            
+
             var mechanicsFeatures = unit.Ensure<CustomMechanicsFeatures>();
             return mechanicsFeatures.GetMechanicsFeature(type);
         }

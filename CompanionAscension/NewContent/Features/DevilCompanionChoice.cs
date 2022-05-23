@@ -1,39 +1,22 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
 using BlueprintCore.Utils;
-using HarmonyLib;
-using Kingmaker.Blueprints.Classes;
-using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.Mechanics.Properties;
-using Kingmaker.Blueprints.Classes.Prerequisites;
-using System;
+using CompanionAscension.NewContent.Components;
 using CompanionAscension.Utilities;
-using BlueprintCore.Blueprints.Configurators.UnitLogic;
-using BlueprintCore.Blueprints.Configurators.UnitLogic.Customization;
-using BlueprintCore.Blueprints.Configurators.UnitLogic.Properties;
-using BlueprintCore.Blueprints.Configurators.EntitySystem;
+using CompanionAscension.Utilities.TTTCore;
+using HarmonyLib;
+using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Items.Ecnchantments;
+using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using Kingmaker.Utility;
-using System.Linq;
-using Kingmaker.EntitySystem;
-using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics.Components;
-using BlueprintCore.Conditions.Builder;
-using Kingmaker.Designers.Mechanics.Facts;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
-using CompanionAscension.Utilities.TTTCore;
-using System.Text.RegularExpressions;
-using CompanionAscension.NewContent.Components;
-using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.Blueprints.Items.Ecnchantments;
-using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.Enums.Damage;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.UnitLogic.Mechanics.Properties;
+using System;
 
 namespace CompanionAscension.NewContent.Features
 {
@@ -245,7 +228,7 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString("DevilPitFiendArmorSavesDescriptionKey", ""))
                     .AddContextRankConfig(_devilPitFiendContextRankConfig)
                     .AddContextStatBonus(
-                        stat: StatType.AC, 
+                        stat: StatType.AC,
                         value: _devilPitFiendContextValue,
                         descriptor: ModifierDescriptor.UntypedStackable)
                     .AddContextStatBonus(
@@ -302,7 +285,7 @@ namespace CompanionAscension.NewContent.Features
                             _devilContractWithDeimavigga.AssetGuidThreadSafe,
                             _devilContractWithPuragaus.AssetGuidThreadSafe,
                             _devilContractWithPitFiend.AssetGuidThreadSafe})
-                        //.AddPrerequisitePlayerHasFeature(DevilProgression)
+                        .AddPrerequisitePlayerHasFeature(DevilProgression)
                         .SetHideInUI(true)
                         .SetHideInCharacterSheetAndLevelUp(true)
                         .SetHideNotAvailibleInUI(true)

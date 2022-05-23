@@ -2,18 +2,12 @@
 // This code is licensed under MIT license (see LICENSE for details)
 //
 // WraithJT: Copied from Vek17's TabletopTweaks-Core: https://github.com/Vek17/TabletopTweaks-Core
-
-using JetBrains.Annotations;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using Kingmaker.Localization;
-using Kingmaker.Localization.Shared;
 using Kingmaker.ResourceLinks;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;

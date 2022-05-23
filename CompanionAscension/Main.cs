@@ -1,8 +1,7 @@
-﻿using HarmonyLib;
+﻿using CompanionAscension.Utilities;
+using HarmonyLib;
 using UnityEngine;
 using UnityModManagerNet;
-using CompanionAscension.Utilities;
-using CompanionAscension.Utilities.TTTCore;
 
 namespace CompanionAscension
 {

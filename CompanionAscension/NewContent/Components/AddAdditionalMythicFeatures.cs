@@ -21,7 +21,7 @@ namespace CompanionAscension.NewContent.Components
             LevelUpController controller = Kingmaker.Game.Instance?.LevelUpController;
             if (controller == null) { return; }
             if (controller.State.Mode != LevelUpState.CharBuildMode.Mythic) { return; }
-            
+
             LevelUpHelper.AddFeaturesFromProgression(controller.State, Owner, this.Features.Select(f => f.Get()).ToArray(), Source, 0);
         }
 

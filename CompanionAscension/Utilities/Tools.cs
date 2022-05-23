@@ -1,22 +1,5 @@
 ﻿//Mostly taken from Vek17's Tabletop Tweaks: https://github.com/Vek17/TabletopTweaks-Core
-using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Classes;
-using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.Utility;
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using HarmonyLib;
-using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.ElementsSystem;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
-using Kingmaker.UnitLogic.Abilities.Components;
-using Kingmaker.UnitLogic.Mechanics.Components;
-using System.Data;
-using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 using UnityEngine;
-using CompanionAscension.Utilities.TTTCore;
-using CompanionAscension.NewContent.Components;
 
 namespace CompanionAscension.Utilities
 {
@@ -46,7 +29,5 @@ namespace CompanionAscension.Utilities
             setting = GUILayout.Toggle(setting, name, GUILayout.ExpandWidth(false));
             GUILayout.EndHorizontal();
         }
-
-
     }
 }

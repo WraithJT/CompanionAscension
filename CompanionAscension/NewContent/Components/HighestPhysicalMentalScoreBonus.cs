@@ -1,10 +1,10 @@
 ﻿// Credit to Vek17 for pieces of this: https://github.com/Vek17/TabletopTweaks-Core
 using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.EntitySystem.Entities;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic;
-using Kingmaker.EntitySystem.Entities;
+using Kingmaker.UnitLogic.Mechanics;
 using System.Collections.Generic;
 
 namespace CompanionAscension.NewContent.Components
@@ -26,8 +26,8 @@ namespace CompanionAscension.NewContent.Components
                     StatType.Charisma
                 };
 
-            this.m_HighestPhysicalStat = getHighestStat(base.Owner, _physicalStats);
-            this.m_HighestMentalStat = getHighestStat(base.Owner, _mentalStats);
+            this.m_HighestPhysicalStat = GetHighestStat(base.Owner, _physicalStats);
+            this.m_HighestMentalStat = GetHighestStat(base.Owner, _mentalStats);
 
             int value = this.HighestStatBonus.Calculate(base.Context);
             base.Owner.Stats.GetStat(this.m_HighestPhysicalStat).AddModifier(value, base.Runtime, this.Descriptor);
@@ -56,7 +56,7 @@ namespace CompanionAscension.NewContent.Components
         private StatType m_HighestPhysicalStat;
         private StatType m_HighestMentalStat;
 
-        static private StatType getHighestStat(UnitEntityData unit, IEnumerable<StatType> stats)
+        static private StatType GetHighestStat(UnitEntityData unit, IEnumerable<StatType> stats)
         {
             StatType highestStat = StatType.Unknown;
             int highestValue = -1;

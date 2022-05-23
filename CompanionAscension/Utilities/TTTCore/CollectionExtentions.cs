@@ -1,5 +1,4 @@
 ﻿// WraithJT: Copied from Vek17's TabletopTweaks-Core: https://github.com/Vek17/TabletopTweaks-Core
-
 using System;
 using System.Collections.Generic;
 using System.Linq;

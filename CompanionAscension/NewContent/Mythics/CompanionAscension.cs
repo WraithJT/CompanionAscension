@@ -1,42 +1,20 @@
-﻿using BlueprintCore.Blueprints.Configurators.Classes;
-using BlueprintCore.Blueprints.Configurators.Classes.Selection;
+﻿using BlueprintCore.Blueprints.Configurators.Classes.Selection;
 using BlueprintCore.Utils;
+using CompanionAscension.NewContent.Features;
+using CompanionAscension.Utilities;
+using CompanionAscension.Utilities.TTTCore;
 using HarmonyLib;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.Mechanics.Properties;
-using Kingmaker.Blueprints.Classes.Prerequisites;
-using System;
-using CompanionAscension.Utilities;
-using BlueprintCore.Blueprints.Configurators.UnitLogic;
-using BlueprintCore.Blueprints.Configurators.UnitLogic.Customization;
-using BlueprintCore.Blueprints.Configurators.UnitLogic.Properties;
-using BlueprintCore.Blueprints.Configurators.EntitySystem;
-using Kingmaker.EntitySystem.Stats;
-using Kingmaker.Enums;
-using Kingmaker.Utility;
-using System.Linq;
-using Kingmaker.EntitySystem;
-using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics.Components;
-using BlueprintCore.Conditions.Builder;
-using Kingmaker.Designers.Mechanics.Facts;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
-using CompanionAscension.Utilities.TTTCore;
-using System.Text.RegularExpressions;
-using CompanionAscension.NewContent.Components;
-using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.UnitLogic.Abilities;
-using CompanionAscension.NewContent.Features;
-using static CompanionAscension.NewContent.Components.CustomMechanicsFeatures;
 using Kingmaker.Blueprints.Items.Weapons;
-using Kingmaker.RuleSystem.Rules;
-using System.Collections.Generic;
-using System.Collections;
+using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.Enums.Damage;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.Utility;
+using System;
+using System.Linq;
 
 namespace CompanionAscension.NewContent.Mythics
 {
@@ -86,7 +64,7 @@ namespace CompanionAscension.NewContent.Mythics
         private static readonly string CompanionAscensionMythicFeatDescriptionKey = "CompanionAscensionMythicFeatDescription";
 
         public static readonly BlueprintCharacterClass MythicCompanionClass = ResourcesLibrary.TryGetBlueprint<BlueprintCharacterClass>("530b6a79cb691c24ba99e1577b4beb6d");
-        
+
         private static readonly BlueprintProgression MythicCompanionProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("21e74c19da02acb478e32da25abd9d28");
         private static readonly BlueprintFeature ExtraMythicAbilityMythicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("8a6a511c55e67d04db328cc49aaad2b8");
         private static readonly BlueprintFeature ExtraMythicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("e10c4f18a6c8b4342afe6954bde0587b");
@@ -393,11 +371,11 @@ namespace CompanionAscension.NewContent.Mythics
             static void CorrectPrerequisites()
             {
                 var _mythicCompanionClassReference = MythicCompanionClass.ToReference<BlueprintCharacterClassReference>();
-                BlueprintProgression.ClassWithLevel _classWithLevel = new()
-                {
-                    m_Class = _mythicCompanionClassReference,
-                    AdditionalLevel = 0
-                };
+                //BlueprintProgression.ClassWithLevel _classWithLevel = new()
+                //{
+                //    m_Class = _mythicCompanionClassReference,
+                //    AdditionalLevel = 0
+                //};
 
                 var _deathOfElementsConsumingElementsResource = ResourcesLibrary.TryGetBlueprint<BlueprintAbilityResource>("7a558d186755620439e35817f174f749");
                 if (!_deathOfElementsConsumingElementsResource.m_MaxAmount.m_Class.Contains(_mythicCompanionClassReference))

@@ -1,36 +1,13 @@
-﻿using BlueprintCore.Blueprints.Configurators.Classes;
-using BlueprintCore.Blueprints.Configurators.Classes.Selection;
+﻿using BlueprintCore.Blueprints.Configurators.Classes.Selection;
 using BlueprintCore.Utils;
+using CompanionAscension.Utilities;
+using CompanionAscension.Utilities.TTTCore;
 using HarmonyLib;
-using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.Mechanics.Properties;
-using Kingmaker.Blueprints.Classes.Prerequisites;
-using System;
-using CompanionAscension.Utilities;
-using BlueprintCore.Blueprints.Configurators.UnitLogic;
-using BlueprintCore.Blueprints.Configurators.UnitLogic.Customization;
-using BlueprintCore.Blueprints.Configurators.UnitLogic.Properties;
-using BlueprintCore.Blueprints.Configurators.EntitySystem;
-using Kingmaker.EntitySystem.Stats;
-using Kingmaker.Enums;
-using Kingmaker.Utility;
-using System.Linq;
-using Kingmaker.EntitySystem;
 using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics.Components;
-using BlueprintCore.Conditions.Builder;
-using Kingmaker.Designers.Mechanics.Facts;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
-using CompanionAscension.Utilities.TTTCore;
-using System.Text.RegularExpressions;
-using CompanionAscension.NewContent.Components;
-using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.UnitLogic.Abilities;
+using System;
 
 namespace CompanionAscension.NewContent.Features
 {
@@ -73,7 +50,7 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(TricksterCompanionChoiceDisplayNameKey, TricksterCompanionChoiceDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(TricksterCompanionChoiceDescriptionKey, TricksterCompanionChoiceDescription))
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_TricksterAscension.png"))
-                    //.PrerequisitePlayerHasFeature(TricksterProgression)
+                    .AddPrerequisitePlayerHasFeature(TricksterProgression)
                     .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideNotAvailibleInUI(true)

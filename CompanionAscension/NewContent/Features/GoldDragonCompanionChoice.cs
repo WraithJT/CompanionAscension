@@ -1,39 +1,25 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
 using BlueprintCore.Utils;
-using HarmonyLib;
-using Kingmaker.Blueprints.Classes;
-using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.Mechanics.Properties;
-using Kingmaker.Blueprints.Classes.Prerequisites;
-using System;
+using CompanionAscension.NewContent.Components;
 using CompanionAscension.Utilities;
-using BlueprintCore.Blueprints.Configurators.UnitLogic;
-using BlueprintCore.Blueprints.Configurators.UnitLogic.Customization;
-using BlueprintCore.Blueprints.Configurators.UnitLogic.Properties;
-using BlueprintCore.Blueprints.Configurators.EntitySystem;
+using CompanionAscension.Utilities.TTTCore;
+using HarmonyLib;
+using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Prerequisites;
+using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Blueprints.Items.Ecnchantments;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using Kingmaker.Utility;
-using System.Linq;
-using Kingmaker.EntitySystem;
-using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics.Components;
-using BlueprintCore.Conditions.Builder;
-using Kingmaker.Designers.Mechanics.Facts;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
-using CompanionAscension.Utilities.TTTCore;
-using System.Text.RegularExpressions;
-using CompanionAscension.NewContent.Components;
-using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.Blueprints.Items.Ecnchantments;
-using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Enums.Damage;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Components;
+using System;
 
 namespace CompanionAscension.NewContent.Features
 {
@@ -47,7 +33,7 @@ namespace CompanionAscension.NewContent.Features
         private static readonly string DescriptionKey = "GoldDragonCompanionChoiceDescription";
 
         public static readonly string GoldDragonCompanionFeatGUID = "4d13d31796a1490db39eb252b53dd87d";
-
+        private static readonly string GoldenDragonProgression = "a6fbca43902c6194c947546e89af64bd";
         private static readonly BlueprintFeatureSelection BasicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("247a4068296e8be42890143f451b4b45");
         private static readonly BlueprintProgression BloodlineDraconicGoldProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("6c67ef823db8d7d45bb0ef82f959743d");
 
@@ -262,7 +248,7 @@ namespace CompanionAscension.NewContent.Features
                     .Configure();
 
                 string _goldDragonCompanionFeatName = "GoldDragonCompanionFeat";
-                
+
                 string _goldDragonCompanionFeatDisplayName = "Gold Dragon Companion Feat";
                 string _goldDragonCompanionFeatDisplayNameKey = "GoldDragonCompanionFeatNameKey";
                 string _goldDragonCompanionFeatDescription = "You can select any feat, ignoring its prerequisites.";
@@ -286,7 +272,7 @@ namespace CompanionAscension.NewContent.Features
                     .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] {
                         _goldDragonProwess.AssetGuidThreadSafe,
                         _goldDragonDefenses.AssetGuidThreadSafe })
-                    //.AddPrerequisitePlayerHasFeature(GoldDragonProgression)
+                    .AddPrerequisitePlayerHasFeature(GoldenDragonProgression)
                     .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideNotAvailibleInUI(true)

@@ -39,7 +39,7 @@
 
 //		//public override void ApplyValidation(ValidationContext context, int parentIndex)
 //		//{
-			
+
 //		//	base.ApplyValidation(context, parentIndex);
 //		//	if (this.Spellbook != null && this.Spellbook.IsMythic)
 //		//	{

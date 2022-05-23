@@ -1,8 +1,8 @@
 ﻿// Inspiration and code taken from Vek17's TabletopTweaks
 // TabletopTweaks-Core: https://github.com/Vek17/TabletopTweaks-Core
+using CompanionAscension.NewContent.Components;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic;
-using CompanionAscension.NewContent.Components;
 
 namespace Kingmaker.Designers.Mechanics.Facts
 {
