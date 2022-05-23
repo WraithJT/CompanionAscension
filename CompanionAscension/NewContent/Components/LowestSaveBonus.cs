@@ -1,5 +1,4 @@
 ﻿// Credit to Vek17 for pieces of this: https://github.com/Vek17/TabletopTweaks-Core
-
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;

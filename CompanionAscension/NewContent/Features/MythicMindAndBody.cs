@@ -66,13 +66,10 @@ namespace CompanionAscension.NewContent.Features
                 var _mythicMindAndBody = FeatureConfigurator.New(MythicMindAndBodyName, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(MythicMindAndBodyDisplayNameKey, MythicMindAndBodyDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(MythicMindAndBodyDescriptionKey, MythicMindAndBodyDescription))
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_MythicMindAndBody.png"))
                     .AddFacts(new() { MythicSavingThrowBonus.MythicSavingThrowBonusGUID, MythicAbilityScoreBonus.MythicAbilityScoreBonusGUID })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
-                //_MythicMindAndBody.AddComponents(new BlueprintComponent[] {
-                //    _highestPhysicalMentalScoreBonus,
-                //    _highestPhysicalMentalScoreBonusContextRankConfig,
-                //    });
                 Tools.LogMessage("Built: Mythic Mind and Body -> " + _mythicMindAndBody.AssetGuidThreadSafe);
             }
         }

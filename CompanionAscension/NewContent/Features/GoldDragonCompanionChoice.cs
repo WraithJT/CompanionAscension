@@ -48,11 +48,7 @@ namespace CompanionAscension.NewContent.Features
 
         public static readonly string GoldDragonCompanionFeatGUID = "4d13d31796a1490db39eb252b53dd87d";
 
-        private static readonly string GoldDragonProgression = "a6fbca43902c6194c947546e89af64bd";
-        static BlueprintFeatureSelection DragonLevel2FeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("a21acdafc0169f5488a9bd3256e2e65b");
-
-        static readonly BlueprintFeatureSelection BasicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("247a4068296e8be42890143f451b4b45");
-
+        private static readonly BlueprintFeatureSelection BasicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("247a4068296e8be42890143f451b4b45");
         private static readonly BlueprintProgression BloodlineDraconicGoldProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("6c67ef823db8d7d45bb0ef82f959743d");
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
@@ -111,6 +107,7 @@ namespace CompanionAscension.NewContent.Features
                 var _goldDragonProwess = FeatureConfigurator.New(_goldDragonProwessName, _goldDragonProwessGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_goldDragonProwessDisplayNameKey, _goldDragonProwessDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_goldDragonProwessDescriptionKey, _goldDragonProwessDescription))
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_GoldDragonProwess.png"))
                     .AddComponent(_goldDragonHighestAbilityScoreBonus)
                     .AddComponent(_goldDragonEnchantPrimary)
                     .AddComponent(_goldDragonEnchantSecondary)
@@ -212,6 +209,7 @@ namespace CompanionAscension.NewContent.Features
                 var _goldDragonDefenses = FeatureConfigurator.New(_goldDragonDefensesName, _goldDragonDefensesGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_goldDragonDefensesDisplayNameKey, _goldDragonDefensesDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_goldDragonDefensesDescriptionKey, _goldDragonDefensesDescription))
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_GoldDragonDefenses.png"))
                     .AddComponent(_goldDragonBuffDescriptorImmunity)
                     .AddComponent(_goldDragonSpellImmunityToSpellDescriptor)
                     .AddComponent(_goldDragonCharacterLevelContextRankConfig)

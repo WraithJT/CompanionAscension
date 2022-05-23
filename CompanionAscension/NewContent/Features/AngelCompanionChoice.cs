@@ -45,17 +45,8 @@ namespace CompanionAscension.NewContent.Features
         private static readonly string DescriptionKey = "AngelCompanionChoiceDescription";
 
         private static readonly string AngelProgression = "2f6fe889e91b6a645b055696c01e2f74";
-
         private static readonly string AngelSwordFeatureGUID = "7a6080461eaa278428fe3f12df75c8d0";
-        //private static readonly BlueprintFeature AngelSwordFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AngelSwordFeatureGUID);
-        private static readonly string AngelIncorporateSpellbookGUID = "e1fbb0e0e610a3a4d91e5e5284587939";
-        private static readonly BlueprintFeatureSelectMythicSpellbook AngelIncorporateSpellbook = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelectMythicSpellbook>(AngelIncorporateSpellbookGUID);
-        private static readonly BlueprintProgression MythicCompanionProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("21e74c19da02acb478e32da25abd9d28");
         public static readonly BlueprintCharacterClass MythicCompanionClass = ResourcesLibrary.TryGetBlueprint<BlueprintCharacterClass>("530b6a79cb691c24ba99e1577b4beb6d");
-
-        private static readonly BlueprintSpellbook AccursedWitchSpellbook = ResourcesLibrary.TryGetBlueprint<BlueprintSpellbook>("b897fe0947e4b804082b1a687c21e6e2");
-
-        private static readonly string Spellbooks;
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_patch
@@ -232,11 +223,6 @@ namespace CompanionAscension.NewContent.Features
                 c.Features = new BlueprintFeatureBaseReference[] { Selection.ToReference<BlueprintFeatureBaseReference>() };
                 c.Source = FeatureSource.GetMythicSource(Progression);
             }));
-        }
-
-        private static void BuildProgression()
-        {
-
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿// Inspiration and code taken from Vek17's TabletopTweaks and cabarius's ToyBox
 // TabletopTweaks-Core: https://github.com/Vek17/TabletopTweaks-Core
 // ToyBox: https://github.com/cabarius/ToyBox
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,8 +50,6 @@ namespace CompanionAscension.NewContent.Components
 	[HarmonyPatch(typeof(UnitProgressionData))]
 	public class UnitProgressionData_LegendaryCompanion
     {
-        //public static Player player = Game.Instance.Player;
-
         [HarmonyPatch(nameof(UnitProgressionData.ExperienceTable), MethodType.Getter)]
         private static bool Prefix(ref BlueprintStatProgression __result, UnitProgressionData __instance)
         {

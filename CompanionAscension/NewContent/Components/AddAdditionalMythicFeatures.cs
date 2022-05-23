@@ -1,5 +1,4 @@
 ﻿// Credit to Vek17 for pieces of this: https://github.com/Vek17/TabletopTweaks-Core
-
 using HarmonyLib;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;

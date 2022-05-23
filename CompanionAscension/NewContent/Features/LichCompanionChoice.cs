@@ -37,17 +37,15 @@ namespace CompanionAscension.NewContent.Features
     static class LichCompanionChoice
     {
         public static readonly string Guid = "4387b5bc3f424b2fa9575d4620d9489c";
-        private static readonly BlueprintFeatureSelection LichUniqueAbilitiesSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("1f646b820a37d3d4a8ab116a24ee0022");
         private static readonly string LichCompanionChoiceName = "LichCompanionChoice";
         private static readonly string LichCompanionChoiceDisplayName = "Lich Companion Ascension";
         private static readonly string LichCompanionChoiceDisplayNameKey = "LichCompanionChoiceName";
         private static readonly string LichCompanionChoiceDescription = "";
         private static readonly string LichCompanionChoiceDescriptionKey = "LichCompanionChoiceDescription";
 
+        private static readonly BlueprintFeatureSelection LichUniqueAbilitiesSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("1f646b820a37d3d4a8ab116a24ee0022");
         private static readonly string LichProgression = "ccec4e01b85bf5d46a3c3717471ba639";
         private static readonly BlueprintProgression MythicCompanionProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("21e74c19da02acb478e32da25abd9d28");
-        private static readonly BlueprintAbility Scare = ResourcesLibrary.TryGetBlueprint<BlueprintAbility>("08cb5f4c3b2695e44971bf5c45205df0");
-        private static readonly BlueprintAbility AnimateDead = ResourcesLibrary.TryGetBlueprint<BlueprintAbility>("4b76d32feb089ad4499c3a1ce8e1ac27");
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_patch

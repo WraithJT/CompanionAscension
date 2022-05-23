@@ -102,6 +102,7 @@ namespace CompanionAscension.NewContent.Features
                     .AddRecalculateOnStatChange(stat: StatType.Intelligence)
                     .AddRecalculateOnStatChange(stat: StatType.Charisma)
                     .SetReapplyOnLevelUp(true)
+                    .SetHideInUI(true)
                     .Configure();
                 _mythicAbilityScoreBonus.AddComponents(new BlueprintComponent[] {
                     _mythicPhysicalMentalScoreBonusHighestAbilityScoreBonus,

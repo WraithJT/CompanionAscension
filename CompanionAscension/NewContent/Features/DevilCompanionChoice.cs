@@ -98,6 +98,7 @@ namespace CompanionAscension.NewContent.Features
                 var _devilContractWithDeimavigga = FeatureConfigurator.New(_devilContractWithDeimaviggaName, _devilContractWithDeimaviggaGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_devilContractWithDeimaviggaDisplayNameKey, _devilContractWithDeimaviggaDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_devilContractWithDeimaviggaDescriptionKey, _devilContractWithDeimaviggaDescription))
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_ContractWithDeimavigga.png"))
                     .AddContextRankConfig(_devilContractContextRankConfig)
                     .AddContextStatBonus(
                         descriptor: ModifierDescriptor.Mythic,
@@ -141,12 +142,13 @@ namespace CompanionAscension.NewContent.Features
                 string _devilContractWithPuragausDisplayNameKey = "ContractWithPuragausNameKey";
                 string _devilContractWithPuragausDescription =
                     "You sign a contract with a puragaus, granting you a bonus to your Constitution and Intelligence " +
-                    "equal to one-third of your mythic level plus 1 (maximum of 4). \nAdditionally, your spells deal 1 additional damage per die rolled " +
+                    "equal to one-third of your mythic level plus 1 (maximum of 4). \nYour spells deal 1 additional damage per die rolled " +
                     "and your weapons are treated as if they had the Chaotic Outsider Bane enchantment.";
                 string _devilContractWithPuragausDescriptionKey = "ContractWithPuragausDescriptionKey";
                 var _devilContractWithPuragaus = FeatureConfigurator.New(_devilContractWithPuragausName, _devilContractWithPuragausGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_devilContractWithPuragausDisplayNameKey, _devilContractWithPuragausDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_devilContractWithPuragausDescriptionKey, _devilContractWithPuragausDescription))
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_ContractWithPuragaus.png"))
                     .AddContextRankConfig(_devilContractContextRankConfig)
                     .AddContextStatBonus(
                         descriptor: ModifierDescriptor.Mythic,
@@ -267,13 +269,14 @@ namespace CompanionAscension.NewContent.Features
                 string _devilContractWithPitFiendDisplayNameKey = "ContractWithPitFiendNameKey";
                 string _devilContractWithPitFiendDescription =
                     "You sign a contract with a pit fiend, granting you a bonus to your Strength and Wisdom " +
-                    "equal to one-third of your mythic level plus 1 (maximum of 4). \nAdditionally, you gain a " +
+                    "equal to one-third of your mythic level plus 1 (maximum of 4). \nYou also gain a " +
                     "bonus to your armor class and saving throws equal to your mythic level, as well as spell resistance equal to " +
                     "your character level plus half  your mythic level.";
                 string _devilContractWithPitFiendDescriptionKey = "ContractWithPitFiendDescriptionKey";
                 var _devilContractWithPitFiend = FeatureConfigurator.New(_devilContractWithPitFiendName, _devilContractWithPitFiendGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_devilContractWithPitFiendDisplayNameKey, _devilContractWithPitFiendDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_devilContractWithPitFiendDescriptionKey, _devilContractWithPitFiendDescription))
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_ContractWithPitFiend.png"))
                     .AddContextRankConfig(_devilContractContextRankConfig)
                     .AddContextStatBonus(
                         descriptor: ModifierDescriptor.Mythic,
@@ -294,6 +297,7 @@ namespace CompanionAscension.NewContent.Features
                 var _devilCompanionChoice = FeatureSelectionConfigurator.New(Name, Guid)
                         .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                         .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
+                        .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_DevilCompanionChoice.png"))
                         .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] {
                             _devilContractWithDeimavigga.AssetGuidThreadSafe,
                             _devilContractWithPuragaus.AssetGuidThreadSafe,

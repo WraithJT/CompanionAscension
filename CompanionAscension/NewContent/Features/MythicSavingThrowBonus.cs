@@ -95,6 +95,7 @@ namespace CompanionAscension.NewContent.Features
                     .SetDisplayName(LocalizationTool.CreateString(MythicSavingThrowBonusDisplayNameKey, MythicSavingThrowBonusDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(MythicSavingThrowBonusDescriptionKey, MythicSavingThrowBonusDescription))
                     .SetReapplyOnLevelUp(true)
+                    .SetHideInUI(true)
                     .Configure();
                 _mythicSavingThrowBonus.AddComponents(new BlueprintComponent[] {
                     _mythicSavingThrowBonusHighestAbilityScoreBonus,

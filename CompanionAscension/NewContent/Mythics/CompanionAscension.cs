@@ -85,14 +85,15 @@ namespace CompanionAscension.NewContent.Mythics
         private static readonly string CompanionAscensionMythicFeatDescription = "Select one new mythic feat.";
         private static readonly string CompanionAscensionMythicFeatDescriptionKey = "CompanionAscensionMythicFeatDescription";
 
-        private static readonly BlueprintFeatureSelection BasicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("247a4068296e8be42890143f451b4b45");
         public static readonly BlueprintCharacterClass MythicCompanionClass = ResourcesLibrary.TryGetBlueprint<BlueprintCharacterClass>("530b6a79cb691c24ba99e1577b4beb6d");
+        
         private static readonly BlueprintProgression MythicCompanionProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("21e74c19da02acb478e32da25abd9d28");
         private static readonly BlueprintFeature ExtraMythicAbilityMythicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("8a6a511c55e67d04db328cc49aaad2b8");
         private static readonly BlueprintFeature ExtraMythicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("e10c4f18a6c8b4342afe6954bde0587b");
         private static readonly BlueprintFeature ExtraMythicFeatMythicAbilitySelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("c916448f690d4f4e9d824d6f376e621d");
         private static readonly BlueprintFeatureSelection MythicAbilitySelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("ba0e5a900b775be4a99702f1ed08914d");
         private static readonly BlueprintFeatureSelection MythicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("9ee0f6745f555484299b0a1563b99d81");
+        private static readonly BlueprintFeatureSelection BasicFeatSelection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("247a4068296e8be42890143f451b4b45");
 
         private static readonly BlueprintFeature MythicIgnoreAlignmentRestrictions = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("24e78475f0a243e1a810452d14d0a1bd");
         private static readonly BlueprintFeature MythicBypassEpicDR = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("c60933cc085132b49970cbc4a4b8338f");
@@ -118,16 +119,16 @@ namespace CompanionAscension.NewContent.Mythics
                 if (Initialized) return;
                 Initialized = true;
 
-                RemoveDefaultProgressions();
-                PatchCompanionAscension();
-                ReaddDefaultProgressions();
-                //try 
-                //{
-                //    RemoveDefaultProgressions();
-                //    PatchCompanionAscension();
-                //    ReaddDefaultProgressions();
-                //}
-                //catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
+                //RemoveDefaultProgressions();
+                //PatchCompanionAscension();
+                //ReaddDefaultProgressions();
+                try
+                {
+                    RemoveDefaultProgressions();
+                    PatchCompanionAscension();
+                    ReaddDefaultProgressions();
+                }
+                catch (Exception ex) { Tools.LogMessage("EXCEPTION: " + ex.ToString()); }
             }
             public static void PatchCompanionAscension()
             {
@@ -415,31 +416,3 @@ namespace CompanionAscension.NewContent.Mythics
         }
     }
 }
-
-
-// book merge notes: 
-// FeatureSelection.Group ?
-
-// Build choices for each mythic path
-// Some generic choices for all paths
-//      Legend: boost max level somehow?
-//
-//      Lich: DeathOfElementsConsumingElementsResource
-//      add companion class
-//      book merge for arcanes?
-//      
-//      Gold Dragon: Choice of +4 to one ability? Choice of boosting saves?
-//      
-//      Angel: book merge for divines?
-
-/*/
- * Azata: Choice of Song
- * Trickster: T1 Trick ---
- * Demon: Minor Aspect Passive bonus
- * Lich: Lich Power ---
- * Angel: Sword of Heaven unupgraded
- * Gold Dragon: Damage Type Conversion
- * Devil: Choice of Decree?
- * Aeon: Aeon Bane (base only non upgraded)
- * Legend: I'd ignore entierly
-/*/

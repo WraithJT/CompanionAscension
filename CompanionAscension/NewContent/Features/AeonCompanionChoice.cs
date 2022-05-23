@@ -53,11 +53,6 @@ namespace CompanionAscension.NewContent.Features
             "Aeon's companion gains immunity to bleed, mind-affecting effects, and ability damage. " +
             "\nAt the next mythic level, they also gain immunity to curse and death effects, as well as energy drain.";
         private static readonly string AeonCompanionEighthLevelImmunitiesDescriptionKey = "AeonCompanionImmunitiesEightLevelDescriptionKey";
-        private static readonly string[] AeonFifthLevelImmunitiesList = {
-                "52f8ef060a751a247964adae7fcb7e64",             // ImmunityToBleed
-                "3eb606c0564d0814ea01a824dbe42fb0",             // ImmunityToMindAffecting
-                "fda40b9ba7644754f97cb51f04759a3e"              // ImmunityToAbilityDamage
-        };
         private static readonly BlueprintFeature ImmunityToBleed = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("52f8ef060a751a247964adae7fcb7e64");
         private static readonly BlueprintFeature ImmunityToMindAffecting = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("3eb606c0564d0814ea01a824dbe42fb0");
         private static readonly BlueprintFeature ImmunityToAbilityDamage = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("fda40b9ba7644754f97cb51f04759a3e");
@@ -72,24 +67,10 @@ namespace CompanionAscension.NewContent.Features
         private static readonly BlueprintFeature ImmunityToCurseEffects = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("d64da5fbf9783b946ac7a0e94c9bccc1");
         private static readonly BlueprintFeature ImmunityToDeathEffects = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("41d5e076fcea3fa4a9158ffded9185f7");
         private static readonly BlueprintFeature ImmunityToEnergyDrain = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("efe0344bca1290244a277ed5c45d9ff2");
-        private static readonly string[] AeonSeventhLevelImmunitiesList = {
-                "d64da5fbf9783b946ac7a0e94c9bccc1",             // ImmunityToCurseEffects
-                "41d5e076fcea3fa4a9158ffded9185f7",             // ImmunityToDeathEffects
-                "efe0344bca1290244a277ed5c45d9ff2"              // ImmunityToEnergyDrain
-        };
 
         private static readonly string AeonBaneFeatureGUID = "0b25e8d8b0488c84c9b5714e9ca0a204";
-        //private static readonly BlueprintFeature AeonBaneFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonBaneFeatureGUID);
-        //private static readonly string AeonFifthLevelImmunitiesGUID = "c52b48a922161fe45a258f0214d6501a";
-        //private static readonly BlueprintFeature AeonFifthLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonFifthLevelImmunitiesGUID);
-        private static readonly string AeonSeventhLevelImmunitiesGUID = "c52b48a922161fe45a258f0214d6501a";
-        private static readonly BlueprintFeature AeonSeventhLevelImmunities = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>(AeonSeventhLevelImmunitiesGUID);
-
         private static readonly string AeonProgression = "34b9484b0d5ce9340ae51d2bf9518bbe";
         public static readonly BlueprintCharacterClass MythicCompanionClass = ResourcesLibrary.TryGetBlueprint<BlueprintCharacterClass>("530b6a79cb691c24ba99e1577b4beb6d");
-
-        private static readonly BlueprintAbility AngelWardFromWeakness = ResourcesLibrary.TryGetBlueprint<BlueprintAbility>("b66eee357e8404d49b7d8ad58cbb7f15");
-        private static readonly BlueprintAbility OathOfPeace = ResourcesLibrary.TryGetBlueprint<BlueprintAbility>("cb3d70cc98b5f1540bddfff6f9667f73");
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_patch
@@ -149,19 +130,19 @@ namespace CompanionAscension.NewContent.Features
                 _aeonCompanionNinthLevelImmunitiesPrereq.m_Feature = _aeonCompanionEighthLevelImmunities.ToReference<BlueprintFeatureReference>();
                 _aeonCompanionNinthLevelImmunitiesPrereq.CheckInProgression = true;
 
-                //string[] _aeonSeventhLevelImmunities = { _immunityToCurseEffectsGUID, _immunityToDeathEffectsGUID, _immunityToEnergyDrainGUID };
                 var _aeonCompanionNinthLevelImmunities = FeatureConfigurator.New(AeonCompanionNinthLevelImmunitiesName, AeonCompanionNinthLevelImmunitiesGUID)
                     .SetDisplayName(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDisplayNameKey, AeonCompanionNinthLevelImmunitiesDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(AeonCompanionNinthLevelImmunitiesDescriptionKey, AeonCompanionNinthLevelImmunitiesDescription))
-                    .AddFacts(new() {
+                    .AddFacts(new()
+                    {
                         _immunityToCurseEffects.AssetGuidThreadSafe,
                         _immunityToDeathEffects.AssetGuidThreadSafe,
-                        _immunityToEnergyDrain.AssetGuidThreadSafe })
-                    //.PrerequisitePlayerHasFeature(AeonProgression)
+                        _immunityToEnergyDrain.AssetGuidThreadSafe
+                    })
                     .SetHideInUI(true)
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideNotAvailibleInUI(true)
-                    .SetIcon(AngelWardFromWeakness.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_AeonCompanionImmunities.png"))
                     .Configure();
                 _aeonCompanionNinthLevelImmunities.AddComponents(_aeonCompanionNinthLevelImmunitiesPrereq);
 

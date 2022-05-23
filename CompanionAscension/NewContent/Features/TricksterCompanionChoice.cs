@@ -37,7 +37,6 @@ namespace CompanionAscension.NewContent.Features
     class TricksterCompanionChoice
     {
         public static readonly string Guid = "095edab4d08f4b7dab6eb7450e93cfca";
-        private static readonly BlueprintFeatureSelection TricksterRank1Selection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("4fbc563529717de4d92052048143e0f1");
         private static readonly string TricksterCompanionChoiceName = "TricksterCompanionChoice";
         private static readonly string TricksterCompanionChoiceDisplayName = "Trickster Companion Ascension";
         private static readonly string TricksterCompanionChoiceDisplayNameKey = "TricksterCompanionChoiceName";
@@ -45,6 +44,7 @@ namespace CompanionAscension.NewContent.Features
         private static readonly string TricksterCompanionChoiceDescriptionKey = "TricksterCompanionChoiceDescription";
 
         private static readonly string TricksterProgression = "cc64789b0cc5df14b90da1ffee7bbeea";
+        private static readonly BlueprintFeatureSelection TricksterRank1Selection = ResourcesLibrary.TryGetBlueprint<BlueprintFeatureSelection>("4fbc563529717de4d92052048143e0f1");
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_patch

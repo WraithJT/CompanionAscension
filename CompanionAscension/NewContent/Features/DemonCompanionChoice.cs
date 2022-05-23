@@ -45,12 +45,10 @@ namespace CompanionAscension.NewContent.Features
         private static readonly string DescriptionKey = "DemonCompanionChoiceDescription";
 
         private static readonly string DemonProgression = "285fe49f7df8587468f676aa49362213";
-
         private static readonly BlueprintProgression MythicCompanionProgression = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("21e74c19da02acb478e32da25abd9d28");
 
         private static readonly BlueprintFeature DemonRageFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("6a8af3f208a0fa747a465b70b7043019");
         private static readonly BlueprintFeature DemonChargeFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("9586810ab12098f4e979d5a13a4e94df");
-
         private static readonly BlueprintFeature BabauAspectFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("99a34a0fa0c3a154fbc5b11fe2d18009");
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
@@ -310,7 +308,7 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.Constitution, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
                     .AddPrerequisiteNoFeature(_demonCompanionAspectOfBalorGUID)
-                    .SetIcon(BabauAspectFeature.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_DemonicMajorAspect.png"))
                     .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
@@ -328,7 +326,7 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.Intelligence, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
                     .AddPrerequisiteNoFeature(_demonCompanionAspectOfColoxusGUID)
-                    .SetIcon(BabauAspectFeature.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_DemonicMajorAspect.png"))
                     .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
@@ -345,7 +343,7 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString(_demonCompanionAspectOfOmoxDescriptionKey, _demonCompanionAspectOfOmoxDescription))
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
                     .AddPrerequisiteNoFeature(_demonCompanionAspectOfOmoxGUID)
-                    .SetIcon(BabauAspectFeature.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_DemonicMajorAspect.png"))
                     .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
@@ -376,7 +374,7 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.Wisdom, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
                     .AddPrerequisiteNoFeature(_demonCompanionAspectOfShadowDemonGUID)
-                    .SetIcon(BabauAspectFeature.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_DemonicMajorAspect.png"))
                     .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
@@ -394,7 +392,7 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.Strength, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
                     .AddPrerequisiteNoFeature(_demonCompanionAspectOfVavakiaGUID)
-                    .SetIcon(BabauAspectFeature.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_DemonicMajorAspect.png"))
                     .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
@@ -412,7 +410,7 @@ namespace CompanionAscension.NewContent.Features
                     .AddContextStatBonus(StatType.Constitution, _demonCompanionContextValue, descriptor: ModifierDescriptor.DemonBonus)
                     .AddContextRankConfig(_demonCompanionContextRankConfig)
                     .AddPrerequisiteNoFeature(_demonCompanionAspectOfVrolikaiGUID)
-                    .SetIcon(BabauAspectFeature.Icon)
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_DemonicMajorAspect.png"))
                     .AddToGroups(new FeatureGroup[] { FeatureGroup.DemonMajorAspect })
                     .SetReapplyOnLevelUp(true)
                     .Configure();
@@ -490,6 +488,7 @@ namespace CompanionAscension.NewContent.Features
                         DemonChargeFeature.AssetGuidThreadSafe,
                         _demonAspectChoice.AssetGuidThreadSafe
                     })
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_DemonCompanionChoice.png"))
                     //.AddPrerequisitePlayerHasFeature(DemonProgression)
                     .SetHideInCharacterSheetAndLevelUp(true)
                     .SetHideNotAvailibleInUI(true)

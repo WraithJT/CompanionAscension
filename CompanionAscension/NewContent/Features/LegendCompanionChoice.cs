@@ -76,6 +76,7 @@ namespace CompanionAscension.NewContent.Features
                 var _legendAbilityScoreBonus = FeatureConfigurator.New(_legendAbilityScoreBonusName, _legendAbilityScoreBonusGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_legendAbilityScoreBonusDisplayNameKey, _legendAbilityScoreBonusDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_legendAbilityScoreBonusDescriptionKey, _legendAbilityScoreBonusDescription))
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_LegendaryAbilityScores.png"))
                     .AddStatBonus(
                         stat: StatType.Strength,
                         descriptor: ModifierDescriptor.None,
@@ -113,12 +114,14 @@ namespace CompanionAscension.NewContent.Features
                 var _legendLegendaryCompanionFeature = FeatureConfigurator.New(_legendLegendaryCompanionName, _legendLegendaryCompanionGUID)
                     .SetDisplayName(LocalizationTool.CreateString(_legendLegendaryCompanionDisplayNameKey, _legendLegendaryCompanionDisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(_legendLegendaryCompanionDescriptionKey, _legendLegendaryCompanionDescription))
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_LegendaryCompanion.png"))
                     .Configure();
                 _legendLegendaryCompanionFeature.AddComponent<AddCustomMechanicsFeature>(c => { c.Feature = CustomMechanicsFeature.LegendaryCompanion; });
 
                 var _legendCompanionChoice = FeatureSelectionConfigurator.New(Name, Guid)
                     .SetDisplayName(LocalizationTool.CreateString(DisplayNameKey, DisplayName, false))
                     .SetDescription(LocalizationTool.CreateString(DescriptionKey, Description))
+                    .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_LegendCompanionChoice.png"))
                     .AddToAllFeatures(new Blueprint<BlueprintFeatureReference>[] { _legendLegendaryCompanionFeature.AssetGuidThreadSafe, _legendAbilityScoreBonus.AssetGuidThreadSafe })
                     //.PrerequisitePlayerHasFeature(LegendProgression)
                     .SetHideInUI(true)
