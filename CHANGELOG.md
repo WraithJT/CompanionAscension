@@ -1,3 +1,7 @@
+## Version 1.0.1
+* Full release versioning
+* Updated Lich's Undead Companion to grant full Undead Type so companions will qualify for all Undead features, including Lord Beyond the Grave
+
 ## Version 0.1.2
 * Initial release! All baseline functionality for each Mythic Path should be present
 

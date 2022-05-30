@@ -65,8 +65,9 @@ namespace CompanionAscension.NewContent.Features
                     .SetDescription(LocalizationTool.CreateString(_lichCompanionUndeadDescriptionKey, _lichCompanionUndeadDescription))
                     .AddToGroups(new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions })
                     .SetIcon(AssetLoader.LoadInternal(Main.ModContext_CA, folder: "Abilities", file: "Icon_LichUndeadCompanion.png"))
+                    .AddFacts(new() { _undeadType })
                     .Configure();
-                _lichCompanionUndead.Components = _undeadType.Components;
+                //_lichCompanionUndead.Components = _undeadType.Components;
 
                 string _lichAspectChoiceName = "LichCompanionPowers";
                 string _lichAspectChoiceGUID = "9ced957271df4b43aea59441f58c87b9";
