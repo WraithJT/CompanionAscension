@@ -1,5 +1,7 @@
 ﻿using BlueprintCore.Blueprints.Configurators.Classes;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
+using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+using BlueprintCore.Blueprints.CustomConfigurators.Classes.Selection;
 using BlueprintCore.Utils;
 using CompanionAscension.NewContent.Components;
 using CompanionAscension.Utilities;
@@ -106,12 +108,12 @@ namespace CompanionAscension.NewContent.Features
                         DragonLevel1IntelligenceOverride,
                         DragonLevel1WisdomOverride
                     })
-                    .AddRecalculateOnStatChange(StatType.Strength)
-                    .AddRecalculateOnStatChange(StatType.Dexterity)
-                    .AddRecalculateOnStatChange(StatType.Constitution)
-                    .AddRecalculateOnStatChange(StatType.Intelligence)
-                    .AddRecalculateOnStatChange(StatType.Wisdom)
-                    .AddRecalculateOnStatChange(StatType.Charisma)
+                    //.AddRecalculateOnStatChange(StatType.Strength)
+                    //.AddRecalculateOnStatChange(StatType.Dexterity)
+                    //.AddRecalculateOnStatChange(StatType.Constitution)
+                    //.AddRecalculateOnStatChange(StatType.Intelligence)
+                    //.AddRecalculateOnStatChange(StatType.Wisdom)
+                    //.AddRecalculateOnStatChange(StatType.Charisma)
                     .SetReapplyOnLevelUp(true)
                     .Configure();
 

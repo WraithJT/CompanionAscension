@@ -26,7 +26,7 @@ namespace CompanionAscension.NewContent.Components
             {
                 if (!baseDamage.Precision)
                 {
-                    int bonus = this.UseContextBonus ? (this.Value.Calculate(context) * baseDamage.Dice.Rolls) : baseDamage.Dice.Rolls;
+                    int bonus = 0;// this.UseContextBonus ? (this.Value.Calculate(context) * baseDamage.Dice.BaseFormula) : baseDamage.Dice.Rolls;
                     baseDamage.AddModifier(bonus, base.Fact);
                 }
             }
